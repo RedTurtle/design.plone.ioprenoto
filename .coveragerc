@@ -1,0 +1,6 @@
+[report]
+include =
+    src/design.plone/*
+omit =
+    */test*
+    */upgrades/*
