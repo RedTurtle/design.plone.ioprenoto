@@ -56,6 +56,8 @@ setup(
         "z3c.jbot",
         "plone.api>=1.8.4",
         "plone.app.dexterity",
+        "redturtle.prenotazioni",
+        "design.plone.policy",
     ],
     extras_require={
         "test": [
@@ -66,6 +68,9 @@ setup(
             "plone.testing>=5.0.0",
             "plone.app.contenttypes",
             "plone.app.robotframework[debug]",
+            "collective.MockMailHost",
+            "redturtle.prenotazioni[test]",
+            "design.plone.policy[test]",
         ],
     },
     entry_points="""

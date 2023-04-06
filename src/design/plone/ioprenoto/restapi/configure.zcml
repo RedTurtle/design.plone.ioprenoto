@@ -1,0 +1,15 @@
+
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    >
+
+  <include
+      package="plone.restapi"
+      file="configure.zcml"
+      />
+
+  <include package=".serializers" />
+
+
+</configure>

@@ -31,7 +31,7 @@
 design.plone.ioprenoto
 ======================
 
-An add-on for Plone
+This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.ioprenoto`
 
 Features
 --------

@@ -3,5 +3,12 @@
   <permissions>
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission acquire="True"
+                name="redturtle.prenotazioni: ManagePrenotazioni"
+    >
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Editor" />
+    </permission>
   </permissions>
 </rolemap>
