@@ -11,7 +11,6 @@ from design.plone.contenttypes.testing import DesignPloneContenttypesRestApiLaye
 
 
 class DesignPloneIoprenotoLayer(PloneSandboxLayer):
-
     defaultBases = (PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):

@@ -42,7 +42,6 @@ class TestSetup(unittest.TestCase):
 
 
 class TestUninstall(unittest.TestCase):
-
     layer = DESIGN_PLONE_IOPRENOTO_INTEGRATION_TESTING
 
     def setUp(self):
