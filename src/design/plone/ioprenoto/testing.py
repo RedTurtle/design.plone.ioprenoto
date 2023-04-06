@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from design.plone.contenttypes.testing import DesignPloneContenttypesRestApiLayer
 from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
@@ -6,8 +7,6 @@ from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
-
-from design.plone.contenttypes.testing import DesignPloneContenttypesRestApiLayer
 
 
 class DesignPloneIoprenotoLayer(PloneSandboxLayer):
@@ -17,20 +16,20 @@ class DesignPloneIoprenotoLayer(PloneSandboxLayer):
         # Load any other ZCML that is required for your tests.
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
-        import plone.app.dexterity
+        import collective.contentrules.mailfromfield
+        import collective.taxonomy
+        import collective.venue
+        import collective.z3cform.datagridfield
+        import design.plone.contenttypes
 
         # required to install redturtle.prenotazioni and design.plone.ioprenoto in test
         import design.plone.policy
-        import collective.contentrules.mailfromfield
-        import plone.app.caching
-        import design.plone.contenttypes
-        import redturtle.bandi
-        import collective.venue
-        import redturtle.volto
         import eea.api.taxonomy
-        import collective.z3cform.datagridfield
-        import collective.taxonomy
+        import plone.app.caching
+        import plone.app.dexterity
+        import redturtle.bandi
         import redturtle.prenotazioni
+        import redturtle.volto
 
         super().setUpZope(app, configurationContext)
 
