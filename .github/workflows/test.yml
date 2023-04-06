@@ -34,16 +34,12 @@ jobs:
       - name: Run tests
         run: |
           bin/test-coverage
-        artifacts:
-          when: always
-          reports:
-            cobertura: coverage.xml
    
   coverage:
-      need: steps
-      runs-on: ubuntu-latest
-      steps:
-        - uses: 5monkeys/cobertura-action@master
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: 5monkeys/cobertura-action@master
         with:
           path: coverage.xml
           minimum_coverage: 90
