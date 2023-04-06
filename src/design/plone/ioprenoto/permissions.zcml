@@ -6,6 +6,10 @@
   <configure zcml:condition="installed AccessControl.security">
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission
+          id="redturtle.prenotazioni.ManagePrenotazioni"
+          title="redturtle.prenotazioni: ManagePrenotazioni"
+          />
 
   </configure>
 

@@ -1,0 +1,11 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    >
+
+   <adapter factory=".servizio.SerializeServizioToJsonSummary" />
+   <adapter factory=".servizio.SerializeServizioToJson" />
+   <adapter factory=".prenotazioniFolder.SerializePrenotazioniFolderToJsonSummary" />
+   <adapter factory=".prenotazioniFolder.SerializePrenotazioniFolderToJson" />
+
+</configure>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    name="PrenotazioniFolder"
+    meta_type="Dexterity FTI"
+    i18n:domain="redturtle.prenotazioni">
+
+  <property name="behaviors" purge="false">
+    <element value="design.plone.ioprenoto.behaviors.uffici_correlati" />
+    <element value="design.plone.ioprenoto.behaviors.punto_di_contatto" />
+    <element value="design.plone.ioprenoto.behaviors.orario_di_apertura" />
+  </property>
+
+</object>
