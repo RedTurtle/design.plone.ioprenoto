@@ -38,8 +38,9 @@ jobs:
           when: always
           reports:
             cobertura: coverage.xml
-  jobs:
-    coverage:
+   
+  coverage:
+      need: steps
       runs-on: ubuntu-latest
       steps:
         - uses: 5monkeys/cobertura-action@master
