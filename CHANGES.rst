@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+1.0.1 (2023-04-06)
 ------------------
 
 - Fix CI struments configs.
