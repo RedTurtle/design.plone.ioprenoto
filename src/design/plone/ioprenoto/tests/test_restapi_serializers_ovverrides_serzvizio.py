@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
+from design.plone.ioprenoto.testing import (
+    DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING,
+)
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
@@ -70,7 +72,9 @@ class SummarySerializerTest(unittest.TestCase):
 
     def test_servizio_referenced_by_prenotazioni_folder_field(self):
         self.prenotazioni_folder.uffici_correlati = [
-            RelationValue(to_id=queryUtility(IIntIds).getId(self.unita_organizzativa))
+            RelationValue(
+                to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
+            )
         ]
 
         notify(ObjectModifiedEvent(self.prenotazioni_folder, ""))

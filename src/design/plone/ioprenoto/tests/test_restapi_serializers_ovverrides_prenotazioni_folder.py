@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
+from design.plone.ioprenoto.testing import (
+    DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING,
+)
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
@@ -60,6 +62,8 @@ class SummarySerializerTest(unittest.TestCase):
         self.api_session.auth = (SITE_OWNER_NAME, SITE_OWNER_PASSWORD)
 
         self.assertEquals(
-            self.api_session.get(self.prenotazioni_folder.absolute_url()).json()["@id"],
+            self.api_session.get(
+                self.prenotazioni_folder.absolute_url()
+            ).json()["@id"],
             self.prenotazioni_folder.absolute_url(),
         )

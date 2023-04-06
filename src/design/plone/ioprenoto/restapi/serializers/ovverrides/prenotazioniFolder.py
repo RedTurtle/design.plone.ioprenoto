@@ -4,7 +4,9 @@ from plone.restapi.interfaces import ISerializeToJson
 from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.serializer.dxcontent import SerializeFolderToJson
 from plone.restapi.serializer.summary import DefaultJSONSummarySerializer
-from redturtle.prenotazioni.content.prenotazioni_folder import IPrenotazioniFolder
+from redturtle.prenotazioni.content.prenotazioni_folder import (
+    IPrenotazioniFolder,
+)
 from zope.component import adapter
 from zope.interface import implementer
 
@@ -21,7 +23,9 @@ class SerializePrenotazioniFolderToJsonSummary(DefaultJSONSummarySerializer):
             PRENOTAZIONI_MANAGE_PERMISSION, user=api.user.get_current()
         ):
             self.request.response.redirect(
-                self.context.portal_url() + "/" + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
+                self.context.portal_url()
+                + "/"
+                + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
             )
 
             return
@@ -37,7 +41,9 @@ class SerializePrenotazioniFolderToJson(SerializeFolderToJson):
             PRENOTAZIONI_MANAGE_PERMISSION, user=api.user.get_current()
         ):
             self.request.response.redirect(
-                self.context.portal_url() + "/" + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
+                self.context.portal_url()
+                + "/"
+                + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
             )
 
             return

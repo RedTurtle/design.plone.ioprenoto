@@ -22,9 +22,9 @@ class CartellaPrenotazioneBackreferences:
 
         referenced_uo = [
             i.to_object
-            for i in CartellaPrenotazioneBackreferences.get_referenced_relations_from_obj(
-                service
-            )
+            for i in (
+                CartellaPrenotazioneBackreferences.get_referenced_relations_from_obj
+            )(service)
             if i.to_object.portal_type == "UnitaOrganizzativa"
         ]
         pernotazioni_folder_refencing_uo = []
@@ -32,9 +32,9 @@ class CartellaPrenotazioneBackreferences:
         for uo in referenced_uo:
             folders = [
                 i
-                for i in CartellaPrenotazioneBackreferences.get_referenced_relations_to_obj(
-                    uo
-                )
+                for i in (
+                    CartellaPrenotazioneBackreferences.get_referenced_relations_to_obj
+                )(uo)
                 if i.from_object.portal_type == "PrenotazioniFolder"
             ]
 
@@ -85,7 +85,9 @@ class SerializeServizioToJsonSummary(ServizioSummaryOriginal):
         if result:
             result[
                 "referenced_by_prenotazioni_folder"
-            ] = CartellaPrenotazioneBackreferences.has_backreferences(self.context)
+            ] = CartellaPrenotazioneBackreferences.has_backreferences(
+                self.context
+            )
 
         return result
 
@@ -99,6 +101,8 @@ class SerializeServizioToJson(SerializeFolderToJson):
         if result:
             result[
                 "referenced_by_prenotazioni_folder"
-            ] = CartellaPrenotazioneBackreferences.has_backreferences(self.context)
+            ] = CartellaPrenotazioneBackreferences.has_backreferences(
+                self.context
+            )
 
         return result
