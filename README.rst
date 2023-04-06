@@ -2,30 +2,29 @@
    If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
    This text does not appear on PyPI or github. It is a comment.
 
-.. image:: https://github.com/collective/design.plone.ioprenoto/actions/workflows/plone-package.yml/badge.svg
-    :target: https://github.com/collective/design.plone.ioprenoto/actions/workflows/plone-package.yml
-
-.. image:: https://coveralls.io/repos/github/collective/design.plone.ioprenoto/badge.svg?branch=main
-    :target: https://coveralls.io/github/collective/design.plone.ioprenoto?branch=main
-    :alt: Coveralls
-
-.. image:: https://codecov.io/gh/collective/design.plone.ioprenoto/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/collective/design.plone.ioprenoto
-
 .. image:: https://img.shields.io/pypi/v/design.plone.ioprenoto.svg
-    :target: https://pypi.python.org/pypi/design.plone.ioprenoto/
-    :alt: Latest Version
+       :target: https://pypi.org/project/design.plone.ioprenoto/
+       :alt: Latest Version
 
-.. image:: https://img.shields.io/pypi/status/design.plone.ioprenoto.svg
-    :target: https://pypi.python.org/pypi/design.plone.ioprenoto
-    :alt: Egg Status
+.. image:: https://img.shields.io/pypi/pyversions/design.plone.ioprenoto.svg?style=plastic
+       :target: https://pypi.org/project/design.plone.ioprenoto/
+       :alt: Supported - Python Versions
 
-.. image:: https://img.shields.io/pypi/pyversions/design.plone.ioprenoto.svg?style=plastic   :alt: Supported - Python Versions
+.. image:: https://img.shields.io/pypi/dm/design.plone.ioprenoto.svg
+       :target: https://pypi.org/project/design.plone.ioprenoto/
+       :alt: Number of PyPI downloads
 
 .. image:: https://img.shields.io/pypi/l/design.plone.ioprenoto.svg
-    :target: https://pypi.python.org/pypi/design.plone.ioprenoto/
-    :alt: License
+       :target: https://pypi.org/project/design.plone.ioprenoto/
+       :alt: License
 
+.. image:: https://github.com/RedTurtle/design.plone.ioprenoto/actions/workflows/tests.yml/badge.svg
+       :target: https://github.com/RedTurtle/design.plone.ioprenoto/actions
+       :alt: Tests
+
+.. image:: https://coveralls.io/repos/github/RedTurtle/design.plone.ioprenoto/badge.svg?branch=master
+       :target: https://coveralls.io/github/RedTurtle/design.plone.ioprenoto?branch=master
+       :alt: Coverage
 
 ======================
 design.plone.ioprenoto
