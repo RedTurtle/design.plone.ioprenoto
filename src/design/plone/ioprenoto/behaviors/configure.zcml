@@ -1,33 +1,37 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="design.plone.ioprenoto">
+    i18n_domain="design.plone.ioprenoto"
+    >
 
-    <include package="plone.behavior" file="meta.zcml" />
+  <include
+      package="plone.behavior"
+      file="meta.zcml"
+      />
 
-    <plone:behavior
-        name="design.plone.ioprenoto.behaviors.uffici_correlati"
-        title="Uffici correllati"
-        description=""
-        provides=".uffici_correlati.IUfficiCorrelati"
-        factory=".uffici_correlati.UfficiCorrelati"
-        marker=".uffici_correlati.IUfficiCorrelati"
-        />
-    <plone:behavior
-        name="design.plone.ioprenoto.behaviors.punto_di_contatto"
-        title="Punto di contatto"
-        description=""
-        provides=".punto_di_contatto.IPuntoDiContatto"
-        factory=".punto_di_contatto.PuntoDiContatto"
-        marker=".punto_di_contatto.IPuntoDiContatto"
-        />
-    <plone:behavior
-        name="design.plone.ioprenoto.behaviors.orario_di_apertura"
-        title="Orario di apertura"
-        description=""
-        provides=".orario_di_apertura.IOrarioDiApertura"
-        factory=".orario_di_apertura.OrarioDiApertura"
-        marker=".orario_di_apertura.IOrarioDiApertura"
-        />
+  <plone:behavior
+      name="design.plone.ioprenoto.behaviors.uffici_correlati"
+      title="Uffici correllati"
+      description=""
+      factory=".uffici_correlati.UfficiCorrelati"
+      provides=".uffici_correlati.IUfficiCorrelati"
+      marker=".uffici_correlati.IUfficiCorrelati"
+      />
+  <plone:behavior
+      name="design.plone.ioprenoto.behaviors.punto_di_contatto"
+      title="Punto di contatto"
+      description=""
+      factory=".punto_di_contatto.PuntoDiContatto"
+      provides=".punto_di_contatto.IPuntoDiContatto"
+      marker=".punto_di_contatto.IPuntoDiContatto"
+      />
+  <plone:behavior
+      name="design.plone.ioprenoto.behaviors.orario_di_apertura"
+      title="Orario di apertura"
+      description=""
+      factory=".orario_di_apertura.OrarioDiApertura"
+      provides=".orario_di_apertura.IOrarioDiApertura"
+      marker=".orario_di_apertura.IOrarioDiApertura"
+      />
 
 </configure>

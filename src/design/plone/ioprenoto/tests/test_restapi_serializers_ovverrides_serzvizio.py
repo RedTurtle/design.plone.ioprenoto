@@ -7,16 +7,13 @@ from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.app.testing import TEST_USER_ID
-from plone import api
 from plone.restapi.testing import RelativeSession
+from transaction import commit
 from z3c.relationfield.relation import RelationValue
-from zope.intid.interfaces import IIntIds
 from zope.component import queryUtility
 from zope.event import notify
+from zope.intid.interfaces import IIntIds
 from zope.lifecycleevent import ObjectModifiedEvent
-
-
-from transaction import commit
 
 import unittest
 

@@ -1,19 +1,18 @@
 from Acquisition import aq_inner
-from zope.component import getUtility
-from zope.component import adapter
-from zope.interface import implementer
-from zope.intid.interfaces import IIntIds
-from zope.intid.interfaces import IntIdMissingError
-from zc.relation.interfaces import ICatalog
-from plone.restapi.interfaces import ISerializeToJson, ISerializeToJsonSummary
-from plone.restapi.serializer.dxcontent import SerializeFolderToJson
-
 from design.plone.contenttypes.interfaces.servizio import IServizio
 from design.plone.contenttypes.restapi.serializers.servizio import (
     SerializeServizioToJsonSummary as ServizioSummaryOriginal,
 )
-
 from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
+from plone.restapi.interfaces import ISerializeToJson
+from plone.restapi.interfaces import ISerializeToJsonSummary
+from plone.restapi.serializer.dxcontent import SerializeFolderToJson
+from zc.relation.interfaces import ICatalog
+from zope.component import adapter
+from zope.component import getUtility
+from zope.interface import implementer
+from zope.intid.interfaces import IIntIds
+from zope.intid.interfaces import IntIdMissingError
 
 
 class CartellaPrenotazioneBackreferences:
@@ -23,9 +22,9 @@ class CartellaPrenotazioneBackreferences:
 
         referenced_uo = [
             i.to_object
-            for i in CartellaPrenotazioneBackreferences.get_referenced_relations_from_obj(
-                service
-            )
+            for i in (
+                CartellaPrenotazioneBackreferences.get_referenced_relations_from_obj
+            )(service)
             if i.to_object.portal_type == "UnitaOrganizzativa"
         ]
         pernotazioni_folder_refencing_uo = []
@@ -33,9 +32,9 @@ class CartellaPrenotazioneBackreferences:
         for uo in referenced_uo:
             folders = [
                 i
-                for i in CartellaPrenotazioneBackreferences.get_referenced_relations_to_obj(
-                    uo
-                )
+                for i in (
+                    CartellaPrenotazioneBackreferences.get_referenced_relations_to_obj
+                )(uo)
                 if i.from_object.portal_type == "PrenotazioniFolder"
             ]
 
@@ -71,7 +70,7 @@ class CartellaPrenotazioneBackreferences:
                     to_id=intids.getId(aq_inner(obj)),
                 )
             )
-        except:
+        except IntIdMissingError:
             return []
 
         return list(relations)

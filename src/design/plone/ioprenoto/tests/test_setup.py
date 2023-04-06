@@ -35,14 +35,15 @@ class TestSetup(unittest.TestCase):
 
     def test_browserlayer(self):
         """Test that IDesignPloneIoprenotoLayer is registered."""
-        from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
+        from design.plone.ioprenoto.interfaces import (
+            IDesignPloneIoprenotoLayer,
+        )
         from plone.browserlayer import utils
 
         self.assertIn(IDesignPloneIoprenotoLayer, utils.registered_layers())
 
 
 class TestUninstall(unittest.TestCase):
-
     layer = DESIGN_PLONE_IOPRENOTO_INTEGRATION_TESTING
 
     def setUp(self):
@@ -62,7 +63,9 @@ class TestUninstall(unittest.TestCase):
 
     def test_browserlayer_removed(self):
         """Test that IDesignPloneIoprenotoLayer is removed."""
-        from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
+        from design.plone.ioprenoto.interfaces import (
+            IDesignPloneIoprenotoLayer,
+        )
         from plone.browserlayer import utils
 
         self.assertNotIn(IDesignPloneIoprenotoLayer, utils.registered_layers())

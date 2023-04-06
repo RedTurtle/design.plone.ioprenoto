@@ -1,14 +1,12 @@
-from zope.interface import provider
-from plone.autoform.interfaces import IFormFieldProvider
-from plone.autoform import directives
-from plone.supermodel import model
+from design.plone.ioprenoto import _
 from plone.app.vocabularies.catalog import CatalogSource
 from plone.app.z3cform.widget import RelatedItemsFieldWidget
-
+from plone.autoform import directives
+from plone.autoform.interfaces import IFormFieldProvider
+from plone.supermodel import model
 from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
-
-from design.plone.ioprenoto import _
+from zope.interface import provider
 
 
 @provider(IFormFieldProvider)

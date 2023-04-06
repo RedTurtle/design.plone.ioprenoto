@@ -16,7 +16,9 @@ class TestPrenotazioniFolder(unittest.TestCase):
         self.portal = self.layer["portal"]
 
     def test_behaviors_enabled_for_persona(self):
-        """Test that PrenotazioniFolder has all the behaviors assigned by this product"""
+        """Test that PrenotazioniFolder has all the behaviors
+        assigned by this product
+        """
         portal_types = api.portal.get_tool(name="portal_types")
 
         for behavior in (
@@ -24,5 +26,4 @@ class TestPrenotazioniFolder(unittest.TestCase):
             "design.plone.ioprenoto.behaviors.punto_di_contatto",
             "design.plone.ioprenoto.behaviors.orario_di_apertura",
         ):
-
             self.assertIn(behavior, portal_types["PrenotazioniFolder"].behaviors)

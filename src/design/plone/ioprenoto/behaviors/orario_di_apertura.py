@@ -1,10 +1,8 @@
-from zope.interface import provider
+from design.plone.ioprenoto import _
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
-
+from zope.interface import provider
 from zope.schema import Text
-
-from design.plone.ioprenoto import _
 
 
 @provider(IFormFieldProvider)
