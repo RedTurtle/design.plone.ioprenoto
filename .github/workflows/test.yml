@@ -38,17 +38,11 @@ jobs:
           when: always
           reports:
             cobertura: coverage.xml
-      - name: Coveralls
-        uses: AndreMiras/coveralls-python-action@develop
+  jobs:
+    coverage:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: 5monkeys/cobertura-action@master
         with:
-          parallel: true
-          flag-name: ${{ matrix.plone }}-${{ matrix.python }}
-
-  coveralls_finish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Coveralls Finished
-      uses: AndreMiras/coveralls-python-action@develop
-      with:
-        parallel-finished: true
+          path: src/test.xml
+          minimum_coverage: 90
