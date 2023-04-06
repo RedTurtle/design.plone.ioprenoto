@@ -5,7 +5,6 @@ from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.serializer.dxcontent import SerializeFolderToJson
 from plone.restapi.serializer.summary import DefaultJSONSummarySerializer
 from redturtle.prenotazioni.content.prenotazioni_folder import IPrenotazioniFolder
-from zExceptions import Redirect
 from zope.component import adapter
 from zope.interface import implementer
 

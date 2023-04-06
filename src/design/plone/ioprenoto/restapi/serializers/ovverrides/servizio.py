@@ -70,7 +70,7 @@ class CartellaPrenotazioneBackreferences:
                     to_id=intids.getId(aq_inner(obj)),
                 )
             )
-        except:
+        except IntIdMissingError:
             return []
 
         return list(relations)
