@@ -85,9 +85,7 @@ class SerializeServizioToJsonSummary(ServizioSummaryOriginal):
         if result:
             result[
                 "referenced_by_prenotazioni_folder"
-            ] = CartellaPrenotazioneBackreferences.has_backreferences(
-                self.context
-            )
+            ] = CartellaPrenotazioneBackreferences.has_backreferences(self.context)
 
         return result
 
@@ -101,8 +99,6 @@ class SerializeServizioToJson(SerializeFolderToJson):
         if result:
             result[
                 "referenced_by_prenotazioni_folder"
-            ] = CartellaPrenotazioneBackreferences.has_backreferences(
-                self.context
-            )
+            ] = CartellaPrenotazioneBackreferences.has_backreferences(self.context)
 
         return result

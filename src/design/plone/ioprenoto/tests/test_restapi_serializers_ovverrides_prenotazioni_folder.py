@@ -62,8 +62,6 @@ class SummarySerializerTest(unittest.TestCase):
         self.api_session.auth = (SITE_OWNER_NAME, SITE_OWNER_PASSWORD)
 
         self.assertEquals(
-            self.api_session.get(
-                self.prenotazioni_folder.absolute_url()
-            ).json()["@id"],
+            self.api_session.get(self.prenotazioni_folder.absolute_url()).json()["@id"],
             self.prenotazioni_folder.absolute_url(),
         )

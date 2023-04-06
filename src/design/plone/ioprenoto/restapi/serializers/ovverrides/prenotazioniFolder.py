@@ -23,9 +23,7 @@ class SerializePrenotazioniFolderToJsonSummary(DefaultJSONSummarySerializer):
             PRENOTAZIONI_MANAGE_PERMISSION, user=api.user.get_current()
         ):
             self.request.response.redirect(
-                self.context.portal_url()
-                + "/"
-                + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
+                self.context.portal_url() + "/" + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
             )
 
             return
@@ -41,9 +39,7 @@ class SerializePrenotazioniFolderToJson(SerializeFolderToJson):
             PRENOTAZIONI_MANAGE_PERMISSION, user=api.user.get_current()
         ):
             self.request.response.redirect(
-                self.context.portal_url()
-                + "/"
-                + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
+                self.context.portal_url() + "/" + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
             )
 
             return

@@ -31,9 +31,7 @@ class TestSetup(unittest.TestCase):
 
     def test_product_installed(self):
         """Test if design.plone.ioprenoto is installed."""
-        self.assertTrue(
-            self.installer.is_product_installed("design.plone.ioprenoto")
-        )
+        self.assertTrue(self.installer.is_product_installed("design.plone.ioprenoto"))
 
     def test_browserlayer(self):
         """Test that IDesignPloneIoprenotoLayer is registered."""
@@ -61,9 +59,7 @@ class TestUninstall(unittest.TestCase):
 
     def test_product_uninstalled(self):
         """Test if design.plone.ioprenoto is cleanly uninstalled."""
-        self.assertFalse(
-            self.installer.is_product_installed("design.plone.ioprenoto")
-        )
+        self.assertFalse(self.installer.is_product_installed("design.plone.ioprenoto"))
 
     def test_browserlayer_removed(self):
         """Test that IDesignPloneIoprenotoLayer is removed."""
