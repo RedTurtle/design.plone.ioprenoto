@@ -30,7 +30,7 @@
 design.plone.ioprenoto
 ======================
 
-This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.ioprenoto`
+This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`
 
 Features
 --------
