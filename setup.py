@@ -41,8 +41,8 @@ setup(
     url="https://github.com/collective/design.plone.ioprenoto",
     project_urls={
         "PyPI": "https://pypi.org/project/design.plone.ioprenoto/",
-        "Source": "https://github.com/collective/design.plone.ioprenoto",
-        "Tracker": "https://github.com/collective/design.plone.ioprenoto/issues",
+        "Source": "https://github.com/RedTurtle/design.plone.ioprenoto",
+        "Tracker": "https://github.com/RedTurtle/design.plone.ioprenoto/issues",
         # 'Documentation': 'https://design.plone.ioprenoto.readthedocs.io/en/latest/',
     },
     license="GPL version 2",
