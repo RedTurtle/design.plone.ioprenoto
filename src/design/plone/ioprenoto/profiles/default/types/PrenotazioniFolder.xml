@@ -10,4 +10,6 @@
     <element value="design.plone.ioprenoto.behaviors.orario_di_apertura" />
   </property>
 
+  <property name="klass">design.plone.ioprenoto.content.PrenotazioniFolder.PrenotazioniFolder</property>
+
 </object>
