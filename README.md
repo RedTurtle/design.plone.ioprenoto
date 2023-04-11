@@ -1,16 +1,15 @@
-[![Latest Version](https://img.shields.io/pypi/v/design.plone.ioprenoto.svg)]
-[![Supported - Python Versions](hhttps://img.shields.io/pypi/pyversions/design.plone.ioprenoto.svg?style=plastic)]
-[![Number of PyPI downloads](https://img.shields.io/pypi/dm/design.plone.ioprenoto.svg)]
-[![License](https://img.shields.io/pypi/l/design.plone.ioprenoto.svg)]
-[![Tests](https://github.com/RedTurtle/design.plone.ioprenoto/actions/workflows/tests.yml/badge.svg)]
-[![Coverage](https://coveralls.io/repos/github/RedTurtle/design.plone.ioprenoto/badge.svg?branch=master)]
+![Latest Version](https://img.shields.io/pypi/v/design.plone.ioprenoto.svg)
+![Supported - Python Versions](hhttps://img.shields.io/pypi/pyversions/design.plone.ioprenoto.svg?style=plastic)
+![Number of PyPI downloads](https://img.shields.io/pypi/dm/design.plone.ioprenoto.svg)
+![License](https://img.shields.io/pypi/l/design.plone.ioprenoto.svg)
+![Tests](https://github.com/RedTurtle/design.plone.ioprenoto/actions/workflows/tests.yml/badge.svg)
+![Coverage](https://coveralls.io/repos/github/RedTurtle/design.plone.ioprenoto/badge.svg?branch=master)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [design.plone.ioprenoto](#designploneioprenoto)
-  - [This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`](#this-product-is-designed-to-integrate-redturtleprenotazioni-package-with-designplonecontenttypes)
 - [Features](#features)
   - [Behaviors attached to PrenotazioniFolder c.t.(redturtle.prenotazioni):](#behaviors-attached-to-prenotazionifolder-ctredturtleprenotazioni)
   - [Serializer of Servizio c.t.(design.plone.contenttypes) has additional filelds:](#serializer-of-servizio-ctdesignplonecontenttypes-has-additional-filelds)
@@ -25,13 +24,9 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-.. This README is meant for consumption by humans and PyPI. PyPI can render rst files so please do not use Sphinx features.
-   If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
-   This text does not appear on PyPI or github. It is a comment.
-
-# design.plone.ioprenoto
-
-## This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`
+design.plone.ioprenoto
+======================
+This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`
 
 # Features
 
