@@ -9,7 +9,11 @@ from zope.schema import Text
 class IOrarioDiApertura(model.Schema):
     """Add tags to content"""
 
-    orario_di_apertura = Text(title=_("Orario di apertura"), required=False)
+    orario_di_apertura = Text(
+        title=_("Orario di apertura"),
+        description=_("Orario di apertura della stanza prenotazioni"),
+        required=False,
+    )
 
 
 class OrarioDiApertura(object):
