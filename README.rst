@@ -1,3 +1,23 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [design.plone.ioprenoto](#designploneioprenoto)
+  - [This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`](#this-product-is-designed-to-integrate-redturtleprenotazioni-package-with-designplonecontenttypes)
+- [Features](#features)
+  - [Behaviors attached to PrenotazioniFolder c.t.(redturtle.prenotazioni):](#behaviors-attached-to-prenotazionifolder-ctredturtleprenotazioni)
+  - [Serializer of Servizio c.t.(design.plone.contenttypes) has additional filelds:](#serializer-of-servizio-ctdesignplonecontenttypes-has-additional-filelds)
+  - [RestAPI GET of PrenotazioniFolder c.t.(redturtle.prenotazioni) returns redirect to '/prenotazione-appuntamento'(which defined in redturtle.prenotazioni)](#restapi-get-of-prenotazionifolder-ctredturtleprenotazioni-returns-redirect-to-prenotazione-appuntamentowhich-defined-in-redturtleprenotazioni)
+- [Documentation](#documentation)
+- [Installation](#installation)
+- [Authors](#authors)
+- [Contributors](#contributors)
+- [Contribute](#contribute)
+- [Support](#support)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 .. This README is meant for consumption by humans and PyPI. PyPI can render rst files so please do not use Sphinx features.
    If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
    This text does not appear on PyPI or github. It is a comment.
@@ -26,27 +46,9 @@
        :target: https://coveralls.io/github/RedTurtle/design.plone.ioprenoto?branch=master
        :alt: Coverage
 
-design.plone.ioprenoto
-======================
-This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`
+# design.plone.ioprenoto
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Features](#features)
-  - [Behaviors attached to PrenotazioniFolder c.t.(redturtle.prenotazioni):](#behaviors-attached-to-prenotazionifolder-ctredturtleprenotazioni)
-  - [Serializer of Servizio c.t.(design.plone.contenttypes) has additional filelds:](#serializer-of-servizio-ctdesignplonecontenttypes-has-additional-filelds)
-  - [RestAPI GET of PrenotazioniFolder c.t.(redturtle.prenotazioni) returns redirect to '/prenotazione-appuntamento'(which defined in redturtle.prenotazioni)](#restapi-get-of-prenotazionifolder-ctredturtleprenotazioni-returns-redirect-to-prenotazione-appuntamentowhich-defined-in-redturtleprenotazioni)
-- [Documentation](#documentation)
-- [Installation](#installation)
-- [Authors](#authors)
-- [Contributors](#contributors)
-- [Contribute](#contribute)
-- [Support](#support)
-- [License](#license)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+## This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`
 
 # Features
 
