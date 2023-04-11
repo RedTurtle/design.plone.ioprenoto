@@ -35,28 +35,25 @@ This product is designed to integrate `redturtle.prenotazioni` package with `des
 Features
 --------
 
-- Can be bullet points
+* Behaviors attached to PrenotazioniFolder c.t.(redturtle.prenotazioni):
+  - Uffici correlati
+  - Punto di contatto correlato
+  - Orario di apertura
 
+* Serializer of Servizio c.t.(design.plone.contenttypes) has additional filelds:
+  - `referenced_by_prenotazioni_folder` which idicates if it has a PrenotazioniFolder c.t.(redturtle.prenotazioni) object
+    between childs.
 
-Examples
---------
-
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
+* RestAPI GET of PrenotazioniFolder c.t.(redturtle.prenotazioni) returns redirect to
+`/prenotazione-appuntamento`(which defined in redturtle.prenotazioni) if the user has not edturtle.prenotazioni.ManagePrenotazioni
+permission which is attached to Manager SiteAdministrator and Editor roles by this add-on.
 
 
 Documentation
 -------------
 
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+Full documentation for end users can be found in the "docs" folder
 
-
-Translations
-------------
-
-This product has been translated into
-
-- Klingon (thanks, K'Plai)
 
 
 Installation
@@ -78,15 +75,14 @@ and then running ``bin/buildout``
 Authors
 -------
 
-Provided by awesome people ;)
-
+RedTurtle
 
 Contributors
 ------------
 
 Put your name here, you deserve it!
 
-- ?
+- foxtrot-dfm1
 
 
 Contribute
@@ -94,14 +90,13 @@ Contribute
 
 - Issue Tracker: https://github.com/collective/design.plone.ioprenoto/issues
 - Source Code: https://github.com/collective/design.plone.ioprenoto
-- Documentation: https://docs.plone.org/foo/bar
 
 
 Support
 -------
 
 If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
+We have a mailing list located at: info@redturtle.it
 
 
 License
