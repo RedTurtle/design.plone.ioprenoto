@@ -77,11 +77,6 @@ Put your name here, you deserve it!
 - Issue Tracker: https://github.com/collective/design.plone.ioprenoto/issues
 - Source Code: https://github.com/collective/design.plone.ioprenoto
 
-# Support
-
-If you are having issues, please let us know.
-We have a mailing list located at: info@redturtle.it
-
 # License
 
 The project is licensed under the GPLv2.
