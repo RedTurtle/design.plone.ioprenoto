@@ -1,3 +1,10 @@
+[![Latest Version](https://img.shields.io/pypi/v/design.plone.ioprenoto.svg)]
+[![Supported - Python Versions](hhttps://img.shields.io/pypi/pyversions/design.plone.ioprenoto.svg?style=plastic)]
+[![Number of PyPI downloads](https://img.shields.io/pypi/dm/design.plone.ioprenoto.svg)]
+[![License](https://img.shields.io/pypi/l/design.plone.ioprenoto.svg)]
+[![Tests](https://github.com/RedTurtle/design.plone.ioprenoto/actions/workflows/tests.yml/badge.svg)]
+[![Coverage](https://coveralls.io/repos/github/RedTurtle/design.plone.ioprenoto/badge.svg?branch=master)]
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
@@ -21,30 +28,6 @@
 .. This README is meant for consumption by humans and PyPI. PyPI can render rst files so please do not use Sphinx features.
    If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
    This text does not appear on PyPI or github. It is a comment.
-
-.. image:: https://img.shields.io/pypi/v/design.plone.ioprenoto.svg
-       :target: https://pypi.org/project/design.plone.ioprenoto/
-       :alt: Latest Version
-
-.. image:: https://img.shields.io/pypi/pyversions/design.plone.ioprenoto.svg?style=plastic
-       :target: https://pypi.org/project/design.plone.ioprenoto/
-       :alt: Supported - Python Versions
-
-.. image:: https://img.shields.io/pypi/dm/design.plone.ioprenoto.svg
-       :target: https://pypi.org/project/design.plone.ioprenoto/
-       :alt: Number of PyPI downloads
-
-.. image:: https://img.shields.io/pypi/l/design.plone.ioprenoto.svg
-       :target: https://pypi.org/project/design.plone.ioprenoto/
-       :alt: License
-
-.. image:: https://github.com/RedTurtle/design.plone.ioprenoto/actions/workflows/tests.yml/badge.svg
-       :target: https://github.com/RedTurtle/design.plone.ioprenoto/actions
-       :alt: Tests
-
-.. image:: https://coveralls.io/repos/github/RedTurtle/design.plone.ioprenoto/badge.svg?branch=master
-       :target: https://coveralls.io/github/RedTurtle/design.plone.ioprenoto?branch=master
-       :alt: Coverage
 
 # design.plone.ioprenoto
 
