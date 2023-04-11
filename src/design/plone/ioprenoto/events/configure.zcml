@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    >
+
+  <subscriber
+    for="redturtle.prenotazioni.content.prenotazioni_folder.IPrenotazioniFolder
+         zope.lifecycleevent.IObjectCreatedEvent"
+    handler=".prenotazioni_folder.omit_from_navigation_on_creatiion"
+    />
+
+</configure>

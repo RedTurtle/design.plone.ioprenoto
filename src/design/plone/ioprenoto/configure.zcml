@@ -17,6 +17,7 @@
   <include package=".browser" />
   <include package=".behaviors" />
   <include package=".restapi" />
+  <include package=".events" />
 
   <include file="permissions.zcml" />
 

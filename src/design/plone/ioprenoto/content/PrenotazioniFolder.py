@@ -4,6 +4,4 @@ from redturtle.prenotazioni.content.prenotazioni_folder import (
 
 
 class PrenotazioniFolder(PrenotazioniFolder_original):
-    @property
-    def exclude_from_nav(self):
-        return True
+    pass
