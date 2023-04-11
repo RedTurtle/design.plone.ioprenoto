@@ -28,10 +28,16 @@
 
 design.plone.ioprenoto
 ======================
+This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`
 
-### This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Features](#features)
+  - [Behaviors attached to PrenotazioniFolder c.t.(redturtle.prenotazioni):](#behaviors-attached-to-prenotazionifolder-ctredturtleprenotazioni)
+  - [Serializer of Servizio c.t.(design.plone.contenttypes) has additional filelds:](#serializer-of-servizio-ctdesignplonecontenttypes-has-additional-filelds)
+  - [RestAPI GET of PrenotazioniFolder c.t.(redturtle.prenotazioni) returns redirect to '/prenotazione-appuntamento'(which defined in redturtle.prenotazioni)](#restapi-get-of-prenotazionifolder-ctredturtleprenotazioni-returns-redirect-to-prenotazione-appuntamentowhich-defined-in-redturtleprenotazioni)
 - [Documentation](#documentation)
 - [Installation](#installation)
 - [Authors](#authors)
@@ -39,6 +45,8 @@ design.plone.ioprenoto
 - [Contribute](#contribute)
 - [Support](#support)
 - [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Features
 
