@@ -39,7 +39,8 @@ This product is designed to integrate `redturtle.prenotazioni` package with `des
 - `referenced_by_prenotazioni_folder` which idicates if it has a PrenotazioniFolder c.t.(redturtle.prenotazioni) object
 between childs.
 
-## RestAPI GET of PrenotazioniFolder c.t.(redturtle.prenotazioni) returns redirect to '/prenotazione-appuntamento'(which defined in redturtle.prenotazioni)
+## RestAPI GET of PrenotazioniFolder c.t.(redturtle.prenotazioni) redirect
+Returns redirect to '/prenotazione-appuntamento'(which defined in redturtle.prenotazioni)
 if the user has not edturtle.prenotazioni.ManagePrenotazioni permission which is attached to Manager SiteAdministrator and Editor roles by this add-on.
 
 
