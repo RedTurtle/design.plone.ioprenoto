@@ -1,5 +1,5 @@
 ![Latest Version](https://img.shields.io/pypi/v/design.plone.ioprenoto.svg)
-![Supported - Python Versions](hhttps://img.shields.io/pypi/pyversions/design.plone.ioprenoto.svg?style=plastic)
+![Supported - Python Versions](https://img.shields.io/pypi/pyversions/design.plone.ioprenoto.svg?style=plastic)
 ![Number of PyPI downloads](https://img.shields.io/pypi/dm/design.plone.ioprenoto.svg)
 ![License](https://img.shields.io/pypi/l/design.plone.ioprenoto.svg)
 ![Tests](https://github.com/RedTurtle/design.plone.ioprenoto/actions/workflows/tests.yml/badge.svg)
