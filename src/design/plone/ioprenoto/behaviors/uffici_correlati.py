@@ -15,7 +15,7 @@ class IUfficiCorrelati(model.Schema):
 
     uffici_correlati = RelationList(
         title=_("Uffici correlati"),
-        description=_("Uffic correlati al contesto corrente"),
+        description=_("Uffici correlati al contesto corrente"),
         value_type=RelationChoice(
             title=_("Ufficio"),
             source=CatalogSource(portal_type="UnitaOrganizzativa"),
