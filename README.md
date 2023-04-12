@@ -69,7 +69,7 @@ and then running ``bin/buildout``
 
 Put your name here, you deserve it!
 
-- foxtrot-dfm1
+- <a href="https://github.com/foxtrot-dfm1">foxtrot-dfm1</a>
 
 # Contribute
 
