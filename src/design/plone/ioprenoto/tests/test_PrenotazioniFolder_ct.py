@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from design.plone.ioprenoto.testing import (
-    DESIGN_PLONE_IOPRENOTO_INTEGRATION_TESTING,
-)
-from plone.app.testing import TEST_USER_ID
-from plone.app.testing import setRoles
-
+from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_INTEGRATION_TESTING
 from plone import api
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
 
 import unittest
 
