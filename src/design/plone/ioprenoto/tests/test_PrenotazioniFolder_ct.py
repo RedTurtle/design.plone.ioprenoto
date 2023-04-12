@@ -34,11 +34,11 @@ class TestPrenotazioniFolder(unittest.TestCase):
         portal_types = api.portal.get_tool(name="portal_types")
 
         for behavior in (
-            "design.plone.ioprenoto.behaviors.uffici_correlati",
-            "design.plone.ioprenoto.behaviors.punto_di_contatto",
-            "design.plone.ioprenoto.behaviors.orario_di_apertura",
+            "design.plone.ioprenoto.behaviors.additional_fields",
         ):
-            self.assertIn(behavior, portal_types["PrenotazioniFolder"].behaviors)
+            self.assertIn(
+                behavior, portal_types["PrenotazioniFolder"].behaviors
+            )
 
     def test_exclude_from_nav(self):
         self.assertTrue(self.prenotazioni_folder.exclude_from_nav)

@@ -10,28 +10,12 @@
       />
 
   <plone:behavior
-      name="design.plone.ioprenoto.behaviors.uffici_correlati"
-      title="Uffici correllati"
-      description=""
-      factory=".uffici_correlati.UfficiCorrelati"
-      provides=".uffici_correlati.IUfficiCorrelati"
-      marker=".uffici_correlati.IUfficiCorrelati"
-      />
-  <plone:behavior
-      name="design.plone.ioprenoto.behaviors.punto_di_contatto"
-      title="Punto di contatto"
-      description=""
-      factory=".punto_di_contatto.PuntoDiContatto"
-      provides=".punto_di_contatto.IPuntoDiContatto"
-      marker=".punto_di_contatto.IPuntoDiContatto"
-      />
-  <plone:behavior
-      name="design.plone.ioprenoto.behaviors.orario_di_apertura"
-      title="Orario di apertura"
-      description=""
-      factory=".orario_di_apertura.OrarioDiApertura"
-      provides=".orario_di_apertura.IOrarioDiApertura"
-      marker=".orario_di_apertura.IOrarioDiApertura"
+      name="design.plone.ioprenoto.behaviors.additional_fields"
+      title="Campi aggiuntivi"
+      description="Campi aggiuntivi al c.t. Cartella Prenotazioni"
+      factory=".additional_fields.AdditionalFields"
+      provides=".additional_fields.IAdditionalFields"
+      marker=".additional_fields.IAdditionalFields"
       />
 
 </configure>
