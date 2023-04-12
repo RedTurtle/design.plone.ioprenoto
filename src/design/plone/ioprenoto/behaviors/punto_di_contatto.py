@@ -15,7 +15,7 @@ class IPuntoDiContatto(model.Schema):
 
     punto_di_contatto = RelationList(
         title=_("Punto di contatto"),
-        descriptios=_("Punto di contatto correlato"),
+        description=_("Punto di contatto correlato"),
         value_type=RelationChoice(
             title=_("Punto di contatto"),
             source=CatalogSource(portal_type="PuntoDiContatto"),
