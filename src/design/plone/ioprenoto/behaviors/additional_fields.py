@@ -22,6 +22,7 @@ class IAdditionalFields(model.Schema):
 
     punto_di_contatto = RelationList(
         title=_("Punto di contatto"),
+        description=_("Punto di contatto correlato"),
         value_type=RelationChoice(
             title=_("Punto di contatto"),
             source=CatalogSource(portal_type="PuntoDiContatto"),
@@ -29,6 +30,7 @@ class IAdditionalFields(model.Schema):
     )
     uffici_correlati = RelationList(
         title=_("Uffici corellati"),
+        description=_("Uffici correlati al contesto corrente"),
         value_type=RelationChoice(
             title=_("Ufficio"),
             source=CatalogSource(portal_type="UnitaOrganizzativa"),
