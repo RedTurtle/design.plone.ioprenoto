@@ -13,13 +13,12 @@
 - [Features](#features)
   - [Behaviors attached to PrenotazioniFolder c.t.(redturtle.prenotazioni):](#behaviors-attached-to-prenotazionifolder-ctredturtleprenotazioni)
   - [Serializer of Servizio c.t.(design.plone.contenttypes) has additional filelds:](#serializer-of-servizio-ctdesignplonecontenttypes-has-additional-filelds)
-  - [RestAPI GET of PrenotazioniFolder c.t.(redturtle.prenotazioni) returns redirect to '/prenotazione-appuntamento'(which defined in redturtle.prenotazioni)](#restapi-get-of-prenotazionifolder-ctredturtleprenotazioni-returns-redirect-to-prenotazione-appuntamentowhich-defined-in-redturtleprenotazioni)
+  - [RestAPI GET of PrenotazioniFolder c.t.(redturtle.prenotazioni) redirect](#restapi-get-of-prenotazionifolder-ctredturtleprenotazioni-redirect)
 - [Documentation](#documentation)
 - [Installation](#installation)
 - [Authors](#authors)
 - [Contributors](#contributors)
 - [Contribute](#contribute)
-- [Support](#support)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -41,7 +40,7 @@ between childs.
 
 ## RestAPI GET of PrenotazioniFolder c.t.(redturtle.prenotazioni) redirect
 Returns redirect to '/prenotazione-appuntamento'(which defined in redturtle.prenotazioni)
-if the user has not edturtle.prenotazioni.ManagePrenotazioni permission which is attached to Manager SiteAdministrator and Editor roles by this add-on.
+if the user has not redturtle.prenotazioni.ManagePrenotazioni permission which is attached to Manager SiteAdministrator and Editor roles by this add-on.
 
 
 # Documentation
