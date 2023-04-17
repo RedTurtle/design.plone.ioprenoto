@@ -70,7 +70,7 @@ The endpoint can be called with a GET request::
 Response::
 
     {
-        "@id": "http://localhost:8080/Plone/folder/@week-slots",
+        "@id": "http://localhost:8080/Plone/folder/@bookable-uo-list",
         "items": [
           {
             "@id": "...",
