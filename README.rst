@@ -45,8 +45,7 @@ Servizio serializer
 
 There is a customization of Servizio serializer that adds an additional field:
 
-- `referenced_by_prenotazioni_folder` which idicates if it has a PrenotazioniFolder c.t.(design.plone.ioprenoto) object
-between childs.
+- `referenced_by_prenotazioni_folder` which idicates if it has a PrenotazioniFolder c.t.(design.plone.ioprenoto) object between childs.
 
 PrenotazioniFolder serializer
 -----------------------------
