@@ -7,7 +7,4 @@
   <property name="behaviors" purge="false">
     <element value="design.plone.ioprenoto.behaviors.additional_fields" />
   </property>
-
-  <property name="klass">design.plone.ioprenoto.content.PrenotazioniFolder.PrenotazioniFolder</property>
-
 </object>

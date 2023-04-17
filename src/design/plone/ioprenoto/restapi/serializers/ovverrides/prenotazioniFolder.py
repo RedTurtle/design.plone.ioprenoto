@@ -33,9 +33,7 @@ class SerializePrenotazioniFolderToJsonSummary(DefaultJSONSummarySerializer):
 @adapter(IPrenotazioniFolder, IDesignPloneIoprenotoLayer)
 class SerializePrenotazioniFolderToJson(SerializeFolderToJson):
     def __call__(self, *args, **kwargs):
-        if not api.user.has_permission(
-            PRENOTAZIONI_MANAGE_PERMISSION, user=api.user.get_current()
-        ):
+        if not api.user.has_permission(PRENOTAZIONI_MANAGE_PERMISSION):
             self.request.response.redirect(
                 self.context.portal_url() + "/" + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
             )

@@ -15,6 +15,7 @@
   <!--<includeDependencies package="." />-->
 
   <include package=".browser" />
+  <include package=".events" />
   <include package=".behaviors" />
   <include package=".restapi" />
 

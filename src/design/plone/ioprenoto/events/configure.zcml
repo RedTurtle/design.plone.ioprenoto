@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="design.plone.ioprenoto"
+    >
+
+  <subscriber
+      for="redturtle.prenotazioni.content.prenotazioni_folder.IPrenotazioniFolder
+           zope.lifecycleevent.IObjectCreatedEvent"
+      handler=".on_create.exclude_from_nav"
+      />
+</configure>

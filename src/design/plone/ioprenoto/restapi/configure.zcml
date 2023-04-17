@@ -10,6 +10,7 @@
       />
 
   <include package=".serializers" />
+  <include package=".services" />
 
 
 </configure>
