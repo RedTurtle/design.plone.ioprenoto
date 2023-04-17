@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 from plone import api
-from plone.restapi.services import Service
-from zc.relation.interfaces import ICatalog
-from zope.component import getUtility
-from zope.intid.interfaces import IIntIds
 from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.services import Service
+from zc.relation.interfaces import ICatalog
 from zope.component import getMultiAdapter
+from zope.component import getUtility
+from zope.intid.interfaces import IIntIds
 
 
 class BookableUOList(Service):
@@ -19,14 +18,18 @@ class BookableUOList(Service):
             "@id": f"{self.context.absolute_url()}/@bookable-uo-list",
             "items": [],
         }
-        uo_list = api.content.find(
-            portal_type="UnitaOrganizzativa", sort_on="sortable_title"
-        )
+        query = dict(portal_type="UnitaOrganizzativa", sort_on="sortable_title")
+        uid = self.request.form.get("uid", "")
+        if uid:
+            query["UID"] = self.get_uo_from_service_uid(uid=uid)
+
+        uo_list = api.content.find(**query)
         intids = getUtility(IIntIds)
         catalog = getUtility(ICatalog)
         for brain in uo_list:
-            uo = brain.getObject()
             folders = []
+            uo = brain.getObject()
+            sede = self.get_sede(uo=uo)
             relations = catalog.findRelations(
                 dict(
                     to_id=intids.getId(uo),
@@ -40,23 +43,34 @@ class BookableUOList(Service):
                         {
                             "@id": prenotazioni_folder.absolute_url(),
                             "title": prenotazioni_folder.Title(),
-                            "address": self.get_address(item=prenotazioni_folder),
                             "description": prenotazioni_folder.description,
+                            "address": sede,
                         }
                     )
             if folders:
-                data = getMultiAdapter((uo, self.request), ISerializeToJsonSummary)()
-                data["prenotazioni_folders"] = folders
-                response["items"].append(data)
+                response["items"].append(
+                    {
+                        "@id": uo.absolute_url(),
+                        "title": uo.Title(),
+                        "prenotazioni_folder": folders,
+                    }
+                )
         return response
 
-    def get_address(self, item):
-        ref = getattr(item, "punto_di_contatto", None)
+    def get_sede(self, uo):
+        ref = getattr(uo, "sede", [])
         if not ref:
-            return None
-        punto_di_contatto = ref[0].to_object
-        if not punto_di_contatto:
-            return None
-        return getMultiAdapter(
-            (punto_di_contatto, self.request), ISerializeToJsonSummary
-        )()
+            return {}
+        venue = ref[0].to_object
+        if not venue:
+            return {}
+        return getMultiAdapter((venue, self.request), ISerializeToJsonSummary)()
+
+    def get_uo_from_service_uid(self, uid):
+        service = api.content.get(UID=uid)
+        if not service:
+            return []
+        if service.portal_type != "Servizio":
+            return []
+        canale_fisico = getattr(service, "canale_fisico", [])
+        return [x.to_object.UID() for x in canale_fisico if x.to_object]

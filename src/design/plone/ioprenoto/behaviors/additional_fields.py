@@ -19,15 +19,6 @@ class IAdditionalFields(model.Schema):
         description=_("Orario di apertura della stanza prenotazioni"),
         required=False,
     )
-
-    punto_di_contatto = RelationList(
-        title=_("Punto di contatto"),
-        description=_("Punto di contatto correlato"),
-        value_type=RelationChoice(
-            title=_("Punto di contatto"),
-            source=CatalogSource(portal_type="PuntoDiContatto"),
-        ),
-    )
     uffici_correlati = RelationList(
         title=_("Uffici corellati"),
         description=_("Uffici correlati al contesto corrente"),
@@ -37,15 +28,6 @@ class IAdditionalFields(model.Schema):
         ),
     )
 
-    directives.widget(
-        "punto_di_contatto",
-        RelatedItemsFieldWidget,
-        vocabulary="plone.app.vocabularies.Catalog",
-        pattern_options={
-            "maximumSelectionSize": 1,
-            "selectableTypes": ["PuntoDiContatto"],
-        },
-    )
     directives.widget(
         "uffici_correlati",
         RelatedItemsFieldWidget,
