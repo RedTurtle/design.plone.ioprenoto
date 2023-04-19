@@ -43,7 +43,7 @@ class BookableUOList(Service):
                         {
                             "@id": prenotazioni_folder.absolute_url(),
                             "title": prenotazioni_folder.Title(),
-                            "description": prenotazioni_folder.description,
+                            "orario_di_apertura": prenotazioni_folder.orario_di_apertura,
                             "address": sede,
                         }
                     )

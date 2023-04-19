@@ -60,7 +60,7 @@ class BookableUOListTest(unittest.TestCase):
             container=self.portal,
             type="PrenotazioniFolder",
             title="Prenotazioni Folder",
-            description="foo",
+            orario_di_apertura="foo",
             uffici_correlati=[
                 RelationValue(
                     to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
@@ -150,7 +150,8 @@ class BookableUOListTest(unittest.TestCase):
 
         self.assertEqual(prenotazioni_folder["title"], self.prenotazioni_folder.title)
         self.assertEqual(
-            prenotazioni_folder["description"], self.prenotazioni_folder.description
+            prenotazioni_folder["orario_di_apertura"],
+            self.prenotazioni_folder.orario_di_apertura,
         )
         self.assertEqual(
             prenotazioni_folder["address"],
