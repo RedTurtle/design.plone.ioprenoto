@@ -52,6 +52,7 @@ class BookableUOList(Service):
                     {
                         "@id": uo.absolute_url(),
                         "title": uo.Title(),
+                        "id": uo.getId(),
                         "prenotazioni_folder": folders,
                     }
                 )

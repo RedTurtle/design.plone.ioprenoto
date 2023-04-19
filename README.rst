@@ -73,6 +73,8 @@ Response::
         "items": [
           {
             "@id": "...",
+            "title": "...",
+            "id": "...",
             "prenotazioni_folder": [
               {
                 "@id": "http://localhost:8080/Plone/prenotazioni-folder",
