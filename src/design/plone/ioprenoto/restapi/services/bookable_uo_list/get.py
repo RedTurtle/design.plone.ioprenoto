@@ -42,6 +42,7 @@ class BookableUOList(Service):
                     folders.append(
                         {
                             "@id": prenotazioni_folder.absolute_url(),
+                            "uid": prenotazioni_folder.UID(),
                             "title": prenotazioni_folder.Title(),
                             "orario_di_apertura": prenotazioni_folder.orario_di_apertura,
                             "address": sede,
@@ -53,6 +54,7 @@ class BookableUOList(Service):
                         "@id": uo.absolute_url(),
                         "title": uo.Title(),
                         "id": uo.getId(),
+                        "uid": uo.UID(),
                         "prenotazioni_folder": folders,
                     }
                 )
