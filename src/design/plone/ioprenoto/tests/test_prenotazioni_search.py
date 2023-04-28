@@ -102,9 +102,7 @@ class TestPrenotazioniSearch(unittest.TestCase):
             type="PrenotazioniYear",
             title="Year",
         )
-        week = api.content.create(
-            container=year, type="PrenotazioniWeek", title="Week"
-        )
+        week = api.content.create(container=year, type="PrenotazioniWeek", title="Week")
         self.day_folder = api.content.create(
             container=week, type="PrenotazioniDay", title="Day"
         )
