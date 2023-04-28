@@ -109,7 +109,8 @@ Parameters:
 
 The endpoint can be called with a GET request::
 
-curl -i http://localhost:8080/Plone/@prenotazioni-search?fiscalcode=FISCALCODE&start_date=10-10-2023 -H 'Accept: application/json'
+curl -i http://localhost:8080/Plone/@prenotazioni-search?fiscalcode=FISCALCODE&start_date=10-10-2023 \n
+    -H 'Accept: application/json'
 
 Response::
 

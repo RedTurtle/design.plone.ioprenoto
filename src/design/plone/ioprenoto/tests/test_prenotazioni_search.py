@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from datetime import date
-from datetime import datetime
 from datetime import timedelta
 from DateTime import DateTime
 from dateutil import parser
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
+from design.plone.ioprenoto.testing import (
+    DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING,
+)
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
@@ -101,7 +102,9 @@ class TestPrenotazioniSearch(unittest.TestCase):
             type="PrenotazioniYear",
             title="Year",
         )
-        week = api.content.create(container=year, type="PrenotazioniWeek", title="Week")
+        week = api.content.create(
+            container=year, type="PrenotazioniWeek", title="Week"
+        )
         self.day_folder = api.content.create(
             container=week, type="PrenotazioniDay", title="Day"
         )
