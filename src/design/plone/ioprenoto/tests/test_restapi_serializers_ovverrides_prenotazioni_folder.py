@@ -45,7 +45,7 @@ class SummarySerializerTest(unittest.TestCase):
 
     def test_content_redirect_if_have_not_permission(self):
         """The serializer must redirect if have no
-        redturtle.prenotazioni.ManagePrenotazioni permission
+        design.plone.ioprenoto.ManagePrenotazioni permission
         """
 
         self.assertIn(
@@ -55,7 +55,7 @@ class SummarySerializerTest(unittest.TestCase):
 
     def test_access_content_if_have_permission(self):
         """Test access content only if have permission
-        redturtle.prenotazioni.ManagePrenotazioni
+        design.plone.ioprenoto.ManagePrenotazioni
         """
         self.api_session.auth = (SITE_OWNER_NAME, SITE_OWNER_PASSWORD)
 

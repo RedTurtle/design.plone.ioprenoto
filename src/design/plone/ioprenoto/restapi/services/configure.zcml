@@ -4,5 +4,6 @@
     >
 
   <include package=".bookable_uo_list" />
+  <include package=".prenotazioni" />
 
 </configure>

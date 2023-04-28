@@ -4,7 +4,14 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission acquire="True"
-                name="redturtle.prenotazioni: ManagePrenotazioni"
+                name="design.plone.ioprenoto: ManagePrenotazioni"
+    >
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Editor" />
+    </permission>
+  <permission acquire="True"
+                name="design.plone.ioprenoto: PrenotazioniSearch"
     >
       <role name="Manager" />
       <role name="Site Administrator" />

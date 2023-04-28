@@ -9,7 +9,7 @@ from zope.component import adapter
 from zope.interface import implementer
 
 
-PRENOTAZIONI_MANAGE_PERMISSION = "redturtle.prenotazioni.ManagePrenotazioni"
+PRENOTAZIONI_MANAGE_PERMISSION = "design.plone.ioprenoto.ManagePrenotazioni"
 PRENOTAZIONE_APPUNTAMENTO_ADDRESS = "prenotazione-appuntamento"
 
 

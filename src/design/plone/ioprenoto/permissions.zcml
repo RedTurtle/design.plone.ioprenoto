@@ -8,8 +8,13 @@
     <!-- -*- extra stuff goes here -*- -->
 
     <permission
-        id="redturtle.prenotazioni.ManagePrenotazioni"
-        title="redturtle.prenotazioni: ManagePrenotazioni"
+        id="design.plone.ioprenoto.ManagePrenotazioni"
+        title="design.plone.ioprenoto: ManagePrenotazioni"
+        />
+
+    <permission
+        id="design.plone.ioprenoto.PrenotazioniSearch"
+        title="design.plone.ioprenoto: PrenotazioniSearch"
         />
 
   </configure>
