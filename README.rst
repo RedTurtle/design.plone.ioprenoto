@@ -96,6 +96,32 @@ Response::
 
 If uid parameter is passed, only UnitaOrganizzative related to that Servizio (with *canale_fisico* relation field) will be returned.
 
+@prenotazioni-search
+--------------------
+Endpoint that returns a list of *Prenotazione* content by parameters
+
+Parameters:
+
+- **fiscalcode**: The users fiscal Code
+- **start_date**: The statrt date of research
+- **end_date**: The end date of research
+- **fullobjects**: Indicates the expand data level
+
+The endpoint can be called with a GET request::
+
+curl -i http://localhost:8080/Plone/@prenotazioni-search?fiscalcode=FISCALCODE&start_date=10-10-2023 -H 'Accept: application/json'
+
+Response::
+
+    {
+        "@id": "http://localhost:8080/Plone/folder/@prenotazioni-search",
+        "items": [
+            {Item Serialized to the request expand level},
+            {Item Serialized to the request expand level},
+            ...
+            ],
+          }
+    }
 
 Installation
 ============
