@@ -98,6 +98,7 @@ If uid parameter is passed, only UnitaOrganizzative related to that Servizio (wi
 
 @prenotazioni-search
 --------------------
+
 Endpoint that returns a list of *Prenotazione* content by parameters
 
 Parameters:
@@ -109,8 +110,8 @@ Parameters:
 
 The endpoint can be called with a GET request::
 
-curl -i http://localhost:8080/Plone/@prenotazioni-search?fiscalcode=FISCALCODE&start_date=10-10-2023 \n
-    -H 'Accept: application/json'
+  curl -i http://localhost:8080/Plone/@prenotazioni-search?fiscalcode=FISCALCODE&start_date=10-10-2023 \n
+     -H 'Accept: application/json'
 
 Response::
 
