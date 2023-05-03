@@ -5,5 +5,7 @@ relative_files = True
 include =
     */src/design/*
 omit =
+    */.tox/*
     */test*
     */upgrades/*
+    */extras/*
