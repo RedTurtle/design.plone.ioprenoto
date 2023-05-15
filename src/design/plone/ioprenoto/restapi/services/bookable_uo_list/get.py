@@ -38,7 +38,9 @@ class BookableUOList(Service):
             )
             for rel in relations:
                 prenotazioni_folder = rel.from_object
-                if prenotazioni_folder and api.user.has_permission("View", obj=prenotazioni_folder):
+                if prenotazioni_folder and api.user.has_permission(
+                    "View", obj=prenotazioni_folder
+                ):
                     folders.append(
                         {
                             "@id": prenotazioni_folder.absolute_url(),
