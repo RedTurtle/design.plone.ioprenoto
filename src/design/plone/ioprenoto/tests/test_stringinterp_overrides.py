@@ -2,20 +2,15 @@
 from datetime import date
 from plone import api
 from plone.app.testing import (
-    SITE_OWNER_NAME,
-    SITE_OWNER_PASSWORD,
     TEST_USER_ID,
     setRoles,
 )
-from plone.restapi.testing import RelativeSession
 from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
 from datetime import datetime
-from plone.restapi.serializer.converters import json_compatible
 from redturtle.prenotazioni.adapters.booker import IBooker
 from zope.component import getAdapter
 from plone.stringinterp.interfaces import IStringSubstitution
 
-import calendar
 import unittest
 import transaction
 
