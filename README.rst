@@ -45,7 +45,8 @@ Servizio serializer
 
 There is a customization of Servizio serializer that adds an additional field:
 
-- `referenced_by_prenotazioni_folder` which idicates if it has a PrenotazioniFolder c.t.(design.plone.ioprenoto) object between childs.
+- `referenced_by_prenotazioni_folder` which idicates if it has backreferences to PrenotazioniFolder 
+  (design.plone.ioprenoto) throught correlated UO (with "Uffici correlati" field)
 
 PrenotazioniFolder serializer
 -----------------------------
@@ -56,7 +57,8 @@ if the user has not `design.plone.ioprenoto.ManagePrenotazioni`.
 @bookable-uo-list
 -----------------
 
-Endpoint that returns a list of *UnitaOrganizzativa* contents that have at least one PrenotazioniFolder that relates to it (with "Uffici correlati" field).
+Endpoint that returns a list of *UnitaOrganizzativa* contents that have at least one PrenotazioniFolder that 
+relates to it (with "Uffici correlati" field).
 
 Parameters:
 
