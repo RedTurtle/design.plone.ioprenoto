@@ -4,7 +4,7 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission acquire="True"
-                name="redturtle.prenotazioni: ManagePrenotazioni"
+                name="redturtle.prenotazioni: Manage Prenotazioni"
     >
       <role name="Manager" />
       <role name="Site Administrator" />
