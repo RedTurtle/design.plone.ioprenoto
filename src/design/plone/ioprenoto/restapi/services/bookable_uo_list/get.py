@@ -31,10 +31,10 @@ class BookableUOList(Service):
             uo = brain.getObject()
             sede = self.get_sede(uo=uo)
             relations = catalog.findRelations(
-                dict(
-                    to_id=intids.getId(uo),
-                    from_attribute="uffici_correlati",
-                )
+                {
+                    "to_id": intids.getId(uo),
+                    "from_attribute": "uffici_correlati",
+                }
             )
             for rel in relations:
                 prenotazioni_folder = rel.from_object
@@ -72,10 +72,15 @@ class BookableUOList(Service):
         return getMultiAdapter((venue, self.request), ISerializeToJsonSummary)()
 
     def get_uo_from_service_uid(self, uid):
+        """Dato lo UID di un servizio, restituisce lo UID dell'UO a cui è collegato
+        come canale fisico o unità organizzativa responsabile"""
         service = api.content.get(UID=uid)
         if not service:
             return []
         if service.portal_type != "Servizio":
             return []
         canale_fisico = getattr(service, "canale_fisico", [])
-        return [x.to_object.UID() for x in canale_fisico if x.to_object]
+        if canale_fisico:
+            return [x.to_object.UID() for x in canale_fisico if x.to_object]
+        ufficio_responsabile = getattr(service, "ufficio_responsabile", [])
+        return [x.to_object.UID() for x in ufficio_responsabile if x.to_object]

@@ -16,6 +16,7 @@ class DesignPloneIoprenotoLayer(DesignPlonePolicyLayer):
     def setUpZope(self, app, configurationContext):
         super().setUpZope(app, configurationContext)
 
+        self.loadZCML(package=design.plone.policy)
         self.loadZCML(package=redturtle.prenotazioni)
         self.loadZCML(package=collective.contentrules.mailfromfield)
         self.loadZCML(package=design.plone.ioprenoto)
