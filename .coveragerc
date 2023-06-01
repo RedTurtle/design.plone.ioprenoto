@@ -3,7 +3,7 @@ relative_files = True
 
 [report]
 include =
-    */src/design/*
+    */src/design/plone/ioprenoto/*
 omit =
     */test*
     */upgrades/*
