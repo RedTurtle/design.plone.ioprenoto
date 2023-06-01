@@ -27,7 +27,7 @@
 Design Plone Io-Prenoto
 =======================
 
-This product is designed to integrate `design.plone.ioprenoto` package with `design.plone.contenttypes`
+This product is designed to integrate `redturtle.prenotazioni` package with `design.plone.contenttypes`
 
 PrenotazioniFolder additional fields
 ====================================
