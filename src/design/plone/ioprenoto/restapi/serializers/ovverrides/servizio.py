@@ -34,9 +34,9 @@ def get_referenced_relations_from_obj(obj):
     intids = getUtility(IIntIds)
     try:
         relations = catalog.findRelations(
-            dict(
-                from_id=intids.getId(aq_inner(obj)),
-            )
+            {
+                "from_id": intids.getId(aq_inner(obj)),
+            }
         )
     except IntIdMissingError:
         return []
@@ -48,9 +48,9 @@ def get_referenced_relations_to_obj(obj):
     intids = getUtility(IIntIds)
     try:
         relations = catalog.findRelations(
-            dict(
-                to_id=intids.getId(aq_inner(obj)),
-            )
+            {
+                "to_id": intids.getId(aq_inner(obj)),
+            }
         )
     except IntIdMissingError:
         return []
