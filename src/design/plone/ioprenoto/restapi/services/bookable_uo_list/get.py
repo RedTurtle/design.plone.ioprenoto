@@ -20,6 +20,7 @@ class BookableUOList(Service):
         }
         query = dict(portal_type="UnitaOrganizzativa", sort_on="sortable_title")
         uid = self.request.form.get("uid", "")
+        booking_type = self.request.form.get("booking_type", "")
         if uid:
             query["UID"] = self.get_uo_from_service_uid(uid=uid)
 
@@ -41,6 +42,8 @@ class BookableUOList(Service):
                 if prenotazioni_folder and api.user.has_permission(
                     "View", obj=prenotazioni_folder
                 ):
+                    if booking_type and booking_type not in [typ["name"] for typ in getattr(prenotazioni_folder, "booking_types", [])]:  # noqa: E501
+                        continue
                     folders.append(
                         {
                             "@id": prenotazioni_folder.absolute_url(),
