@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from plone import api
-from plone.restapi.interfaces import ISerializeToJsonSummary
+# from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.services import Service
 from zc.relation.interfaces import ICatalog
-from zope.component import getMultiAdapter
+# from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
+from urllib.parse import urlencode
 
 
 class BookableList(Service):
@@ -43,9 +44,13 @@ class BookableList(Service):
                         for booking_type in getattr(
                             prenotazioni_folder, "booking_types", []
                         ):
+                            query = urlencode({
+                                "uid": prenotazioni_folder.UID(), 
+                                "booking_type": booking_type["name"],
+                            })
                             response["items"].append(
                                 {
-                                    "url": f"{portal_url}/prenotazione-appuntamenti-uffici?uid={prenotazioni_folder.UID()}&booking_type={booking_type['name']}",  # noqa: E501
+                                    "url": f"{portal_url}/prenotazione-appuntamenti-uffici?{query}",  # noqa: E501
                                     "booking_type": booking_type["name"],
                                     "booking_duration": booking_type.get("duration"),
                                     "service_title": brain_service.Title,
