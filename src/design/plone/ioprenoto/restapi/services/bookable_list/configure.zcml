@@ -5,6 +5,14 @@
 
   <plone:service
       method="GET"
+      factory=".get.BookableList"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="zope2.View"
+      name="@bookable-list"
+      />
+
+<plone:service
+      method="GET"
       factory=".get.BookableUOList"
       for="*"
       permission="zope2.View"

@@ -71,7 +71,7 @@ The endpoint can be called with a GET request::
 Response::
 
     {
-        "@id": "http://localhost:8080/Plone/folder/@bookable-uo-list",
+        "@id": "http://localhost:8080/Plone/@bookable-uo-list",
         "items": [
           {
             "@id": "...",
@@ -97,6 +97,29 @@ Response::
     }
 
 If uid parameter is passed, only UnitaOrganizzative related to that Servizio (with *canale_fisico* relation field) will be returned.
+
+@bookable-list
+--------------
+
+Endpoint that returns a list of *Bookable*.
+
+The endpoint can be called with a GET request::
+
+   curl -i http://localhost:8080/Plone/@bookable-list -H 'Accept: application/json'
+
+Response::
+
+    {
+        "@id": "http://localhost:8080/Plone/@bookable-list",
+        "items": [
+          {
+            "@id": "...",
+            "title": "...",
+            "url": "...",
+            "booking_types": [],
+          }
+        ]
+    }
 
 
 Installation
