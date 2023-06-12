@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.2 (unreleased)
+1.0.2 (2023-06-12)
 ------------------
 
 - Fix uo-bookable-list esporta solo le stanze pubbliche
