@@ -11,7 +11,7 @@
       name="@bookable-list"
       />
 
-<plone:service
+  <plone:service
       method="GET"
       factory=".get.BookableUOList"
       for="*"
