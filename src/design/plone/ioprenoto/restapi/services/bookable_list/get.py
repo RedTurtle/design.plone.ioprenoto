@@ -46,7 +46,8 @@ class BookableList(Service):
                         ):
                             query = urlencode(
                                 {
-                                    "uid": prenotazioni_folder.UID(),
+                                    # "uid": prenotazioni_folder.UID(),
+                                    "uid": brain_service.UID,
                                     "booking_type": booking_type["name"],
                                 }
                             )
