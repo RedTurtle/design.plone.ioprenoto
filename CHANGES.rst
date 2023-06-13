@@ -5,7 +5,8 @@ Changelog
 1.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- typo "corellati" vs. "correlati" (+ i18n)
+  [mamico]
 
 
 1.0.2 (2023-06-12)
@@ -13,6 +14,7 @@ Changelog
 
 - Fix uo-bookable-list esporta solo le stanze pubbliche
   [mamico]
+
 - Customize some stringinterp adapters to use io-comune frontend view.
   [cekk]
 
