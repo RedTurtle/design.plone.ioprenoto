@@ -33,7 +33,7 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
     ],
     keywords="Python Plone CMS",
     author="RedTurtle",
