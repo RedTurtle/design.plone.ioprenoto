@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.3 (unreleased)
+1.0.3 (2023-06-13)
 ------------------
 
 - typo "corellati" vs. "correlati" (+ i18n)
