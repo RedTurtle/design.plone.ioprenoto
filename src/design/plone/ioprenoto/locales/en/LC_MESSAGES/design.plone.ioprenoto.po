@@ -1,0 +1,59 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2023-06-13 09:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ../behaviors/configure.zcml:19
+msgid "Campi aggiuntivi"
+msgstr ""
+
+#: ../behaviors/configure.zcml:19
+msgid "Campi aggiuntivi al c.t. Cartella Prenotazioni"
+msgstr ""
+
+#: ../configure.zcml:32
+msgid "Installs the design.plone.ioprenoto add-on."
+msgstr ""
+
+#: ../behaviors/additional_fields.py:18
+msgid "Orario di apertura"
+msgstr ""
+
+#: ../behaviors/additional_fields.py:19
+msgid "Orario di apertura della stanza prenotazioni"
+msgstr ""
+
+#: ../behaviors/additional_fields.py:23
+msgid "Uffici correlati"
+msgstr ""
+
+#: ../behaviors/additional_fields.py:24
+msgid "Uffici correlati al contesto corrente"
+msgstr ""
+
+#: ../behaviors/additional_fields.py:26
+msgid "Ufficio"
+msgstr ""
+
+#: ../configure.zcml:41
+msgid "Uninstalls the design.plone.ioprenoto add-on."
+msgstr ""
+
+#: ../configure.zcml:32
+msgid "design.plone.ioprenoto"
+msgstr ""
+
+#: ../configure.zcml:41
+msgid "design.plone.ioprenoto (uninstall)"
+msgstr ""

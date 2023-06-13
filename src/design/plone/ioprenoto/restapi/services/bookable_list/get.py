@@ -41,8 +41,8 @@ class BookableList(Service):
                     if prenotazioni_folder and api.user.has_permission(
                         "View", obj=prenotazioni_folder
                     ):
-                        for booking_type in getattr(
-                            prenotazioni_folder, "booking_types", []
+                        for booking_type in (
+                            getattr(prenotazioni_folder, "booking_types", []) or []
                         ):
                             query = urlencode(
                                 {

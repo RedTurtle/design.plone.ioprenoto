@@ -8,9 +8,9 @@ import subprocess
 domain = "design.plone.ioprenoto"
 os.chdir(pkg_resources.resource_filename(domain, ""))
 os.chdir("../../../")
-target_path = "src/design.plone/ioprenoto/"
+target_path = "src/design/plone/ioprenoto/"
 locale_path = target_path + "locales/"
-i18ndude = "./bin/i18ndude"
+i18ndude = "i18ndude"
 
 # ignore node_modules files resulting in errors
 excludes = '"*.html *json-schema*.xml"'

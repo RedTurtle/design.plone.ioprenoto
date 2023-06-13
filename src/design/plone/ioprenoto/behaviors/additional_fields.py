@@ -20,7 +20,7 @@ class IAdditionalFields(model.Schema):
         required=False,
     )
     uffici_correlati = RelationList(
-        title=_("Uffici corellati"),
+        title=_("Uffici correlati"),
         description=_("Uffici correlati al contesto corrente"),
         value_type=RelationChoice(
             title=_("Ufficio"),

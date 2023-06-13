@@ -66,6 +66,9 @@ class BookableUOListTest(unittest.TestCase):
                     to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
                 )
             ],
+            booking_types=[
+                {"name": "Type A", "duration": "30"},
+            ],
         )
         self.prenotazioni_folder2 = api.content.create(
             container=self.portal,
@@ -75,6 +78,10 @@ class BookableUOListTest(unittest.TestCase):
                 RelationValue(
                     to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
                 )
+            ],
+            booking_types=[
+                {"name": "Type A", "duration": "10"},
+                {"name": "Type B", "duration": "30"},
             ],
         )
         self.prenotazioni_folder3 = api.content.create(
@@ -175,3 +182,11 @@ class BookableUOListTest(unittest.TestCase):
         ).json()
         self.assertEqual(len(resp["items"]), 1)
         self.assertEqual(resp["items"][0]["title"], self.unita_organizzativa.title)
+
+    def test_endpoint_bookable_list(self):
+        resp = self.api_session.get(f"{self.portal_url}/@bookable-list").json()
+        self.assertEqual(len(resp["items"]), 3)
+        self.assertEqual(
+            sorted([i["url"].split("booking_type=")[1] for i in resp["items"]]),
+            ["Type+A", "Type+A", "Type+B"],
+        )
