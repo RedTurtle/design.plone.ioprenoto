@@ -8,8 +8,8 @@
       factory=".search.BookingsSearch"
       for="*"
       permission="zope2.View"
-      name="@bookings"
       layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
+      name="@bookings"
       />
 
 </configure>
