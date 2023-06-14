@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from redturtle.prenotazioni.restapi.services.bookings.search import BookingsSearch as BookingsSearchBase  # noqa: E501
+from redturtle.prenotazioni.restapi.services.bookings.search import (
+    BookingsSearch as BookingsSearchBase,
+)  # noqa: E501
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
 from plone import api
