@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.4 (unreleased)
+1.0.4 (2023-06-14)
 ------------------
 
 - Overrides @bookings for booking urls
