@@ -4,5 +4,6 @@
     >
 
   <include package=".bookable_list" />
+  <include package=".bookings" />
 
 </configure>

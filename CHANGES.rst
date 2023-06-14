@@ -5,7 +5,8 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Overrides @bookings for booking urls
+  [mamico]
 
 
 1.0.3 (2023-06-13)
