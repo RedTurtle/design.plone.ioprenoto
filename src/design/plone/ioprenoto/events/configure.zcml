@@ -10,4 +10,11 @@
            zope.lifecycleevent.IObjectCreatedEvent"
       handler=".on_create.exclude_from_nav"
       />
+
+    <subscriber
+        for="redturtle.prenotazioni.content.prenotazione.IPrenotazione
+            zope.lifecycleevent.IObjectCreatedEvent"
+        handler=".on_create.create_message"
+        />
+
 </configure>
