@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="design.plone.ioprenoto"
     >
 
@@ -12,6 +13,7 @@
       />
 
     <subscriber
+        zcml:condition="installed design.plone.iocittadino"
         for="redturtle.prenotazioni.content.prenotazione.IPrenotazione
             zope.lifecycleevent.IObjectCreatedEvent"
         handler=".on_create.create_message"

@@ -39,4 +39,5 @@ def create_message(obj, event):
                       Se non hai salvato o stampato il promemoria, puoi visualizzarlo a questo link: {booking_print_url}
                     """
 
-    message_add
+    # message add here
+    message_store.add({})
