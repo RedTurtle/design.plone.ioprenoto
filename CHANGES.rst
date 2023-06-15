@@ -5,7 +5,8 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add message on Prenotazione creation (#42314).
+  [folix-01]
 
 
 1.0.3 (2023-06-13)
