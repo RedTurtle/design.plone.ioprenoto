@@ -15,7 +15,7 @@ try:
     import design.plone.iocittadino
 
     iocittadino_installed = True
-except ImportError as e:
+except ImportError:
     iocittadino_installed = False
 
 

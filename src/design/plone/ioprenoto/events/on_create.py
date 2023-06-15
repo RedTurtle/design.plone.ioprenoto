@@ -16,16 +16,11 @@ def create_message(obj, event):
     Create message on prenotazione creation
     """
     from design.plone.iocittadino.interfaces.store import (
-        IPraticaContentStore,
         IMessageContentStore,
     )
 
-    booking_date = str(
-        obj.booking_date and obj.booking_date.date() or ""
-    )
-    booking_time = str(
-        obj.booking_date and obj.booking_date.time() or ""
-    )
+    booking_date = str(obj.booking_date and obj.booking_date.date() or "")
+    booking_time = str(obj.booking_date and obj.booking_date.time() or "")
     booking_print_url = "{folder}/@@prenotazione_print?uid={uid}".format(
         folder=obj.getPrenotazioniFolder().absolute_url(), uid=obj.UID()
     )
@@ -40,4 +35,6 @@ def create_message(obj, event):
                     """
 
     # message add here
-    message_store.add({})
+    message_store.add(
+        {"object_uid": obj.UID(), "message": message_text, "notify_on_email": False}
+    )
