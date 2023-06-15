@@ -15,7 +15,7 @@
     <subscriber
         zcml:condition="installed design.plone.iocittadino"
         for="redturtle.prenotazioni.content.prenotazione.IPrenotazione
-            zope.lifecycleevent.IObjectCreatedEvent"
+            zope.lifecycleevent.IObjectAddedEvent"
         handler=".on_create.create_message"
         />
 

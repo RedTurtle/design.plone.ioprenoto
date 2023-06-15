@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
+from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from redturtle.prenotazioni.adapters.booker import IBooker
 from zope.component import getMultiAdapter
 from datetime import date
-from datetime import datetime
+from datetime import datetime, timedelta
 
-import calendar
 import transaction
 import unittest
 
@@ -24,7 +23,7 @@ except ImportError:
 
 @unittest.skipIf(not iocittadino_installed, "design.plone.iocittadino is not installed")
 class TestPrenotazioniMessages(unittest.TestCase):
-    layer = DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
+    layer = DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
 
     def setUp(self):
         # use design.plone.iocittadino(private package) store here
@@ -49,6 +48,7 @@ class TestPrenotazioniMessages(unittest.TestCase):
             password="secret!!!",
         )
 
+        self.portal_url = self.portal.absolute_url()
         self.folder_prenotazioni = api.content.create(
             container=self.portal,
             type="PrenotazioniFolder",
@@ -75,7 +75,6 @@ class TestPrenotazioniMessages(unittest.TestCase):
         self.today = datetime.now().replace(hour=8)
 
         api.content.transition(obj=self.folder_prenotazioni, transition="publish")
-
         transaction.commit()
 
     def tearDown(self):
@@ -84,35 +83,12 @@ class TestPrenotazioniMessages(unittest.TestCase):
     def test_message_created(
         self,
     ):
-        now = date.today()
-        current_year = now.year
-        current_month = now.month
-        current_day = now.day
-        monday = 0
-
-        # get next monday
-        found = False
-        while not found:
-            for week in calendar.monthcalendar(current_year, current_month):
-                # week[0] is monday and should be greater than today
-                if week[0] > current_day:
-                    monday = week[0]
-                    found = True
-                    break
-
-            if monday == 0:
-                current_month += 1
-                current_day = 1
-        # create a placeholder for first available monday
-
-        self.assertEqual(self.message_store.length, 0)
-
         self.booker.create(
             {
-                "booking_date": datetime(current_year, current_month, monday, 7, 0),
+                "booking_date": self.today + timedelta(1),  # tomorrow
                 "booking_type": "Type A",
                 "title": "foo",
             }
         )
 
-        self.assertEqual(self.message_store, 1)
+        self.assertEqual(self.message_store.length, 1)
