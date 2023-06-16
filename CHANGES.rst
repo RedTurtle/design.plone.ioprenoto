@@ -5,8 +5,8 @@ Changelog
 1.0.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Add title to message created on prenotazione creation(#42314).
+  [folix-01]
 
 1.0.6 (2023-06-16)
 ------------------
