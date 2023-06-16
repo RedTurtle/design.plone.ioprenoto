@@ -11,6 +11,13 @@ import design.plone.ioprenoto
 import redturtle.prenotazioni
 import collective.contentrules.mailfromfield
 
+try:
+    import design.plone.iocittadino
+
+    iocittadino_installed = True
+except ImportError:
+    iocittadino_installed = False
+
 
 class DesignPloneIoprenotoLayer(DesignPlonePolicyLayer):
     def setUpZope(self, app, configurationContext):
@@ -21,10 +28,17 @@ class DesignPloneIoprenotoLayer(DesignPlonePolicyLayer):
         self.loadZCML(package=collective.contentrules.mailfromfield)
         self.loadZCML(package=design.plone.ioprenoto)
 
+        if iocittadino_installed:
+            self.loadZCML(package=design.plone.iocittadino)
+
     def setUpPloneSite(self, portal):
         super().setUpPloneSite(portal)
 
         applyProfile(portal, "design.plone.ioprenoto:default")
+        applyProfile(portal, "redturtle.prenotazioni:default")
+
+        # if iocittadino_installed:
+        #     applyProfile(portal, "design.plone.iocittadino:default")
 
 
 DESIGN_PLONE_IOPRENOTO_FIXTURE = DesignPloneIoprenotoLayer()
