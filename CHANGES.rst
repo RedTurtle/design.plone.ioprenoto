@@ -6,7 +6,7 @@ Changelog
 ------------------
 
 - Add title to message created on prenotazione creation(#42314).
-
+  [folix-01]
 
 1.0.6 (2023-06-16)
 ------------------
