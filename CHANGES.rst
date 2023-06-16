@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.6 (unreleased)
+1.0.6 (2023-06-16)
 ------------------
 
 - On message creation use `sent` state.
