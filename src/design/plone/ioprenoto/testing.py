@@ -13,6 +13,7 @@ import collective.contentrules.mailfromfield
 
 try:
     import design.plone.iocittadino
+
     iocittadino_installed = True
 except ImportError:
     iocittadino_installed = False
@@ -36,8 +37,8 @@ class DesignPloneIoprenotoLayer(DesignPlonePolicyLayer):
         applyProfile(portal, "design.plone.ioprenoto:default")
         applyProfile(portal, "redturtle.prenotazioni:default")
 
-        if iocittadino_installed:
-            applyProfile(portal, "design.plone.iocittadino:default")
+        # if iocittadino_installed:
+        #     applyProfile(portal, "design.plone.iocittadino:default")
 
 
 DESIGN_PLONE_IOPRENOTO_FIXTURE = DesignPloneIoprenotoLayer()

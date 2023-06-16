@@ -12,11 +12,11 @@
       handler=".on_create.exclude_from_nav"
       />
 
-    <subscriber
-        zcml:condition="installed design.plone.iocittadino"
-        for="redturtle.prenotazioni.content.prenotazione.IPrenotazione
-            zope.lifecycleevent.IObjectAddedEvent"
-        handler=".on_create.create_message"
-        />
+  <subscriber
+      for="redturtle.prenotazioni.content.prenotazione.IPrenotazione
+           zope.lifecycleevent.IObjectAddedEvent"
+      handler=".on_create.create_message"
+      zcml:condition="installed design.plone.iocittadino"
+      />
 
 </configure>
