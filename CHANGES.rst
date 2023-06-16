@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.5 (unreleased)
+1.0.5 (2023-06-16)
 ------------------
 
 - Add message on Prenotazione creation (#42314).
