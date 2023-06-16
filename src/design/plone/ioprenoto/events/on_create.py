@@ -11,7 +11,7 @@ def exclude_from_nav(obj, event):
     obj.exclude_from_nav = True
 
 
-def create_message(obj, event):
+def create_message(obj, *args, **kwargs):
     """
     Create message on prenotazione creation
     """
@@ -36,5 +36,10 @@ def create_message(obj, event):
 
     # message add here
     message_store.add(
-        {"object_uid": obj.UID(), "message": message_text, "notify_on_email": False}
+        {
+            "object_uid": obj.UID(),
+            "message": message_text,
+            "state": "sent",
+            "notify_on_email": False,
+        }
     )
