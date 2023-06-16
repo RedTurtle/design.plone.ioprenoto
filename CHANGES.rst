@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.7 (unreleased)
+1.0.7 (2023-06-16)
 ------------------
 
 - Add title to message created on prenotazione creation(#42314).
