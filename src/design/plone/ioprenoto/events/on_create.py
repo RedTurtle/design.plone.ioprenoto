@@ -11,7 +11,7 @@ def exclude_from_nav(obj, event):
     obj.exclude_from_nav = True
 
 
-def create_message(obj, event):
+def create_message(obj, *args, **kwargs):
     """
     Create message on prenotazione creation
     """

@@ -2,7 +2,21 @@ Changelog
 =========
 
 
-1.0.5 (unreleased)
+1.0.7 (unreleased)
+------------------
+
+- Add message on Prenotazione creation (#42314).
+  [folix-01]
+
+
+1.0.6 (2023-06-16)
+------------------
+
+- On message creation use `sent` state.
+  [folix-01]
+
+
+1.0.5 (2023-06-16)
 ------------------
 
 - Add message on Prenotazione creation (#42314).
