@@ -36,5 +36,11 @@ def create_message(obj, event):
 
     # message add here
     message_store.add(
-        {"object_uid": obj.UID(), "message": message_text, "notify_on_email": False}
+        {
+            "object_uid": obj.UID(),
+            "title": obj.booking_type,
+            "message": message_text,
+            "state": "sent",
+            "notify_on_email": False,
+        }
     )
