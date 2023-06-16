@@ -5,8 +5,7 @@ Changelog
 1.0.7 (unreleased)
 ------------------
 
-- Add message on Prenotazione creation (#42314).
-  [folix-01]
+- Add title to message created on prenotazione creation(#42314).
 
 
 1.0.6 (2023-06-16)
