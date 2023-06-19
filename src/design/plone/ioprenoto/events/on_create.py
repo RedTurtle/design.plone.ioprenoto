@@ -18,11 +18,12 @@ def create_message(obj, *args, **kwargs):
     from design.plone.iocittadino.interfaces.store import (
         IMessageContentStore,
     )
+
     portal_state = api.content.get_view(
-            name="plone_portal_state",
-            context=api.portal.get(),
-            request=getRequest(),
-        )
+        name="plone_portal_state",
+        context=api.portal.get(),
+        request=getRequest(),
+    )
     booking_date = str(obj.booking_date and obj.booking_date.date() or "")
     booking_time = str(obj.booking_date and obj.booking_date.time() or "")
     booking_print_url = "{root}?booking_id={uid}".format(
@@ -33,7 +34,9 @@ def create_message(obj, *args, **kwargs):
         (api.portal.get(), getRequest()), IMessageContentStore
     )
 
-    message_text = f"""La prenotazione per il {booking_date} alle {booking_time} è stata creata. Riceverete una mail di conferma quando la prenotazione verrà confermata definitivamente. Se non hai salvato o stampato il promemoria, puoi visualizzarlo a questo link: <a href={booking_print_url}>questo link</a>"""
+    message_text = f"""La prenotazione per il {booking_date} alle {booking_time} è stata creata.\
+        Riceverete una mail di conferma quando la prenotazione verrà confermata definitivamente.\
+        Se non hai salvato o stampato il promemoria, puoi visualizzarlo a questo link: <a href={booking_print_url}>questo link</a>"""
 
     # message add here
     message_store.add(
