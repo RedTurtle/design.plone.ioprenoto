@@ -26,8 +26,10 @@ def create_message(obj, *args, **kwargs):
     )
     booking_date = str(obj.booking_date and obj.booking_date.date() or "")
     booking_time = str(obj.booking_date and obj.booking_date.time() or "")
-    booking_print_url = "{root}?booking_id={uid}".format(
-        root=portal_state.navigation_root_url(), uid=obj.UID()
+    booking_print_url = (
+        "{root}/prenotazione-appuntamenti-uffici?booking_id={uid}".format(
+            root=portal_state.navigation_root_url(), uid=obj.UID()
+        )
     )
 
     message_store = getMultiAdapter(

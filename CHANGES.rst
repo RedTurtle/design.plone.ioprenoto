@@ -5,7 +5,8 @@ Changelog
 1.0.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix the prentazione link in the message.
+  [folix-01]
 
 
 1.0.8 (2023-06-19)
