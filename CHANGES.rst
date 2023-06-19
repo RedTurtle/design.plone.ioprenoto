@@ -5,7 +5,8 @@ Changelog
 1.0.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Edit prenotazione creation message.
+  [folix-01]
 
 
 1.0.7 (2023-06-16)
