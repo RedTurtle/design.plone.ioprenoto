@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.8 (unreleased)
+1.0.8 (2023-06-19)
 ------------------
 
 - Edit prenotazione creation message.
