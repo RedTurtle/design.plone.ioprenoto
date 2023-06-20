@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.10 (unreleased)
+1.0.10 (2023-06-20)
 -------------------
 
 - Fix the prentazione created message.
