@@ -38,7 +38,7 @@ def create_message(obj, *args, **kwargs):
 
     message_text = f"""La prenotazione per il {booking_date} alle {booking_time} è stata creata.\
         Riceverete una mail di conferma quando la prenotazione verrà confermata definitivamente.\
-        Se non hai salvato o stampato il promemoria, puoi visualizzarlo a questo link: <a href={booking_print_url}>questo link</a>"""
+        Se non hai salvato o stampato il promemoria, puoi visualizzarlo a <a href={booking_print_url}>questo link</a>"""
 
     # message add here
     message_store.add(

@@ -5,7 +5,8 @@ Changelog
 1.0.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix the prentazione created message.
+  [folix-01]
 
 
 1.0.9 (2023-06-19)
