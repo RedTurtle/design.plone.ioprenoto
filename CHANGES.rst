@@ -5,7 +5,8 @@ Changelog
 1.0.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Move message to contentrule in iocittadino
+  [mamico]
 
 
 1.0.10 (2023-06-20)
