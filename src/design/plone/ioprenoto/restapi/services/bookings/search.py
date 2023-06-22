@@ -11,8 +11,9 @@ from plone import api
 class BookingsSearch(BookingsSearchBase):
     def reply(self):
         response = super(BookingsSearch, self).reply()
-        base_url = api.portal.get_registry_record(name="volto.frontend_domain",
-                                                  default="")
+        base_url = api.portal.get_registry_record(
+            name="volto.frontend_domain", default=""
+        )
         base_url = f"{base_url}/prenotazione-appuntamenti-uffici"
         for item in response.get("items") or []:
             item["url"] = f"{base_url}?booking_id={item['booking_id']}"
