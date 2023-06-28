@@ -2,8 +2,6 @@
 from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
 from plone import api
 from plone.app.testing import setRoles
-from plone.app.testing import SITE_OWNER_NAME
-from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_PASSWORD
@@ -22,9 +20,10 @@ class SummarySerializerTest(unittest.TestCase):
         self.request = self.layer["request"]
         self.portal_url = self.portal.absolute_url()
 
-        self.api_session = RelativeSession(self.portal_url)
-        self.api_session.headers.update({"Accept": "application/json"})
-        self.api_session.auth = (TEST_USER_NAME, TEST_USER_PASSWORD)
+        api.user.create(email="user@plone.org", username="user", password="secretxx")
+        api.user.create(
+            email="editor@plone.org", username="editor", password="secretxx"
+        )
 
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
 
@@ -33,33 +32,76 @@ class SummarySerializerTest(unittest.TestCase):
             type="PrenotazioniFolder",
             title="Prenotazioni folder",
         )
+        self.prenotazioni_folder2 = api.content.create(
+            container=self.portal,
+            type="PrenotazioniFolder",
+            title="Prenotazioni folder 2",
+        )
+
+        api.user.grant_roles(
+            username="editor", roles=["Editor"], obj=self.prenotazioni_folder
+        )
 
         api.content.transition(self.prenotazioni_folder, transition="publish")
-
-        setRoles(self.portal, TEST_USER_ID, [])
+        api.content.transition(self.prenotazioni_folder2, transition="publish")
 
         commit()
 
+        self.api_session_admin = RelativeSession(self.portal_url)
+        self.api_session_admin.headers.update({"Accept": "application/json"})
+        self.api_session_admin.auth = (TEST_USER_NAME, TEST_USER_PASSWORD)
+
+        self.api_session_user = RelativeSession(self.portal_url)
+        self.api_session_user.headers.update({"Accept": "application/json"})
+        self.api_session_user.auth = ("user", "secretxx")
+        self.api_session_editor = RelativeSession(self.portal_url)
+        self.api_session_editor.headers.update({"Accept": "application/json"})
+        self.api_session_editor.auth = ("editor", "secretxx")
+        self.api_session_anon = RelativeSession(self.portal_url)
+        self.api_session_anon.headers.update({"Accept": "application/json"})
+
     def tearDown(self):
-        self.api_session.close()
+        self.api_session_admin.close()
+        self.api_session_user.close()
+        self.api_session_editor.close()
+        self.api_session_anon.close()
 
-    def test_content_redirect_if_have_not_permission(self):
-        """The serializer must redirect if have no
-        redturtle.prenotazioni.ManagePrenotazioni permission
-        """
-
+    def test_anon_redirected(self):
         self.assertIn(
             "prenotazione-appuntamento",
-            self.api_session.get(self.prenotazioni_folder.absolute_url()).url,
+            self.api_session_anon.get(self.prenotazioni_folder.absolute_url()).url,
         )
 
-    def test_access_content_if_have_permission(self):
-        """Test access content only if have permission
-        redturtle.prenotazioni.ManagePrenotazioni
-        """
-        self.api_session.auth = (SITE_OWNER_NAME, SITE_OWNER_PASSWORD)
+    def test_user_redirected(self):
+        self.assertIn(
+            "prenotazione-appuntamento",
+            self.api_session_user.get(self.prenotazioni_folder.absolute_url()).url,
+        )
 
+    def test_editor_redirected_where_cant_edit(self):
+        self.assertIn(
+            "prenotazione-appuntamento",
+            self.api_session_editor.get(self.prenotazioni_folder2.absolute_url()).url,
+        )
+
+    def test_editor_can_access_if_have_permission(self):
         self.assertEquals(
-            self.api_session.get(self.prenotazioni_folder.absolute_url()).json()["@id"],
+            self.api_session_editor.get(self.prenotazioni_folder.absolute_url()).json()[
+                "@id"
+            ],
             self.prenotazioni_folder.absolute_url(),
+        )
+
+    def test_admin_can_access_both(self):
+        self.assertEquals(
+            self.api_session_admin.get(self.prenotazioni_folder.absolute_url()).json()[
+                "@id"
+            ],
+            self.prenotazioni_folder.absolute_url(),
+        )
+        self.assertEquals(
+            self.api_session_admin.get(self.prenotazioni_folder2.absolute_url()).json()[
+                "@id"
+            ],
+            self.prenotazioni_folder2.absolute_url(),
         )

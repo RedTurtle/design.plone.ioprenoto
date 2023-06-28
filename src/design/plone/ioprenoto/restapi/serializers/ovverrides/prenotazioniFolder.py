@@ -9,7 +9,7 @@ from zope.component import adapter
 from zope.interface import implementer
 
 
-PRENOTAZIONI_MANAGE_PERMISSION = "redturtle.prenotazioni.ManagePrenotazioni"
+PRENOTAZIONI_MANAGE_PERMISSION = "redturtle.prenotazioni: Manage Prenotazioni"
 PRENOTAZIONE_APPUNTAMENTO_ADDRESS = "prenotazione-appuntamento"
 
 
@@ -18,7 +18,8 @@ PRENOTAZIONE_APPUNTAMENTO_ADDRESS = "prenotazione-appuntamento"
 class SerializePrenotazioniFolderToJsonSummary(DefaultJSONSummarySerializer):
     def __call__(self, *args, **kwargs):
         if not api.user.has_permission(
-            PRENOTAZIONI_MANAGE_PERMISSION, user=api.user.get_current()
+            PRENOTAZIONI_MANAGE_PERMISSION,
+            obj=self.context,
         ):
             self.request.response.redirect(
                 self.context.portal_url() + "/" + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
@@ -33,7 +34,10 @@ class SerializePrenotazioniFolderToJsonSummary(DefaultJSONSummarySerializer):
 @adapter(IPrenotazioniFolder, IDesignPloneIoprenotoLayer)
 class SerializePrenotazioniFolderToJson(SerializeFolderToJson):
     def __call__(self, *args, **kwargs):
-        if not api.user.has_permission(PRENOTAZIONI_MANAGE_PERMISSION):
+        if not api.user.has_permission(
+            PRENOTAZIONI_MANAGE_PERMISSION,
+            obj=self.context,
+        ):
             self.request.response.redirect(
                 self.context.portal_url() + "/" + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
             )

@@ -35,10 +35,10 @@ class DesignPloneIoprenotoLayer(DesignPlonePolicyLayer):
         super().setUpPloneSite(portal)
 
         applyProfile(portal, "design.plone.ioprenoto:default")
-        applyProfile(portal, "redturtle.prenotazioni:default")
 
-        # if iocittadino_installed:
-        #     applyProfile(portal, "design.plone.iocittadino:default")
+
+# if iocittadino_installed:
+#     applyProfile(portal, "design.plone.iocittadino:default")
 
 
 DESIGN_PLONE_IOPRENOTO_FIXTURE = DesignPloneIoprenotoLayer()

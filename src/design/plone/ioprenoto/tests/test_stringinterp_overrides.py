@@ -7,9 +7,12 @@ from plone.app.testing import (
 )
 from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
 from datetime import datetime
+from plone.registry.interfaces import IRegistry
+from plone.stringinterp.interfaces import IStringSubstitution
+from plone.volto.interfaces import IVoltoSettings
 from redturtle.prenotazioni.adapters.booker import IBooker
 from zope.component import getAdapter
-from plone.stringinterp.interfaces import IStringSubstitution
+from zope.component import getUtility
 
 import unittest
 import transaction
@@ -109,19 +112,31 @@ class TestStringinterpOverrides(unittest.TestCase):
     def test_booking_print_url_override(
         self,
     ):
-        self.assertIn(
-            "prenotazione-appuntamenti-uffici",
+        self.assertEqual(
             getAdapter(self.prenotazione, IStringSubstitution, "booking_print_url")(),
+            f"{self.portal_url}/prenotazione-appuntamenti-uffici?booking_id={self.prenotazione.UID()}",
         )
 
     def test_booking_print_url_with_delete_token_override(
         self,
     ):
-        self.assertIn(
-            "prenotazione-appuntamenti-uffici",
+        self.assertEqual(
             getAdapter(
                 self.prenotazione,
                 IStringSubstitution,
                 "booking_print_url_with_delete_token",
             )(),
+            f"{self.portal_url}/prenotazione-appuntamenti-uffici?booking_id={self.prenotazione.UID()}",
+        )
+
+    def test_booking_print_url_override_with_custom_frontend_domain(
+        self,
+    ):
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IVoltoSettings, prefix="volto", check=False)
+        settings.frontend_domain = "http://foo.bar"
+
+        self.assertEqual(
+            getAdapter(self.prenotazione, IStringSubstitution, "booking_print_url")(),
+            f"http://foo.bar/prenotazione-appuntamenti-uffici?booking_id={self.prenotazione.UID()}",
         )
