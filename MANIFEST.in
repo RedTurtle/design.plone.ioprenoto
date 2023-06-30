@@ -5,3 +5,4 @@ exclude tox.ini
 exclude *.txt
 exclude .gitlab-ci.yml
 global-exclude *.pyc
+include LICENSE.GPL
