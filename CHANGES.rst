@@ -8,6 +8,11 @@ Changelog
 - Move message to contentrule in iocittadino
   [mamico]
 
+- Handle custom frontend_domain in notification urls (to fix the /admin problem).
+  [cekk]
+
+- Fix permission management in PrenotazioniFolder serializer.
+  [cekk]
 
 1.0.10 (2023-06-20)
 -------------------
