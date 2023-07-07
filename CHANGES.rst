@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1.1 (unreleased)
+1.1.1 (2023-07-07)
 ------------------
 
 - fix booking_url in @bookings
