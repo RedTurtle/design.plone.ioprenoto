@@ -5,8 +5,8 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- fix booking_url in @bookings
+  [mamico]
 
 1.1.0 (2023-06-30)
 ------------------
