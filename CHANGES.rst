@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.2 (Unreleased)
+------------------
+
+- label 'uffici correalti' https://redturtle.tpondemand.com/entity/44493-rinominare-il-campo-uffici-correlati
+  [mamico]
 
 1.1.1 (2023-07-07)
 ------------------

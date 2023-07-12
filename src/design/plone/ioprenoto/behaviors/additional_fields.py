@@ -20,8 +20,13 @@ class IAdditionalFields(model.Schema):
         required=False,
     )
     uffici_correlati = RelationList(
-        title=_("Uffici correlati"),
-        description=_("Uffici correlati al contesto corrente"),
+        title=_("Ufficio/i di riferimento"),
+        description=_(
+            "Uno o più uffici che utilizzano questa stanza per le prenotazioni online. "
+            "All'interno della scheda servizio è possibile specificare queste unità "
+            "organizzative, nel campo 'Canale fisico', o in assenza di questo, nel "
+            "campo 'Unità organizzativa responsabile'."
+        ),
         value_type=RelationChoice(
             title=_("Ufficio"),
             source=CatalogSource(portal_type="UnitaOrganizzativa"),
