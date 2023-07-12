@@ -61,6 +61,7 @@ class BookableUOListTest(unittest.TestCase):
             type="PrenotazioniFolder",
             title="Prenotazioni Folder",
             orario_di_apertura="foo",
+            descriptionAgenda="description agenda",
             uffici_correlati=[
                 RelationValue(
                     to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
@@ -163,6 +164,9 @@ class BookableUOListTest(unittest.TestCase):
         self.assertEqual(
             prenotazioni_folder["address"],
             getMultiAdapter((self.venue, self.request), ISerializeToJsonSummary)(),
+        )
+        self.assertEqual(
+            "description agenda", prenotazioni_folder["description_agenda"]
         )
 
     def test_endpoint_return_filtered_uo_based_on_service_uid(self):

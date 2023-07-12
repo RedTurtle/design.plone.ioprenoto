@@ -14,7 +14,7 @@
   <plone:service
       method="GET"
       factory=".get.BookableUOList"
-      for="*"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       permission="zope2.View"
       name="@bookable-uo-list"
       />
