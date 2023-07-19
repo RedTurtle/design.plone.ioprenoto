@@ -7,6 +7,7 @@ from plone.restapi.services import Service
 from zc.relation.interfaces import ICatalog
 from zope.component import getMultiAdapter, getUtility
 from zope.intid.interfaces import IIntIds
+from plone.restapi.serializer.converters import json_compatible
 
 
 class BookableList(Service):
@@ -60,7 +61,10 @@ class BookableList(Service):
                                     "booking_opening_hours": prenotazioni_folder.orario_di_apertura,  # noqa: E501
                                     "address": sede,
                                     "uo_title": brain_uo.Title,
-                                    "description_agenda": prenotazioni_folder.descriptionAgenda,  # noqa: E501
+                                    "description_agenda": json_compatible(
+                                        prenotazioni_folder.descriptionAgenda,
+                                        prenotazioni_folder,
+                                    ),  # noqa: E501
                                 }
                             )
         return response
@@ -135,7 +139,10 @@ class BookableUOList(BookableList):
                             "title": prenotazioni_folder.Title(),
                             "orario_di_apertura": prenotazioni_folder.orario_di_apertura,
                             "address": sede,
-                            "description_agenda": prenotazioni_folder.descriptionAgenda,  # noqa: E501
+                            "description_agenda": json_compatible(
+                                prenotazioni_folder.descriptionAgenda,
+                                prenotazioni_folder,
+                            ),  # noqa: E501
                         }
                     )
             if folders:
