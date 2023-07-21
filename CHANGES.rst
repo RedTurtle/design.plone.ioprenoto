@@ -4,6 +4,9 @@ Changelog
 1.1.2 (Unreleased)
 ------------------
 
+- Fix redireect url for anonymous
+  [mamico]
+
 - Changed label 'uffici correalti'
   [mamico]
 
