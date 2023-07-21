@@ -51,7 +51,7 @@ There is a customization of Servizio serializer that adds an additional field:
 PrenotazioniFolder serializer
 -----------------------------
 
-There is a customization of PrenotazioniFolder serializer that redirects to '/prenotazione-appuntamento'
+There is a customization of PrenotazioniFolder serializer that redirects to '/prenotazione-appuntamenti-uffici'
 if the user has not `design.plone.ioprenoto.ManagePrenotazioni`.
 
 @bookable-uo-list

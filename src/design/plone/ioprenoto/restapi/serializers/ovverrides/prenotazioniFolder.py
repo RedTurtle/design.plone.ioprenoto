@@ -10,7 +10,8 @@ from zope.interface import implementer
 
 
 PRENOTAZIONI_MANAGE_PERMISSION = "redturtle.prenotazioni: Manage Prenotazioni"
-PRENOTAZIONE_APPUNTAMENTO_ADDRESS = "prenotazione-appuntamento"
+# TODO: move to registry
+PRENOTAZIONE_APPUNTAMENTO_ADDRESS = "prenotazione-appuntamenti-uffici"
 
 
 @implementer(ISerializeToJsonSummary)
