@@ -68,19 +68,19 @@ class SummarySerializerTest(unittest.TestCase):
 
     def test_anon_redirected(self):
         self.assertIn(
-            "prenotazione-appuntamento",
+            "prenotazione-appuntamenti-uffici",
             self.api_session_anon.get(self.prenotazioni_folder.absolute_url()).url,
         )
 
     def test_user_redirected(self):
         self.assertIn(
-            "prenotazione-appuntamento",
+            "prenotazione-appuntamenti-uffici",
             self.api_session_user.get(self.prenotazioni_folder.absolute_url()).url,
         )
 
     def test_editor_redirected_where_cant_edit(self):
         self.assertIn(
-            "prenotazione-appuntamento",
+            "prenotazione-appuntamenti-uffici",
             self.api_session_editor.get(self.prenotazioni_folder2.absolute_url()).url,
         )
 
