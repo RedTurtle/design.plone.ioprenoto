@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.2 (Unreleased)
+1.1.2 (2023-07-25)
 ------------------
 
 - Fix redireect url for anonymous
