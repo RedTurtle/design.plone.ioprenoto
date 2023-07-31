@@ -5,10 +5,13 @@ from plone.app.testing import (
     TEST_USER_ID,
     setRoles,
 )
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
+from design.plone.ioprenoto.testing import (
+    DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING,
+)
 from datetime import datetime
 from plone.registry.interfaces import IRegistry
 from plone.stringinterp.interfaces import IStringSubstitution
+from plone.stringinterp.interfaces import IContextWrapper
 from plone.volto.interfaces import IVoltoSettings
 from redturtle.prenotazioni.adapters.booker import IBooker
 from zope.component import getAdapter
@@ -91,7 +94,9 @@ class TestStringinterpOverrides(unittest.TestCase):
         )
 
         year = api.content.create(
-            container=self.folder_prenotazioni, type="PrenotazioniYear", title="Year"
+            container=self.folder_prenotazioni,
+            type="PrenotazioniYear",
+            title="Year",
         )
         week = api.content.create(container=year, type="PrenotazioniWeek", title="Week")
         self.day_folder = api.content.create(
@@ -113,7 +118,11 @@ class TestStringinterpOverrides(unittest.TestCase):
         self,
     ):
         self.assertEqual(
-            getAdapter(self.prenotazione, IStringSubstitution, "booking_print_url")(),
+            getAdapter(
+                IContextWrapper(self.prenotazione),
+                IStringSubstitution,
+                "booking_print_url",
+            )(),
             f"{self.portal_url}/prenotazione-appuntamenti-uffici?booking_id={self.prenotazione.UID()}",
         )
 
@@ -122,7 +131,7 @@ class TestStringinterpOverrides(unittest.TestCase):
     ):
         self.assertEqual(
             getAdapter(
-                self.prenotazione,
+                IContextWrapper(self.prenotazione),
                 IStringSubstitution,
                 "booking_print_url_with_delete_token",
             )(),
@@ -137,6 +146,10 @@ class TestStringinterpOverrides(unittest.TestCase):
         settings.frontend_domain = "http://foo.bar"
 
         self.assertEqual(
-            getAdapter(self.prenotazione, IStringSubstitution, "booking_print_url")(),
+            getAdapter(
+                IContextWrapper(self.prenotazione),
+                IStringSubstitution,
+                "booking_print_url",
+            )(),
             f"http://foo.bar/prenotazione-appuntamenti-uffici?booking_id={self.prenotazione.UID()}",
         )
