@@ -3,15 +3,14 @@
   <adapter
       factory=".stringinterp.BookingUrlSubstitution"
       provides="plone.stringinterp.interfaces.IStringSubstitution"
-      for="plone.dexterity.interfaces.IDexterityContent"
+      for="plone.stringinterp.interfaces.IContextWrapper"
       name="booking_print_url"
       />
   <adapter
       factory=".stringinterp.BookingPrintUrlWithDeleteTokenSubstitution"
       provides="plone.stringinterp.interfaces.IStringSubstitution"
-      for="plone.dexterity.interfaces.IDexterityContent"
+      for="plone.stringinterp.interfaces.IContextWrapper"
       name="booking_print_url_with_delete_token"
       />
-
 
 </configure>

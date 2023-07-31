@@ -4,7 +4,8 @@ Changelog
 1.1.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix bad stringinterp adapter definition.
+  [folix-01]
 
 
 1.1.2 (2023-07-25)
