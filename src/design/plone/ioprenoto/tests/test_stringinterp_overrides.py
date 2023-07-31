@@ -98,9 +98,7 @@ class TestStringinterpOverrides(unittest.TestCase):
             type="PrenotazioniYear",
             title="Year",
         )
-        week = api.content.create(
-            container=year, type="PrenotazioniWeek", title="Week"
-        )
+        week = api.content.create(container=year, type="PrenotazioniWeek", title="Week")
         self.day_folder = api.content.create(
             container=week, type="PrenotazioniDay", title="Day"
         )
@@ -120,9 +118,7 @@ class TestStringinterpOverrides(unittest.TestCase):
         self,
     ):
         self.assertEqual(
-            getAdapter(
-                self.prenotazione, IStringSubstitution, "booking_print_url"
-            )(),
+            getAdapter(self.prenotazione, IStringSubstitution, "booking_print_url")(),
             f"{self.portal_url}/prenotazione-appuntamenti-uffici?booking_id={self.prenotazione.UID()}",
         )
 
@@ -142,9 +138,7 @@ class TestStringinterpOverrides(unittest.TestCase):
         self,
     ):
         registry = getUtility(IRegistry)
-        settings = registry.forInterface(
-            IVoltoSettings, prefix="volto", check=False
-        )
+        settings = registry.forInterface(IVoltoSettings, prefix="volto", check=False)
         settings.frontend_domain = "http://foo.bar"
 
         self.assertEqual(
