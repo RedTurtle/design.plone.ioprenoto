@@ -118,7 +118,11 @@ class TestStringinterpOverrides(unittest.TestCase):
         self,
     ):
         self.assertEqual(
-            getAdapter(self.prenotazione, IStringSubstitution, "booking_print_url")(),
+            getAdapter(
+                IContextWrapper(self.prenotazione),
+                IStringSubstitution,
+                "booking_print_url",
+            )(),
             f"{self.portal_url}/prenotazione-appuntamenti-uffici?booking_id={self.prenotazione.UID()}",
         )
 
