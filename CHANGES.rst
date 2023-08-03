@@ -7,6 +7,8 @@ Changelog
 - Fix bad stringinterp adapter definition.
   [folix-01]
 
+- Url operator
+  [mamico]
 
 1.1.2 (2023-07-25)
 ------------------
