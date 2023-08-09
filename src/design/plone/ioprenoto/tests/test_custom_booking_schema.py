@@ -35,63 +35,16 @@ class TestBookingSchema(unittest.TestCase):
             title="Prenota foo",
             description="",
             daData=date.today(),
-            week_table=[
-                {
-                    "day": "Lunedì",
-                    "morning_start": "0700",
-                    "morning_end": "1000",
-                    "afternoon_start": None,
-                    "afternoon_end": None,
-                },
-                {
-                    "day": "Martedì",
-                    "morning_start": None,
-                    "morning_end": None,
-                    "afternoon_start": None,
-                    "afternoon_end": None,
-                },
-                {
-                    "day": "Mercoledì",
-                    "morning_start": None,
-                    "morning_end": None,
-                    "afternoon_start": None,
-                    "afternoon_end": None,
-                },
-                {
-                    "day": "Giovedì",
-                    "morning_start": None,
-                    "morning_end": None,
-                    "afternoon_start": None,
-                    "afternoon_end": None,
-                },
-                {
-                    "day": "Venerdì",
-                    "morning_start": None,
-                    "morning_end": None,
-                    "afternoon_start": None,
-                    "afternoon_end": None,
-                },
-                {
-                    "day": "Sabato",
-                    "morning_start": None,
-                    "morning_end": None,
-                    "afternoon_start": None,
-                    "afternoon_end": None,
-                },
-                {
-                    "day": "Domenica",
-                    "morning_start": None,
-                    "morning_end": None,
-                    "afternoon_start": None,
-                    "afternoon_end": None,
-                },
-            ],
             booking_types=[
                 {"name": "Type A", "duration": "30"},
             ],
             gates=["Gate A"],
             required_booking_fields=["email", "fiscalcode"],
         )
+        week_table = self.folder_prenotazioni.week_table
+        week_table[0]["morning_start"] = "0700"
+        week_table[0]["morning_end"] = "1000"
+        self.folder_prenotazioni.week_table = week_table
 
         year = api.content.create(
             container=self.folder_prenotazioni, type="PrenotazioniYear", title="Year"
