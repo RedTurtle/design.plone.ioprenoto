@@ -3,13 +3,13 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     >
 
-    <plone:service
+  <plone:service
       method="GET"
       factory=".get.BookingSchema"
       for="redturtle.prenotazioni.content.prenotazioni_folder.IPrenotazioniFolder"
       permission="zope2.View"
-      name="@booking-schema"
       layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
+      name="@booking-schema"
       />
-    
+
 </configure>
