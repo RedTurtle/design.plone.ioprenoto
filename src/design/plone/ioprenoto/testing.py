@@ -56,13 +56,13 @@ DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING = FunctionalTesting(
 )
 
 
-class DesignPloneIopranotoRestApiLayer(
+class DesignPloneIoprenotoRestApiLayer(
     DesignPloneIoprenotoLayer, DesignPlonePolicyRestApiLayer
 ):
     pass
 
 
-DESIGN_PLONE_IOPRENOTO_API_FIXTURE = DesignPloneIopranotoRestApiLayer()
+DESIGN_PLONE_IOPRENOTO_API_FIXTURE = DesignPloneIoprenotoRestApiLayer()
 DESIGN_PLONE_IOPRENOTO_API_INTEGRATION_TESTING = IntegrationTesting(
     bases=(DESIGN_PLONE_IOPRENOTO_API_FIXTURE,),
     name="DesignPloneIoprenotoRestApiLayer:Integration",
