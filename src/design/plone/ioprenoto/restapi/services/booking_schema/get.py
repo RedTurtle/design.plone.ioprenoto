@@ -5,7 +5,6 @@ from redturtle.prenotazioni.restapi.services.booking_schema.get import (
 
 
 class BookingSchema(BaseService):
-    static_required_fields = ["title", "description"]
 
     labels_mapping = {
         "email": {

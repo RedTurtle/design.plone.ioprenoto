@@ -34,6 +34,15 @@ def update_catalog(context):
 
 def to_1001(context):
     """ """
+    # Fix behaviors
+    fti = api.portal.get_tool(name="portal_types")["Prenotazione"]
+    behaviors = fti.behaviors
+    to_remove = [
+        "plone.app.dexterity.behaviors.metadata.IBasic",
+    ]
+    new_behaviors = [x for x in behaviors if x not in to_remove]
+    new_behaviors.append("ioprenoto.basic")
+    fti.behaviors = tuple(new_behaviors)
 
     for brain in api.content.find(portal_type="PrenotazioniFolder"):
         folder = brain.getObject()

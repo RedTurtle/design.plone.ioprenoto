@@ -14,3 +14,6 @@ config.REQUIRABLE_AND_VISIBLE_FIELDS = [
 config.DEFAULT_VISIBLE_BOOKING_FIELDS = [
     x for x in config.DEFAULT_VISIBLE_BOOKING_FIELDS if x != "description"
 ]
+config.STATIC_REQUIRED_FIELDS = [x for x in config.STATIC_REQUIRED_FIELDS] + [
+    "description"
+]
