@@ -5,7 +5,6 @@ from redturtle.prenotazioni.restapi.services.booking_schema.get import (
 
 
 class BookingSchema(BaseService):
-
     labels_mapping = {
         "email": {
             "label": "Email",
