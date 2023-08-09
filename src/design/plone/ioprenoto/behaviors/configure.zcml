@@ -18,12 +18,12 @@
       marker=".additional_fields.IAdditionalFields"
       />
 
-    <plone:behavior
-        name="ioprenoto.basic"
-        title="Basic metadata for prenotazione"
-        description="Adds title and description fields."
-        factory="plone.app.dexterity.behaviors.metadata.Basic"
-        provides=".metadata.IBasic"
-        for="redturtle.prenotazioni.content.prenotazione.IPrenotazione"
-        />
+  <plone:behavior
+      name="ioprenoto.basic"
+      title="Basic metadata for prenotazione"
+      description="Adds title and description fields."
+      factory="plone.app.dexterity.behaviors.metadata.Basic"
+      provides=".metadata.IBasic"
+      for="redturtle.prenotazioni.content.prenotazione.IPrenotazione"
+      />
 </configure>
