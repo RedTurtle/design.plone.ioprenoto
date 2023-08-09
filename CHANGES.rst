@@ -6,7 +6,10 @@ Changelog
 
 - Fix bad stringinterp adapter definition.
   [folix-01]
-
+- Remove "description" field to customizable PrenotazioniFolder fields.
+  [cekk]
+- Customize @booking-schema endpoint to set *description* as always required.
+  [cekk]
 - Url operator
   [mamico]
 
