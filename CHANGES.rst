@@ -10,6 +10,8 @@ Changelog
   [cekk]
 - Customize @booking-schema endpoint to set *description* as always required.
   [cekk]
+- Url operator
+  [mamico]
 
 1.1.2 (2023-07-25)
 ------------------
