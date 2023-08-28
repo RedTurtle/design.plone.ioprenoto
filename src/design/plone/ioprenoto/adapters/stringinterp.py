@@ -62,4 +62,4 @@ class BookingOperatorUrlSubstitution(base.BookingOperatorUrlSubstitution):
         booking_folder_path = "/".join(
             booking_folder.getPhysicalPath()[len(portal.getPhysicalPath()) :]  # noqa
         )
-        return f"{portal_url}/{booking_folder_path}?tab=table&SearchableText={self.context.getBookingCode()}"
+        return f"{portal_url}/{booking_folder_path}?tab=search&SearchableText={self.context.getBookingCode()}"
