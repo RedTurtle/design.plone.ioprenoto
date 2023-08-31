@@ -4,7 +4,7 @@ Changelog
 1.1.4 (unreleased)
 ------------------
 
-- Fixed The manager message stringinterp adapter.
+- Fixed the manager message stringinterp adapter.
   [folix-01]
 
 
