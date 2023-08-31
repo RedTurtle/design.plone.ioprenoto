@@ -37,7 +37,7 @@ setup(
     keywords="Python Plone CMS",
     author="RedTurtle",
     author_email="info@redturtle.it",
-    url="https://github.com/collective/design.plone.ioprenoto",
+    url="https://github.com/RedTurtle/design.plone.ioprenoto",
     project_urls={
         "PyPI": "https://pypi.org/project/design.plone.ioprenoto/",
         "Source": "https://github.com/RedTurtle/design.plone.ioprenoto",
