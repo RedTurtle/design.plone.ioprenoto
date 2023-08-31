@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.4 (unreleased)
+1.1.4 (2023-08-31)
 ------------------
 
 - Fixed the manager message stringinterp adapter.
