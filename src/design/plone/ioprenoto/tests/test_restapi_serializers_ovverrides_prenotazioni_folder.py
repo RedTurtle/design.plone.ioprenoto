@@ -67,25 +67,34 @@ class SummarySerializerTest(unittest.TestCase):
         self.api_session_anon.close()
 
     def test_anon_redirected(self):
-        self.assertIn(
-            "prenotazione-appuntamenti-uffici",
-            self.api_session_anon.get(self.prenotazioni_folder.absolute_url()).url,
-        )
+        # self.assertIn(
+        #     "prenotazione-appuntamenti-uffici",
+        #     self.api_session_anon.get(self.prenotazioni_folder.absolute_url()).url,
+        # )
+        res = self.api_session_anon.get(self.prenotazioni_folder.absolute_url())
+        self.assertEqual(res.json()["error"], "Unauthorized")
+        self.assertEqual(res.json()["anonymous"], True)
 
     def test_user_redirected(self):
-        self.assertIn(
-            "prenotazione-appuntamenti-uffici",
-            self.api_session_user.get(self.prenotazioni_folder.absolute_url()).url,
-        )
+        # self.assertIn(
+        #     "prenotazione-appuntamenti-uffici",
+        #     self.api_session_user.get(self.prenotazioni_folder.absolute_url()).url,
+        # )
+        res = self.api_session_user.get(self.prenotazioni_folder.absolute_url())
+        self.assertEqual(res.json()["error"], "Unauthorized")
+        self.assertEqual(res.json()["anonymous"], False)
 
     def test_editor_redirected_where_cant_edit(self):
-        self.assertIn(
-            "prenotazione-appuntamenti-uffici",
-            self.api_session_editor.get(self.prenotazioni_folder2.absolute_url()).url,
-        )
+        # self.assertIn(
+        #     "prenotazione-appuntamenti-uffici",
+        #     self.api_session_editor.get(self.prenotazioni_folder2.absolute_url()).url,
+        # )
+        res = self.api_session_editor.get(self.prenotazioni_folder2.absolute_url())
+        self.assertEqual(res.json()["error"], "Unauthorized")
+        self.assertEqual(res.json()["anonymous"], False)
 
     def test_editor_can_access_if_have_permission(self):
-        self.assertEquals(
+        self.assertEqual(
             self.api_session_editor.get(self.prenotazioni_folder.absolute_url()).json()[
                 "@id"
             ],
