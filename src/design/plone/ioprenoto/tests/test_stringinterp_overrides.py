@@ -96,7 +96,7 @@ class TestStringinterpOverrides(unittest.TestCase):
             getAdapter(
                 self.prenotazione, IStringSubstitution, "booking_operator_url"
             )(),
-            f"{self.portal_url}/prenota-foo?tab=search&SearchableText={self.prenotazione.getBookingCode()}",
+            f"{self.portal_url}/prenota-foo?tab=search&SearchableText={self.prenotazione.getBookingCode()}&login=1",
         )
 
     def test_booking_print_url_override_with_custom_frontend_domain(
