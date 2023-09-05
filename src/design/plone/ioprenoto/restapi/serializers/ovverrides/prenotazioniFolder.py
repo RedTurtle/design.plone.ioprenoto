@@ -7,7 +7,6 @@ from plone.restapi.serializer.summary import DefaultJSONSummarySerializer
 from redturtle.prenotazioni.content.prenotazioni_folder import IPrenotazioniFolder
 from zope.component import adapter
 from zope.interface import implementer
-from AccessControl import Unauthorized
 
 
 PRENOTAZIONI_MANAGE_PERMISSION = "redturtle.prenotazioni: Manage Prenotazioni"
