@@ -18,31 +18,41 @@ PRENOTAZIONE_APPUNTAMENTO_ADDRESS = "prenotazione-appuntamenti-uffici"
 @adapter(IPrenotazioniFolder, IDesignPloneIoprenotoLayer)
 class SerializePrenotazioniFolderToJsonSummary(DefaultJSONSummarySerializer):
     def __call__(self, *args, **kwargs):
+        resp = super().__call__(*args, **kwargs)
         if not api.user.has_permission(
             PRENOTAZIONI_MANAGE_PERMISSION,
             obj=self.context,
         ):
-            self.request.response.redirect(
-                self.context.portal_url() + "/" + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
-            )
-
-            return
-
-        return super().__call__(*args, **kwargs)
+            # XXX: this is a workaround to avoid the Unauthorized exception
+            return {
+                "@components": resp["@components"],
+                "@id": resp["@id"],
+                "@type": resp["@type"],
+                "layout": resp["layout"],
+                "title": resp["title"],
+                "error": "Unauthorized",
+                "anonymous": api.user.is_anonymous(),
+            }
+        return resp
 
 
 @implementer(ISerializeToJson)
 @adapter(IPrenotazioniFolder, IDesignPloneIoprenotoLayer)
 class SerializePrenotazioniFolderToJson(SerializeFolderToJson):
     def __call__(self, *args, **kwargs):
+        resp = super().__call__(*args, **kwargs)
         if not api.user.has_permission(
             PRENOTAZIONI_MANAGE_PERMISSION,
             obj=self.context,
         ):
-            self.request.response.redirect(
-                self.context.portal_url() + "/" + PRENOTAZIONE_APPUNTAMENTO_ADDRESS
-            )
-
-            return
-
-        return super().__call__(*args, **kwargs)
+            # XXX: this is a workaround to avoid the Unauthorized exception
+            return {
+                "@components": resp["@components"],
+                "@id": resp["@id"],
+                "@type": resp["@type"],
+                "layout": resp["layout"],
+                "title": resp["title"],
+                "error": "Unauthorized",
+                "anonymous": api.user.is_anonymous(),
+            }
+        return resp
