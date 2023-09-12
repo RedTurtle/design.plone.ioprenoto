@@ -4,8 +4,7 @@ Changelog
 1.1.6 (unreleased)
 ------------------
 
-- Move redirect for anonymous in the frontend
-  [mamico]
+- No changes
 
 
 1.1.5 (2023-09-05)
