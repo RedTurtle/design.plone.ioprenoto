@@ -4,8 +4,8 @@ Changelog
 1.1.6 (unreleased)
 ------------------
 
-- No changes
-
+- Fix @bookings overrides
+  [mamico]
 
 1.1.5 (2023-09-05)
 ------------------
