@@ -6,10 +6,19 @@
   <plone:service
       method="GET"
       factory=".search.BookingsSearch"
-      for="*"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       permission="zope2.View"
-      layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
       name="@bookings"
+      layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
+      />
+
+  <plone:service
+      method="GET"
+      factory=".search.BookingsSearchFolder"
+      for="redturtle.prenotazioni.content.prenotazioni_folder.IPrenotazioniFolder"
+      permission="zope2.View"
+      name="@bookings"
+      layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
       />
 
 </configure>
