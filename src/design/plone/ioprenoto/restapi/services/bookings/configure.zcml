@@ -8,8 +8,8 @@
       factory=".search.BookingsSearch"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       permission="zope2.View"
-      name="@bookings"
       layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
+      name="@bookings"
       />
 
   <plone:service
@@ -17,8 +17,8 @@
       factory=".search.BookingsSearchFolder"
       for="redturtle.prenotazioni.content.prenotazioni_folder.IPrenotazioniFolder"
       permission="zope2.View"
-      name="@bookings"
       layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
+      name="@bookings"
       />
 
 </configure>
