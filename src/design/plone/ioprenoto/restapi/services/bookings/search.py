@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from plone import api
+from design.plone.ioprenoto import PRENOTAZIONI_MANAGE_PERMISSION
 from redturtle.prenotazioni.restapi.services.bookings.search import (
     BookingsSearch as BookingsSearchBase,
     BookingsSearchFolder as BookingsSearchFolderBase,
@@ -13,12 +14,16 @@ from zope.publisher.interfaces import IPublishTraverse
 class BookingsSearch(BookingsSearchBase):
     def reply(self):
         response = super().reply()
-        base_url = api.portal.get_registry_record(
-            name="volto.frontend_domain", default=""
-        )
-        base_url = f"{base_url}/prenotazione-appuntamenti-uffici"
-        for item in response.get("items") or []:
-            item["booking_url"] = f"{base_url}?booking_id={item['booking_id']}"
+        if not api.user.has_permission(
+            PRENOTAZIONI_MANAGE_PERMISSION,
+            obj=self.context,
+        ):
+            base_url = api.portal.get_registry_record(
+                name="volto.frontend_domain", default=""
+            )
+            base_url = f"{base_url}/prenotazione-appuntamenti-uffici"
+            for item in response.get("items") or []:
+                item["booking_url"] = f"{base_url}?booking_id={item['booking_id']}"
         return response
 
 
@@ -27,10 +32,14 @@ class BookingsSearch(BookingsSearchBase):
 class BookingsSearchFolder(BookingsSearchFolderBase):
     def reply(self):
         response = super().reply()
-        base_url = api.portal.get_registry_record(
-            name="volto.frontend_domain", default=""
-        )
-        base_url = f"{base_url}/prenotazione-appuntamenti-uffici"
-        for item in response.get("items") or []:
-            item["booking_url"] = f"{base_url}?booking_id={item['booking_id']}"
+        if not api.user.has_permission(
+            PRENOTAZIONI_MANAGE_PERMISSION,
+            obj=self.context,
+        ):
+            base_url = api.portal.get_registry_record(
+                name="volto.frontend_domain", default=""
+            )
+            base_url = f"{base_url}/prenotazione-appuntamenti-uffici"
+            for item in response.get("items") or []:
+                item["booking_url"] = f"{base_url}?booking_id={item['booking_id']}"
         return response

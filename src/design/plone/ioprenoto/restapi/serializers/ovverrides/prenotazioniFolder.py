@@ -1,4 +1,5 @@
 from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
+from design.plone.ioprenoto import PRENOTAZIONI_MANAGE_PERMISSION
 from plone import api
 from plone.restapi.interfaces import ISerializeToJson
 from plone.restapi.interfaces import ISerializeToJsonSummary
@@ -9,7 +10,6 @@ from zope.component import adapter
 from zope.interface import implementer
 
 
-PRENOTAZIONI_MANAGE_PERMISSION = "redturtle.prenotazioni: Manage Prenotazioni"
 # TODO: move to registry
 PRENOTAZIONE_APPUNTAMENTO_ADDRESS = "prenotazione-appuntamenti-uffici"
 
