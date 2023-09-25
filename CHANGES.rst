@@ -4,7 +4,8 @@ Changelog
 1.1.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Workaround booking_url in @bookings differente per gestori e cittadini
+  [mamico]
 
 
 1.1.6 (2023-09-22)

@@ -5,6 +5,7 @@ from redturtle.prenotazioni import config
 
 _ = MessageFactory("design.plone.ioprenoto")
 
+PRENOTAZIONI_MANAGE_PERMISSION = "redturtle.prenotazioni: Manage Prenotazioni"
 
 # Non permettiamo ai redattori di scegliere se mostrare o meno il campo note,
 # ma lo mettiamo di default nello schema
