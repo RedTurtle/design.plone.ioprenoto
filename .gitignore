@@ -39,4 +39,5 @@ report.html
 .tox/
 reports/
 venv/
+coverage.json
 # excludes
