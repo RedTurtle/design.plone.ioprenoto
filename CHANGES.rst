@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.7 (unreleased)
+1.1.7 (2023-09-25)
 ------------------
 
 - Workaround booking_url in @bookings differente per gestori e cittadini
