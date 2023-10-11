@@ -4,7 +4,8 @@ Changelog
 1.1.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Compatibilize with the 2.0.1 redturtle.prenotazioni version.
+  [folix-01]
 
 
 1.1.7 (2023-09-25)
