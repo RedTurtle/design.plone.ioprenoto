@@ -1,14 +1,13 @@
-from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
-from design.plone.ioprenoto import PRENOTAZIONI_MANAGE_PERMISSION
 from plone import api
-from plone.restapi.interfaces import ISerializeToJson
-from plone.restapi.interfaces import ISerializeToJsonSummary
+from plone.restapi.interfaces import ISerializeToJson, ISerializeToJsonSummary
 from plone.restapi.serializer.dxcontent import SerializeFolderToJson
 from plone.restapi.serializer.summary import DefaultJSONSummarySerializer
 from redturtle.prenotazioni.content.prenotazioni_folder import IPrenotazioniFolder
 from zope.component import adapter
 from zope.interface import implementer
 
+from design.plone.ioprenoto import PRENOTAZIONI_MANAGE_PERMISSION
+from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
 
 # TODO: move to registry
 PRENOTAZIONE_APPUNTAMENTO_ADDRESS = "prenotazione-appuntamenti-uffici"

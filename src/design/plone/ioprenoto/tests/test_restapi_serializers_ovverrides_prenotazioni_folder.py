@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
+import unittest
+
 from plone import api
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
-from plone.app.testing import TEST_USER_NAME
-from plone.app.testing import TEST_USER_PASSWORD
+from plone.app.testing import TEST_USER_ID, TEST_USER_NAME, TEST_USER_PASSWORD, setRoles
 from plone.restapi.testing import RelativeSession
 from transaction import commit
 
-import unittest
+from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
 
 
 class SummarySerializerTest(unittest.TestCase):

@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
-from design.plone.policy.testing import DesignPlonePolicyRestApiLayer
-from design.plone.policy.testing import DesignPlonePolicyLayer
-from plone.app.testing import applyProfile
-from plone.app.testing import FunctionalTesting
-from plone.app.testing import IntegrationTesting
+import collective.contentrules.mailfromfield
+import redturtle.prenotazioni
+from design.plone.policy.testing import (
+    DesignPlonePolicyLayer,
+    DesignPlonePolicyRestApiLayer,
+)
+from plone.app.testing import FunctionalTesting, IntegrationTesting, applyProfile
 from plone.testing import z2
 
-
 import design.plone.ioprenoto
-import redturtle.prenotazioni
-import collective.contentrules.mailfromfield
 
 try:
     import design.plone.iocittadino

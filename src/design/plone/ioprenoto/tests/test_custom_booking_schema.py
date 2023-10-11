@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+import unittest
 from datetime import date
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
+
+import transaction
 from plone import api
 from plone.app.testing import (
     SITE_OWNER_NAME,
@@ -8,11 +10,10 @@ from plone.app.testing import (
     TEST_USER_ID,
     setRoles,
 )
-from plone.restapi.testing import RelativeSession
 from plone.restapi.serializer.converters import json_compatible
+from plone.restapi.testing import RelativeSession
 
-import unittest
-import transaction
+from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_API_FUNCTIONAL_TESTING
 
 
 class TestBookingSchema(unittest.TestCase):

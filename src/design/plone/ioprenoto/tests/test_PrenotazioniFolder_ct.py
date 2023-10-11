@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_INTEGRATION_TESTING
-from plone import api
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
-
 import unittest
+
+from plone import api
+from plone.app.testing import TEST_USER_ID, setRoles
+
+from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_INTEGRATION_TESTING
 
 
 class TestPrenotazioniFolder(unittest.TestCase):
