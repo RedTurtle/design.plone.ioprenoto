@@ -164,7 +164,7 @@ class BookableUOList(BookableList):
     def get_uo_contact_info(self, uo):
         result = []
 
-        for contact in getattr(uo, "contact_info", None) || []:
+        for contact in getattr(uo, "contact_info", None) or []:
             if contact.isBroken():
                 logger.error(
                     "Broken relation found in <{UID}>.contact_info".format(UID=uo.UID())
