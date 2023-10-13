@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - Compatibilize with the 2.0.1 redturtle.prenotazioni version.
+- Add the UO.contact_info field to @bookable-uo-list response.
   [folix-01]
 
 
