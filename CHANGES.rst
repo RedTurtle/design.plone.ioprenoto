@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.8 (unreleased)
+1.1.8 (2023-10-13)
 ------------------
 
 - Update redturtle.prenotazioni version to >= 2.1.1
