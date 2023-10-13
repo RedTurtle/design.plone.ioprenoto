@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.9 (unreleased)
+1.1.9 (2023-10-13)
 ------------------
 
 - Compatibilize with the 2.1.3redturtle.prenotazioni version.
