@@ -7,7 +7,7 @@ from plone.restapi.serializer.summary import DefaultJSONSummarySerializer
 from redturtle.prenotazioni.content.prenotazioni_folder import (
     IPrenotazioniFolder,
 )
-from redturtle.prenotazioni.restapi.serializers.adapters.pernotazioni_folder import (
+from redturtle.prenotazioni.restapi.serializers.adapters.prenotazioni_folder import (
     PrenotazioniFolderSerializer,
 )
 from zope.component import adapter
