@@ -166,7 +166,7 @@ class BookableUOList(BookableList):
 
         for contact in getattr(uo, "contact_info", None) or []:
             if contact.isBroken():
-                logger.error(
+                logger.warning(
                     "Broken relation found in <{UID}>.contact_info".format(UID=uo.UID())
                 )
                 continue
