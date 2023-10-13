@@ -4,6 +4,8 @@ Changelog
 1.1.8 (unreleased)
 ------------------
 
+- Update redturtle.prenotazioni version to >= 2.1.1
+  [folix-01]
 - Add the UO.contact_info field to @bookable-uo-list response.
   [folix-01]
 
