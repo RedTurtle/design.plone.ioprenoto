@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from urllib.parse import urlencode
+from logging import getLogger
 
 from plone import api
 from plone.restapi.interfaces import ISerializeToJsonSummary
@@ -8,6 +9,8 @@ from zc.relation.interfaces import ICatalog
 from zope.component import getMultiAdapter, getUtility
 from zope.intid.interfaces import IIntIds
 from plone.restapi.serializer.converters import json_compatible
+
+logger = getLogger(__name__)
 
 
 class BookableList(Service):
@@ -152,7 +155,26 @@ class BookableUOList(BookableList):
                         "title": uo.Title(),
                         "id": uo.getId(),
                         "uid": uo.UID(),
+                        "contact_info": self.get_uo_contact_info(uo),
                         "prenotazioni_folder": folders,
                     }
                 )
         return response
+
+    def get_uo_contact_info(self, uo):
+        result = []
+
+        for contact in getattr(uo, "contact_info", None) or []:
+            if contact.isBroken():
+                logger.warning(
+                    "Broken relation found in <{UID}>.contact_info".format(UID=uo.UID())
+                )
+                continue
+
+            result.append(
+                getMultiAdapter(
+                    (contact.to_object, self.request), ISerializeToJsonSummary
+                )()
+            )
+
+        return result

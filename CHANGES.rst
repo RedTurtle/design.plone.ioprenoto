@@ -4,7 +4,8 @@ Changelog
 1.1.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add the UO.contact_info field to @bookable-uo-list response.
+  [folix-01]
 
 
 1.1.7 (2023-09-25)
