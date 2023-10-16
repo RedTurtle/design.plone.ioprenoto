@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-from urllib.parse import urlencode
 from logging import getLogger
+from urllib.parse import urlencode
 
 from plone import api
 from plone.restapi.interfaces import ISerializeToJsonSummary
+from plone.restapi.serializer.converters import json_compatible
 from plone.restapi.services import Service
 from zc.relation.interfaces import ICatalog
 from zope.component import getMultiAdapter, getUtility
 from zope.intid.interfaces import IIntIds
-from plone.restapi.serializer.converters import json_compatible
 
 logger = getLogger(__name__)
 

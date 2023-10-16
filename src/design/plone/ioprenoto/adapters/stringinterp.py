@@ -3,8 +3,7 @@ from plone import api
 from plone.registry.interfaces import IRegistry
 from plone.volto.interfaces import IVoltoSettings
 from redturtle.prenotazioni.adapters import stringinterp as base
-from zope.component import adapter
-from zope.component import getUtility
+from zope.component import adapter, getUtility
 from zope.interface import Interface
 
 
