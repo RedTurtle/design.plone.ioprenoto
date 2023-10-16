@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from urllib.parse import urlencode
 from logging import getLogger
+from urllib.parse import urlencode
 
 from plone import api
 from plone.restapi.interfaces import ISerializeToJsonSummary
