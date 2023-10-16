@@ -4,7 +4,8 @@ Changelog
 1.1.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Inherit redturtle.prenotazioni browser layer.
+  [folix-01]
 
 
 1.1.9 (2023-10-13)
