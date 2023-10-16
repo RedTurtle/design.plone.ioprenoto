@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.10 (unreleased)
+1.1.10 (2023-10-16)
 -------------------
 
 - Inherit redturtle.prenotazioni browser layer.
