@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Init and utils."""
-from zope.i18nmessageid import MessageFactory
 from redturtle.prenotazioni import config
+from zope.i18nmessageid import MessageFactory
 
 _ = MessageFactory("design.plone.ioprenoto")
 

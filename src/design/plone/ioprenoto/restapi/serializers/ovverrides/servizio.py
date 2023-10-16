@@ -3,16 +3,14 @@ from design.plone.contenttypes.interfaces.servizio import IServizio
 from design.plone.contenttypes.restapi.serializers.servizio import (
     SerializeServizioToJsonSummary as ServizioSummaryOriginal,
 )
-from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
-from plone.restapi.interfaces import ISerializeToJson
-from plone.restapi.interfaces import ISerializeToJsonSummary
+from plone.restapi.interfaces import ISerializeToJson, ISerializeToJsonSummary
 from plone.restapi.serializer.dxcontent import SerializeFolderToJson
 from zc.relation.interfaces import ICatalog
-from zope.component import adapter
-from zope.component import getUtility
+from zope.component import adapter, getUtility
 from zope.interface import implementer
-from zope.intid.interfaces import IIntIds
-from zope.intid.interfaces import IntIdMissingError
+from zope.intid.interfaces import IIntIds, IntIdMissingError
+
+from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
 
 
 def has_backreferences(service):

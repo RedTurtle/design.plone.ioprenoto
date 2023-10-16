@@ -1,10 +1,33 @@
 Changelog
 =========
 
-1.1.8 (unreleased)
-------------------
+1.1.11 (unreleased)
+-------------------
 
 - Compatibilize with the 2.0.1 redturtle.prenotazioni version.
+- Add the UO.contact_info field to @bookable-uo-list response.
+  [folix-01]
+
+
+1.1.10 (2023-10-16)
+-------------------
+
+- Inherit redturtle.prenotazioni browser layer.
+  [folix-01]
+
+
+1.1.9 (2023-10-13)
+------------------
+
+- Compatibilize with the 2.1.3redturtle.prenotazioni version.
+  [folix-01]
+
+
+1.1.8 (2023-10-13)
+------------------
+
+- Update redturtle.prenotazioni version to >= 2.1.1
+  [folix-01]
 - Add the UO.contact_info field to @bookable-uo-list response.
   [folix-01]
 
