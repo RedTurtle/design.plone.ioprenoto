@@ -2,7 +2,9 @@ from plone import api
 from plone.restapi.interfaces import ISerializeToJson, ISerializeToJsonSummary
 from plone.restapi.serializer.summary import DefaultJSONSummarySerializer
 from redturtle.prenotazioni.content.prenotazioni_folder import IPrenotazioniFolder
-from plone.restapi.serializer.dxcontent import SerializeFolderToJson
+from redturtle.prenotazioni.restapi.serializers.adapters.prenotazioni_folder import (
+    PrenotazioniFolderSerializer,
+)
 from zope.component import adapter
 from zope.interface import implementer
 
@@ -37,7 +39,7 @@ class SerializePrenotazioniFolderToJsonSummary(DefaultJSONSummarySerializer):
 
 @implementer(ISerializeToJson)
 @adapter(IPrenotazioniFolder, IDesignPloneIoprenotoLayer)
-class SerializePrenotazioniFolderToJson(SerializeFolderToJson):
+class SerializePrenotazioniFolderToJson(PrenotazioniFolderSerializer):
     def __call__(self, *args, **kwargs):
         resp = super().__call__(*args, **kwargs)
         if not api.user.has_permission(
