@@ -23,9 +23,6 @@ class TestPrenotazioniRestAPIAdd(unittest.TestCase):
             title="Prenota foo",
             description="",
             daData=date.today(),
-            booking_types=[
-                {"name": "Type A", "duration": "30"},
-            ],
             gates=["Gate A"],
         )
         week_table = self.folder_prenotazioni.week_table
@@ -33,7 +30,17 @@ class TestPrenotazioniRestAPIAdd(unittest.TestCase):
             row["morning_start"] = "0700"
             row["morning_end"] = "1000"
         self.folder_prenotazioni.week_table = week_table
+
+        booking_type_a = api.content.create(
+            type="PrenotazioneType",
+            title="Type A",
+            duration=30,
+            container=self.folder_prenotazioni,
+            gates=["all"],
+        )
+
         api.content.transition(obj=self.folder_prenotazioni, transition="publish")
+        api.content.transition(obj=booking_type_a, transition="publish")
         transaction.commit()
 
         self.api_session = RelativeSession(self.portal_url)

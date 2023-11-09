@@ -26,11 +26,11 @@ class SerializePrenotazioniFolderToJsonSummary(DefaultJSONSummarySerializer):
         ):
             # XXX: this is a workaround to avoid the Unauthorized exception
             return {
-                "@components": resp["@components"],
-                "@id": resp["@id"],
-                "@type": resp["@type"],
-                "layout": resp["layout"],
-                "title": resp["title"],
+                "@components": resp.get("@components", {}),
+                "@id": resp.get("@id", ""),
+                "@type": resp.get("@type", ""),
+                "layout": resp.get("@layout", ""),
+                "title": resp.get("@title", ""),
                 "error": "Unauthorized",
                 "anonymous": api.user.is_anonymous(),
             }

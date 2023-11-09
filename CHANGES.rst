@@ -4,7 +4,8 @@ Changelog
 1.1.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Handle missing infos in prenotazioniFolder serializer.
+  [cekk]
 
 
 1.1.10 (2023-10-16)
