@@ -75,10 +75,18 @@ class BookableUOListTest(unittest.TestCase):
                     to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
                 )
             ],
-            booking_types=[
-                {"name": "Type A", "duration": "30"},
-            ],
         )
+        api.content.transition(
+            obj=api.content.create(
+                type="PrenotazioneType",
+                title="Type A",
+                duration=30,
+                container=self.prenotazioni_folder,
+                gates=["all"],
+            ),
+            transition="publish",
+        )
+
         self.prenotazioni_folder2 = api.content.create(
             container=self.portal,
             type="PrenotazioniFolder",
@@ -88,10 +96,26 @@ class BookableUOListTest(unittest.TestCase):
                     to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
                 )
             ],
-            booking_types=[
-                {"name": "Type A", "duration": "10"},
-                {"name": "Type B", "duration": "30"},
-            ],
+        )
+        api.content.transition(
+            obj=api.content.create(
+                type="PrenotazioneType",
+                title="Type A",
+                duration=10,
+                container=self.prenotazioni_folder2,
+                gates=["all"],
+            ),
+            transition="publish",
+        )
+        api.content.transition(
+            obj=api.content.create(
+                type="PrenotazioneType",
+                title="Type B",
+                duration=30,
+                container=self.prenotazioni_folder2,
+                gates=["all"],
+            ),
+            transition="publish",
         )
         self.prenotazioni_folder3 = api.content.create(
             container=self.portal,
