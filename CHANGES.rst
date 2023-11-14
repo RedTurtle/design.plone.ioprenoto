@@ -4,7 +4,9 @@ Changelog
 1.1.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Compatibilize with the 2.0.1 redturtle.prenotazioni version.
+- Add the UO.contact_info field to @bookable-uo-list response.
+  [folix-01]
 
 
 1.1.10 (2023-10-16)
