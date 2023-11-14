@@ -63,15 +63,12 @@ setup(
     extras_require={
         "test": [
             "plone.app.testing",
-            # Plone KGS does not use this version, because it would break
-            # Remove if your package shall be part of coredev.
-            # plone_coredev tests as of 2016-04-01.
             "plone.testing>=5.0.0",
             "plone.app.contenttypes",
             "plone.app.robotframework[debug]",
             "collective.MockMailHost",
-            "redturtle.prenotazioni[test]",
-            "design.plone.policy[test]",
+            "redturtle.prenotazioni",
+            "design.plone.policy",
         ],
     },
     entry_points="""
