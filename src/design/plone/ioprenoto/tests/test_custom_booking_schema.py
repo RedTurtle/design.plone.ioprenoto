@@ -36,9 +36,6 @@ class TestBookingSchema(unittest.TestCase):
             title="Prenota foo",
             description="",
             daData=date.today(),
-            booking_types=[
-                {"name": "Type A", "duration": "30"},
-            ],
             gates=["Gate A"],
             required_booking_fields=["email", "fiscalcode"],
         )
@@ -46,6 +43,16 @@ class TestBookingSchema(unittest.TestCase):
         week_table[0]["morning_start"] = "0700"
         week_table[0]["morning_end"] = "1000"
         self.folder_prenotazioni.week_table = week_table
+        api.content.transition(
+            obj=api.content.create(
+                type="PrenotazioneType",
+                title="Type A",
+                duration=30,
+                container=self.folder_prenotazioni,
+                gates=["all"],
+            ),
+            transition="publish",
+        )
 
         year = api.content.create(
             container=self.folder_prenotazioni, type="PrenotazioniYear", title="Year"
