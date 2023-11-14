@@ -22,4 +22,11 @@
       name="booking_operator_url"
       />
 
+  <adapter
+      factory=".stringinterp.BookingUnitaOrganizzativaTitle"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      for="*"
+      name="unita_organizzativa_title"
+      />
+
 </configure>
