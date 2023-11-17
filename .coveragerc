@@ -5,8 +5,6 @@ relative_files = True
 include =
     */src/design/plone/ioprenoto/*
 omit =
-    .tox/
-    eggs/
-    test/
-    upgrades/
-    extras/
+    */test*
+    */upgrades/*
+    */upgrades.py
