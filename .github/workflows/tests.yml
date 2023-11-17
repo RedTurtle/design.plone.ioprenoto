@@ -41,17 +41,31 @@ jobs:
     - name: Test
       run: tox -e ${{ matrix.config[1] }}
     - name: Upload coverage data to coveralls.io
-      uses: coverallsapp/github-action@v2
-      with:
-        flag-name: run-${{ matrix.config[1] }}
-        parallel: true
+      run: |
+        pip install coveralls
+        coveralls --service=github
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        COVERALLS_FLAG_NAME: ${{ matrix.config[1] }}
+        COVERALLS_PARALLEL: true
+    # - name: Upload coverage data to coveralls.io
+    #   uses: coverallsapp/github-action@v2
+    #   with:
+    #     flag-name: run-${{ matrix.config[1] }}
+    #     parallel: true
 
   coveralls_finish:
     needs: test
-    if: ${{ always() }}
+    # if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
-      uses: coverallsapp/github-action@v2
-      with:
-        parallel-finished: true
+      run: |
+        pip install --upgrade coveralls
+        coveralls --service=github --finish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # uses: coverallsapp/github-action@v2
+      # with:
+      #   parallel-finished: true
+  
