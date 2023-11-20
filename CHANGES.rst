@@ -4,11 +4,10 @@ Changelog
 1.1.11 (unreleased)
 -------------------
 
+- [BREAKING CHANGE] Compatibility with redturtle.prenotazioni>=2.2.0.
+  [folix-01]
 - Handle missing infos in prenotazioniFolder serializer.
   [cekk]
-
-- Compatibilize with the 2.0.1 redturtle.prenotazioni version.
-  [folix-01]
 - Add the UO.contact_info field to @bookable-uo-list response.
   [folix-01]
 - Extend prenotazioni email vars list (unita_organizzativa_title, booking_print_url_with_delete_token).

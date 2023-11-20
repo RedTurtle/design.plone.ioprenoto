@@ -57,7 +57,7 @@ setup(
         "z3c.jbot",
         "plone.api>=1.8.4",
         "plone.app.dexterity",
-        "redturtle.prenotazioni>=2.1.3",
+        "redturtle.prenotazioni>=2.2.0",
         "design.plone.policy",
     ],
     extras_require={
