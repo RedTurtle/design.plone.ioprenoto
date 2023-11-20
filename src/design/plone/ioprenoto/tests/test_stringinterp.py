@@ -1,23 +1,19 @@
 # -*- coding: utf-8 -*-
-from datetime import date
-from datetime import datetime
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
+import unittest
+from datetime import date, datetime
+
+import transaction
 from plone import api
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_ID, setRoles
 from plone.registry.interfaces import IRegistry
-from plone.stringinterp.interfaces import IContextWrapper
-from plone.stringinterp.interfaces import IStringSubstitution
+from plone.stringinterp.interfaces import IContextWrapper, IStringSubstitution
 from plone.volto.interfaces import IVoltoSettings
 from redturtle.prenotazioni.adapters.booker import IBooker
 from z3c.relationfield.relation import RelationValue
-from zope.component import getAdapter
-from zope.component import getUtility
-from zope.component import queryUtility
+from zope.component import getAdapter, getUtility, queryUtility
 from zope.intid.interfaces import IIntIds
 
-import transaction
-import unittest
+from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
 
 
 class TestStringinterp(unittest.TestCase):
@@ -29,6 +25,21 @@ class TestStringinterp(unittest.TestCase):
         self.portal_url = self.portal.absolute_url()
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
 
+        self.unita_organizzativa = api.content.create(
+            container=self.portal,
+            type="UnitaOrganizzativa",
+            title="UO",
+        )
+        self.servizio = api.content.create(
+            container=self.portal,
+            type="Servizio",
+            title="Servizio",
+            ufficio_responsabile=[
+                RelationValue(
+                    to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
+                )
+            ],
+        )
         self.folder_prenotazioni = api.content.create(
             container=self.portal,
             type="PrenotazioniFolder",
@@ -36,6 +47,11 @@ class TestStringinterp(unittest.TestCase):
             description="",
             daData=date.today(),
             gates=["Gate A"],
+            uffici_correlati=[
+                RelationValue(
+                    to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
+                )
+            ],
         )
         week_table = self.folder_prenotazioni.week_table
         week_table[0]["morning_start"] = "0700"
@@ -69,31 +85,6 @@ class TestStringinterp(unittest.TestCase):
                 "booking_type": "Type A",
                 "title": "foo",
             }
-        )
-        self.unita_organizzativa = api.content.create(
-            container=self.portal,
-            type="UnitaOrganizzativa",
-            title="UO",
-        )
-        self.servizio = api.content.create(
-            container=self.portal,
-            type="Servizio",
-            title="Servizio",
-            ufficio_responsabile=[
-                RelationValue(
-                    to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
-                )
-            ],
-        )
-        self.prenotazioni_folder = api.content.create(
-            container=self.portal,
-            type="PrenotazioniFolder",
-            title="Prenotazioni Folder",
-            uffici_correlati=[
-                RelationValue(
-                    to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
-                )
-            ],
         )
 
         transaction.commit()
@@ -151,5 +142,5 @@ class TestStringinterp(unittest.TestCase):
             getAdapter(
                 self.prenotazione, IStringSubstitution, "unita_organizzativa_title"
             )(),
-            self.folder_prenotazioni.Title(),
+            self.unita_organizzativa.Title(),
         )

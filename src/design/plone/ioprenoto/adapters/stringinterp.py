@@ -73,10 +73,12 @@ class BookingUnitaOrganizzativaTitle(BaseSubstitution):
                 next(
                     iter(
                         getattr(
-                            self.context.getPrenotazioniFolder(), "uffici_correlati", []
+                            self.context.getPrenotazioniFolder(),
+                            "uffici_correlati",
+                            None,
                         )
+                        or [None]
                     ),
-                    None,
                 ),
                 "to_object",
                 None,
