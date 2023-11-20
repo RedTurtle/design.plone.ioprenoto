@@ -68,21 +68,21 @@ class BookingOperatorUrlSubstitution(base.BookingOperatorUrlSubstitution):
 @adapter(Interface)
 class BookingUnitaOrganizzativaTitle(BaseSubstitution):
     def safe_call(self):
-        return getattr(
-            getattr(
-                next(
-                    iter(
-                        getattr(
-                            self.context.getPrenotazioniFolder(),
-                            "uffici_correlati",
-                            None,
-                        )
-                        or [None]
-                    ),
-                ),
-                "to_object",
-                None,
-            ),
-            "title",
-            "",
+        # The PrenotazioniFolder c.t. object which contains the contextual booking
+        prenotazioni_folder = self.context.getPrenotazioniFolder()
+
+        # The Relation objects to related offices of PrenotazioniFolder
+        uffici_correlati_relations = prenotazioni_folder.uffici_correlati
+
+        # Get first Relation object
+        ufficio_correlato_relation = (
+            uffici_correlati_relations and uffici_correlati_relations[0]
         )
+
+        # Ufficio correlato object
+        ufficio_correlato = getattr(ufficio_correlato_relation, "to_object", None)
+
+        # Get ufficio correlato title
+        ufficio_correlato_title = getattr(ufficio_correlato, "title", "")
+
+        return ufficio_correlato_title
