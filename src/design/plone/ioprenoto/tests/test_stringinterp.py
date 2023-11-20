@@ -9,12 +9,14 @@ from plone.registry.interfaces import IRegistry
 from plone.stringinterp.interfaces import IContextWrapper, IStringSubstitution
 from plone.volto.interfaces import IVoltoSettings
 from redturtle.prenotazioni.adapters.booker import IBooker
-from zope.component import getAdapter, getUtility
+from z3c.relationfield.relation import RelationValue
+from zope.component import getAdapter, getUtility, queryUtility
+from zope.intid.interfaces import IIntIds
 
 from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
 
 
-class TestStringinterpOverrides(unittest.TestCase):
+class TestStringinterp(unittest.TestCase):
     layer = DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
 
     def setUp(self):
@@ -23,6 +25,21 @@ class TestStringinterpOverrides(unittest.TestCase):
         self.portal_url = self.portal.absolute_url()
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
 
+        self.unita_organizzativa = api.content.create(
+            container=self.portal,
+            type="UnitaOrganizzativa",
+            title="UO",
+        )
+        self.servizio = api.content.create(
+            container=self.portal,
+            type="Servizio",
+            title="Servizio",
+            ufficio_responsabile=[
+                RelationValue(
+                    to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
+                )
+            ],
+        )
         self.folder_prenotazioni = api.content.create(
             container=self.portal,
             type="PrenotazioniFolder",
@@ -30,6 +47,11 @@ class TestStringinterpOverrides(unittest.TestCase):
             description="",
             daData=date.today(),
             gates=["Gate A"],
+            uffici_correlati=[
+                RelationValue(
+                    to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
+                )
+            ],
         )
         week_table = self.folder_prenotazioni.week_table
         week_table[0]["morning_start"] = "0700"
@@ -113,4 +135,12 @@ class TestStringinterpOverrides(unittest.TestCase):
                 "booking_print_url",
             )(),
             f"http://foo.bar/prenotazione-appuntamenti-uffici?booking_id={self.prenotazione.UID()}",
+        )
+
+    def test_unita_organizzativa_title(self):
+        self.assertEqual(
+            getAdapter(
+                self.prenotazione, IStringSubstitution, "unita_organizzativa_title"
+            )(),
+            self.unita_organizzativa.Title(),
         )

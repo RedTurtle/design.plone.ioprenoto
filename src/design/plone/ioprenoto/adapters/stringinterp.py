@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from plone.registry.interfaces import IRegistry
+from plone.stringinterp.adapters import BaseSubstitution
 from plone.volto.interfaces import IVoltoSettings
 from redturtle.prenotazioni.adapters import stringinterp as base
 from zope.component import adapter, getUtility
@@ -62,3 +63,26 @@ class BookingOperatorUrlSubstitution(base.BookingOperatorUrlSubstitution):
             booking_folder.getPhysicalPath()[len(portal.getPhysicalPath()) :]  # noqa
         )
         return f"{portal_url}/{booking_folder_path}?tab=search&SearchableText={self.context.getBookingCode()}&login=1"
+
+
+@adapter(Interface)
+class BookingUnitaOrganizzativaTitle(BaseSubstitution):
+    def safe_call(self):
+        # The PrenotazioniFolder c.t. object which contains the contextual booking
+        prenotazioni_folder = self.context.getPrenotazioniFolder()
+
+        # The Relation objects to related offices of PrenotazioniFolder
+        uffici_correlati_relations = prenotazioni_folder.uffici_correlati
+
+        # Get first Relation object
+        ufficio_correlato_relation = (
+            uffici_correlati_relations and uffici_correlati_relations[0]
+        )
+
+        # Ufficio correlato object
+        ufficio_correlato = getattr(ufficio_correlato_relation, "to_object", None)
+
+        # Get ufficio correlato title
+        ufficio_correlato_title = getattr(ufficio_correlato, "title", "")
+
+        return ufficio_correlato_title

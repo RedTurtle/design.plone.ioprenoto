@@ -156,7 +156,9 @@ class BookableUOList(BookableList):
                         "id": uo.getId(),
                         "uid": uo.UID(),
                         "contact_info": self.get_uo_contact_info(uo),
-                        "prenotazioni_folder": folders,
+                        "prenotazioni_folder": sorted(
+                            folders, key=lambda x: x["title"]
+                        ),
                     }
                 )
         return response
