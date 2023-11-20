@@ -45,7 +45,7 @@ Servizio serializer
 
 There is a customization of Servizio serializer that adds an additional field:
 
-- `referenced_by_prenotazioni_folder` which idicates if it has backreferences to PrenotazioniFolder 
+- `referenced_by_prenotazioni_folder` which idicates if it has backreferences to PrenotazioniFolder
   (design.plone.ioprenoto) throught correlated UO (with "Uffici correlati" field)
 
 PrenotazioniFolder serializer
@@ -57,7 +57,7 @@ if the user has not `design.plone.ioprenoto.ManagePrenotazioni`.
 @bookable-uo-list
 -----------------
 
-Endpoint that returns a list of *UnitaOrganizzativa* contents that have at least one PrenotazioniFolder that 
+Endpoint that returns a list of *UnitaOrganizzativa* contents that have at least one PrenotazioniFolder that
 relates to it (with "Uffici correlati" field).
 
 Parameters:
@@ -120,6 +120,15 @@ Response::
           }
         ]
     }
+
+
+Content Rules (mail notifications) of redturtle.prenotazioni
+------------------------------------------------------------
+
+The email templates var list is extended by the following variables:
+
+* ``${unita_organizzativa_title}`` - title of UnitaOrganizzativa related to PrenotazioniFolder.
+* ``${booking_print_url_with_delete_token}`` - booking pring url with delete token.
 
 
 Installation
