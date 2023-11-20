@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.1.11 (unreleased)
--------------------
+1.2.0 (2023-11-20)
+------------------
 
 - [BREAKING CHANGE] Compatibility with redturtle.prenotazioni>=2.2.0.
   [folix-01]
