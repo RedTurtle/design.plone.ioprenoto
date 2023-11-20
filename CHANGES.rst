@@ -11,7 +11,7 @@ Changelog
   [folix-01]
 - Add the UO.contact_info field to @bookable-uo-list response.
   [folix-01]
-- Extend prenotazioni email vars list.
+- Extend prenotazioni email vars list (unita_organizzativa_title, booking_print_url_with_delete_token).
   [folix-01]
 
 
