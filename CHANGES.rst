@@ -4,7 +4,8 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Align tests with redturtle.prenotazioni > 2.2.5.
+  [cekk]
 
 
 1.2.0 (2023-11-20)
