@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 from logging import getLogger
-from urllib.parse import urlencode
-
 from plone import api
 from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.serializer.converters import json_compatible
 from plone.restapi.services import Service
+from urllib.parse import urlencode
 from zc.relation.interfaces import ICatalog
-from zope.component import getMultiAdapter, getUtility
+from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
+
 
 logger = getLogger(__name__)
 
@@ -28,7 +29,9 @@ class BookableList(Service):
         portal_url = api.portal.get().absolute_url()
         query = {"portal_type": "Servizio", "sort_on": "sortable_title"}
         for brain_service in api.content.find(**query):
-            # service = brain.getObject()
+            # XXX: get_uo_from_service_uid ha l'object, ma anzichè usarlo, si tira fuori lo UID
+            #      e poi si cerca quell'UID nel catalog. Sicuarmente questo aiuta a escludere
+            #      oggetti privati, ma sembra un passaggio inutilmente complicato (?)
             for brain_uo in api.content.find(
                 UID=self.get_uo_from_service_uid(uid=brain_service.UID)
             ):
