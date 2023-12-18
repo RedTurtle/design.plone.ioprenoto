@@ -79,7 +79,7 @@ class TestStringinterp(unittest.TestCase):
         )
 
         booker = IBooker(self.folder_prenotazioni)
-        self.prenotazione = booker.create(
+        self.prenotazione = booker.book(
             {
                 "booking_date": datetime.now(),
                 "booking_type": "Type A",
