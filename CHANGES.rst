@@ -4,7 +4,8 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- booking_type vocabulary for Service
+  [mamico]
 
 
 1.2.0 (2023-11-20)
