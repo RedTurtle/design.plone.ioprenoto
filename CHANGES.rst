@@ -4,6 +4,8 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
+- booking_type vocabulary for Service
+  [mamico]
 - Align tests with redturtle.prenotazioni > 2.2.5.
   [cekk]
 

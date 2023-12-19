@@ -1,0 +1,11 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="redturtle.prenotazioni"
+    >
+
+  <utility
+      name="design.plone.ioprenoto.booking_types"
+      component=".tipologies.PrenotazioneTypesVocabularyFactory"
+      />
+
+</configure>
