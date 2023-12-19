@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
-from datetime import date, datetime
+from datetime import datetime
 
 import transaction
 from plone import api
@@ -9,6 +9,7 @@ from plone.registry.interfaces import IRegistry
 from plone.stringinterp.interfaces import IContextWrapper, IStringSubstitution
 from plone.volto.interfaces import IVoltoSettings
 from redturtle.prenotazioni.adapters.booker import IBooker
+from redturtle.prenotazioni.tests.helpers import WEEK_TABLE_SCHEMA
 from z3c.relationfield.relation import RelationValue
 from zope.component import getAdapter, getUtility, queryUtility
 from zope.intid.interfaces import IIntIds
@@ -24,6 +25,8 @@ class TestStringinterp(unittest.TestCase):
         self.portal = self.layer["portal"]
         self.portal_url = self.portal.absolute_url()
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
+
+        self.today = datetime.now()
 
         self.unita_organizzativa = api.content.create(
             container=self.portal,
@@ -45,18 +48,15 @@ class TestStringinterp(unittest.TestCase):
             type="PrenotazioniFolder",
             title="Prenota foo",
             description="",
-            daData=date.today(),
+            daData=self.today.date(),
             gates=["Gate A"],
             uffici_correlati=[
                 RelationValue(
                     to_id=queryUtility(IIntIds).getId(self.unita_organizzativa)
                 )
             ],
+            week_table=WEEK_TABLE_SCHEMA,
         )
-        week_table = self.folder_prenotazioni.week_table
-        week_table[0]["morning_start"] = "0700"
-        week_table[0]["morning_end"] = "1000"
-        self.folder_prenotazioni.week_table = week_table
         api.content.transition(
             obj=api.content.create(
                 type="PrenotazioneType",
@@ -79,9 +79,9 @@ class TestStringinterp(unittest.TestCase):
         )
 
         booker = IBooker(self.folder_prenotazioni)
-        self.prenotazione = booker.create(
+        self.prenotazione = booker.book(
             {
-                "booking_date": datetime.now(),
+                "booking_date": self.today.replace(hour=8, minute=0),
                 "booking_type": "Type A",
                 "title": "foo",
             }
