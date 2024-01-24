@@ -10,6 +10,8 @@ from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
 
+import re
+
 
 logger = getLogger(__name__)
 
@@ -80,9 +82,10 @@ class BookableList(Service):
         if not ref:
             return {}
         venue = ref[0].to_object
-        if not venue:
+        if venue and api.user.has_permission("View", obj=venue):
+            return getMultiAdapter((venue, self.request), ISerializeToJsonSummary)()
+        else:
             return {}
-        return getMultiAdapter((venue, self.request), ISerializeToJsonSummary)()
 
     def get_uo_from_service_uid(self, uid):
         """Dato lo UID di un servizio, restituisce lo UID dell'UO a cui è collegato
@@ -100,11 +103,33 @@ class BookableList(Service):
 
 
 class BookableUOList(BookableList):
+    def booking_type_check(self, prenotazioni_folder, booking_type):
+        if not booking_type:
+            return True
+        tocheck = [booking_type]
+        # XXX: per qualche problema di doppio encoding arrivano dal frontend delle
+        #      stringhe con caratteri in hex, questo codice serve a gestire quelle
+        #      casistiche. Una volta fissato sul frontend può essere tolto.
+        try:
+            tocheck.append(
+                re.sub(
+                    r"\\x([0-9a-fA-F]{2})",
+                    lambda x: bytes.fromhex(x.group(1)).decode("unicode-escape"),
+                    booking_type,
+                )
+            )
+        except Exception:
+            logger.exception("Error in booking_type_check %s", booking_type)
+        booking_types = [
+            b_type["name"]
+            for b_type in getattr(prenotazioni_folder, "booking_types", [])
+        ]
+        return bool(set(tocheck).intersection(booking_types))
+
     def reply(self):
         """
         Return all UO with at least one back-refence from PrenotazioniFolder
         """
-
         response = {
             "@id": f"{self.context.absolute_url()}/@bookable-uo-list",
             "items": [],
@@ -129,14 +154,13 @@ class BookableUOList(BookableList):
                 }
             )
             for rel in relations:
+                # XXX: qui si da per scontato che l'oggetto sia un PrenotazioniFolder,
+                #      ma non è detto
                 prenotazioni_folder = rel.from_object
                 if prenotazioni_folder and api.user.has_permission(
                     "View", obj=prenotazioni_folder
                 ):
-                    if booking_type and booking_type not in [
-                        typ["name"]
-                        for typ in getattr(prenotazioni_folder, "booking_types", [])
-                    ]:  # noqa: E501
+                    if not self.booking_type_check(prenotazioni_folder, booking_type):
                         continue
                     folders.append(
                         {
@@ -144,6 +168,10 @@ class BookableUOList(BookableList):
                             "uid": prenotazioni_folder.UID(),
                             "title": prenotazioni_folder.Title(),
                             "orario_di_apertura": prenotazioni_folder.orario_di_apertura,
+                            # XXX: viene associata alla prenotazione_folder la seda della UO,
+                            #      il problema però emerge se una prenotazione_folder ha più
+                            #      sedi associate. In questo caso non sarebbe più possibile
+                            #      ricostruire la sede corretta a partire dalla prenotazione_folder
                             "address": sede,
                             "description_agenda": json_compatible(
                                 prenotazioni_folder.descriptionAgenda,

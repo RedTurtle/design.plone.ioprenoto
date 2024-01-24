@@ -4,8 +4,8 @@ Changelog
 1.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Workaround per booking_type con caratteri encodati due volte
+  [mamico]
 
 1.2.1 (2023-12-19)
 ------------------
