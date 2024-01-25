@@ -7,7 +7,7 @@ Changelog
 - Fix: term values must be unique in booking_type vocabulary
   [mamico]
 
-- Workaround per booking_type con caratteri encodati due volte
+- Fix booking_type encoding
   [mamico]
 
 1.2.1 (2023-12-19)

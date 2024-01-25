@@ -5,6 +5,7 @@ from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.serializer.converters import json_compatible
 from plone.restapi.services import Service
 from urllib.parse import urlencode
+from urllib.parse import unquote
 from zc.relation.interfaces import ICatalog
 from zope.component import getMultiAdapter
 from zope.component import getUtility
@@ -106,7 +107,7 @@ class BookableUOList(BookableList):
     def booking_type_check(self, prenotazioni_folder, booking_type):
         if not booking_type:
             return True
-        tocheck = [booking_type]
+        tocheck = [booking_type, unquote(booking_type)]
         # XXX: per qualche problema di doppio encoding arrivano dal frontend delle
         #      stringhe con caratteri in hex, questo codice serve a gestire quelle
         #      casistiche. Una volta fissato sul frontend può essere tolto.

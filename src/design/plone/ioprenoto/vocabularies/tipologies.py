@@ -1,19 +1,29 @@
 # -*- coding: utf-8 -*-
 from design.plone.ioprenoto.utilities import get_uo_from_service
 from plone import api
-from redturtle.prenotazioni.vocabularies.tipologies import (
-    PrenotazioneTypesVocabulary as Base,
-)
+from urllib.parse import quote
 from zc.relation.interfaces import ICatalog
 from zope.component import getUtility
 from zope.interface import implementer
 from zope.intid.interfaces import IIntIds
 from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 
 @implementer(IVocabularyFactory)
-class PrenotazioneTypesVocabulary(Base):
+class PrenotazioneTypesVocabulary(object):
+    def booking_type2term(self, booking_type):
+        """return a vocabulary tern with this"""
+        name = booking_type.title
+        duration = booking_type.duration
+        token = quote(name)
+        if not duration:
+            title = name
+        else:
+            title = f"{name} ({duration} min)"
+        return SimpleTerm(token, token=token, title=title)
+
     def __call__(self, context):
         """
         Return all the tipologies defined in the PrenotazioniFolder related to a Service
