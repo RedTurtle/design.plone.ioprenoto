@@ -33,12 +33,11 @@ class PrenotazioneTypesVocabulary(Base):
                 if prenotazioni_folder and api.user.has_permission(
                     "View", obj=prenotazioni_folder
                 ):
-                    terms.extend(
-                        [
-                            self.booking_type2term(booking_type)
-                            for booking_type in prenotazioni_folder.get_booking_types()
-                        ]
-                    )
+                    for booking_type in prenotazioni_folder.get_booking_types():
+                        term = self.booking_type2term(booking_type)
+                        if term.value not in [t.value for t in terms]:
+                            terms.append(term)
+        terms.sort(key=lambda x: x.title)
         return SimpleVocabulary(terms)
 
 
