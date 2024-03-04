@@ -59,6 +59,7 @@ setup(
         "plone.app.dexterity",
         "redturtle.prenotazioni>=2.2.0",
         "design.plone.policy",
+        "plone.restapi>= 9.6.0",
     ],
     extras_require={
         "test": [
