@@ -4,7 +4,8 @@ Changelog
 1.2.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add the plone.restapi>=9.6.0 constaint.
+  [folix-01]
 
 
 1.2.2 (2024-01-25)
