@@ -4,6 +4,9 @@ Changelog
 1.2.3 (unreleased)
 ------------------
 
+- Fix problem with DefaultJSONSummarySerializer hineritance in prenotazioniFolder
+  DefaultJSONSummarySerializer override.
+  [lucabel]
 - Add the plone.restapi>=9.6.0 constaint.
   [folix-01]
 
