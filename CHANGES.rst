@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.3 (unreleased)
+1.2.3 (2024-03-13)
 ------------------
 
 - Fix problem with DefaultJSONSummarySerializer hineritance in prenotazioniFolder
