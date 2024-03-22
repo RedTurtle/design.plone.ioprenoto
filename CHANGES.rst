@@ -4,7 +4,8 @@ Changelog
 1.2.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove "for" in ioprenoto.basic registration because breaks Prenotazioni edit when ioprenoto is not installed.
+  [cekk]
 
 
 1.2.3 (2024-03-13)
