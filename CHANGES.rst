@@ -4,7 +4,7 @@ Changelog
 1.2.4 (unreleased)
 ------------------
 
-- default b_size for bookyngtypesvocab to 100
+- default b_size for bookyngtypesvocab to 200
   [mamico]
 
 
