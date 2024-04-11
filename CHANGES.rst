@@ -4,7 +4,8 @@ Changelog
 1.2.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- default b_size for bookyngtypesvocab to 200
+  [mamico]
 
 
 1.2.3 (2024-03-13)
