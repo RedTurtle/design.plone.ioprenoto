@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.4 (unreleased)
+1.2.4 (2024-04-11)
 ------------------
 
 - default b_size for booking types vocabulary serializer to 200
