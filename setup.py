@@ -77,5 +77,6 @@ setup(
     target = plone
     [console_scripts]
     update_locale = design.plone.ioprenoto.locales.update:update_locale
+    notify_upcoming_bookings = redturtle.prenotazioni.scripts.notify_upcoming_bookings:main
     """,
 )
