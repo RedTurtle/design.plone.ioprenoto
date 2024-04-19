@@ -16,7 +16,7 @@ long_description = "\n\n".join(
 
 setup(
     name="design.plone.ioprenoto",
-    version="1.2.3.dev0",
+    version="1.2.5.dev0",
     description="An add-on for Plone",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
@@ -59,6 +59,7 @@ setup(
         "plone.app.dexterity",
         "redturtle.prenotazioni>=2.2.0",
         "design.plone.policy",
+        "plone.restapi>= 9.6.0",
     ],
     extras_require={
         "test": [
@@ -76,5 +77,6 @@ setup(
     target = plone
     [console_scripts]
     update_locale = design.plone.ioprenoto.locales.update:update_locale
+    notify_upcoming_bookings = redturtle.prenotazioni.scripts.notify_upcoming_bookings:main
     """,
 )

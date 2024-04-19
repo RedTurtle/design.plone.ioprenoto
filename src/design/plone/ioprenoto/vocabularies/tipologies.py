@@ -11,6 +11,15 @@ from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 
+class IPrenotazioneTypesVocabulary(IVocabularyFactory):
+    pass
+
+
+@implementer(IPrenotazioneTypesVocabulary)
+class TypesVocabulary(SimpleVocabulary):
+    pass
+
+
 @implementer(IVocabularyFactory)
 class PrenotazioneTypesVocabulary(object):
     def booking_type2term(self, booking_type):
@@ -48,7 +57,7 @@ class PrenotazioneTypesVocabulary(object):
                         if term.value not in [t.value for t in terms]:
                             terms.append(term)
         terms.sort(key=lambda x: x.title)
-        return SimpleVocabulary(terms)
+        return TypesVocabulary(terms)
 
 
 PrenotazioneTypesVocabularyFactory = PrenotazioneTypesVocabulary()

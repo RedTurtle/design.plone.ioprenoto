@@ -1,12 +1,29 @@
 Changelog
 =========
 
-1.2.3 (unreleased)
+1.2.5 (unreleased)
 ------------------
 
 - Remove "for" in ioprenoto.basic registration because breaks Prenotazioni edit when ioprenoto is not installed.
   [cekk]
+- Add redturtle.prenotazioni's notify_upcoming_bookings script to console_scripts (allows it to be available in the buildout).
+  [folix-01]
 
+1.2.4 (2024-04-11)
+------------------
+
+- default b_size for booking types vocabulary serializer to 200
+  [mamico]
+
+
+1.2.3 (2024-03-13)
+------------------
+
+- Fix problem with DefaultJSONSummarySerializer hineritance in prenotazioniFolder
+  DefaultJSONSummarySerializer override.
+  [lucabel]
+- Add the plone.restapi>=9.6.0 constaint.
+  [folix-01]
 
 1.2.2 (2024-01-25)
 ------------------

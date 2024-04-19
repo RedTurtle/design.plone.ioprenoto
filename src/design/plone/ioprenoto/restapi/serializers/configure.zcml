@@ -6,5 +6,6 @@
 
   <include package=".ovverrides" />
 
+  <adapter factory=".vocabularies.SerializeVocabularyToJson" />
 
 </configure>
