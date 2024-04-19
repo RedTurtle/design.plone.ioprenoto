@@ -4,6 +4,8 @@ Changelog
 1.2.5 (unreleased)
 ------------------
 
+- Remove "for" in ioprenoto.basic registration because breaks Prenotazioni edit when ioprenoto is not installed.
+  [cekk]
 - Add redturtle.prenotazioni's notify_upcoming_bookings script to console_scripts (allows it to be available in the buildout).
   [folix-01]
 
@@ -22,7 +24,6 @@ Changelog
   [lucabel]
 - Add the plone.restapi>=9.6.0 constaint.
   [folix-01]
-
 
 1.2.2 (2024-01-25)
 ------------------
