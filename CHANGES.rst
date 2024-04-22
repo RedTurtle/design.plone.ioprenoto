@@ -4,6 +4,8 @@ Changelog
 1.2.5 (unreleased)
 ------------------
 
+- Refactor rest service to simplify inheritance
+  [lucabel]
 - Add redturtle.prenotazioni's notify_upcoming_bookings script to console_scripts (allows it to be available in the buildout).
   [folix-01]
 

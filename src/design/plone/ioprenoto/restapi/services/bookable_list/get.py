@@ -4,8 +4,8 @@ from plone import api
 from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.serializer.converters import json_compatible
 from plone.restapi.services import Service
-from urllib.parse import urlencode
 from urllib.parse import unquote
+from urllib.parse import urlencode
 from zc.relation.interfaces import ICatalog
 from zope.component import getMultiAdapter
 from zope.component import getUtility
@@ -104,6 +104,9 @@ class BookableList(Service):
 
 
 class BookableUOList(BookableList):
+
+    UO_CONTENT_TYPE = "UnitaOrganizzativa"
+
     def booking_type_check(self, prenotazioni_folder, booking_type):
         if not booking_type:
             return True
@@ -135,7 +138,7 @@ class BookableUOList(BookableList):
             "@id": f"{self.context.absolute_url()}/@bookable-uo-list",
             "items": [],
         }
-        query = dict(portal_type="UnitaOrganizzativa", sort_on="sortable_title")
+        query = dict(portal_type=self.UO_CONTENT_TYPE, sort_on="sortable_title")
         uid = self.request.form.get("uid", "")
         booking_type = self.request.form.get("booking_type", "")
         if uid:
