@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.5 (unreleased)
+1.2.5 (2024-04-22)
 ------------------
 
 - Refactor rest service to simplify inheritance
