@@ -18,6 +18,9 @@ logger = getLogger(__name__)
 
 
 class BookableList(Service):
+
+    SERVIZIO_CONTENT_TYPE = "Servizio"
+
     def reply(self):
         """
         Return all UO with at least one back-refence from PrenotazioniFolder
@@ -30,7 +33,7 @@ class BookableList(Service):
             "items": [],
         }
         portal_url = api.portal.get().absolute_url()
-        query = {"portal_type": "Servizio", "sort_on": "sortable_title"}
+        query = {"portal_type": self.SERVIZIO_CONTENT_TYPE, "sort_on": "sortable_title"}
         for brain_service in api.content.find(**query):
             # XXX: get_uo_from_service_uid ha l'object, ma anzichè usarlo, si tira fuori lo UID
             #      e poi si cerca quell'UID nel catalog. Sicuarmente questo aiuta a escludere
@@ -94,7 +97,7 @@ class BookableList(Service):
         service = api.content.get(UID=uid)
         if not service:
             return []
-        if service.portal_type != "Servizio":
+        if service.portal_type != self.SERVIZIO_CONTENT_TYPE:
             return []
         canale_fisico = getattr(service, "canale_fisico", [])
         if canale_fisico:
