@@ -49,4 +49,9 @@ class BookingInfo(Base):
             (booking, self.request), ISerializeToPrenotazioneSearchableItem
         )(fullobjects=True)
 
+        # BBB:
+        if "notify_on_confirm" not in response:
+            prenotazioni_folder = booking.getPrenotazioniFolder()
+            response["notify_on_confirm"] = prenotazioni_folder.notify_on_confirm
+
         return response

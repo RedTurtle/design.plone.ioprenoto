@@ -224,3 +224,7 @@ class TestBookingInfo(unittest.TestCase):
             booking_info["booking_office"]["@id"],
             self.unita_organizzativa.absolute_url(),
         )
+        self.assertEqual(
+            booking_info["notify_on_confirm"],
+            False,
+        )
