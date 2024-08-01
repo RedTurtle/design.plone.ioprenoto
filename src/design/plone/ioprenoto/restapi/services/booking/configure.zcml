@@ -17,8 +17,8 @@
       factory=".add.AddBooking"
       for="redturtle.prenotazioni.content.prenotazioni_folder.IPrenotazioniFolder"
       permission="zope2.View"
-      name="@booking"
       layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
+      name="@booking"
       />
 
 </configure>
