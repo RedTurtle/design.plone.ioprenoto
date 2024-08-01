@@ -188,6 +188,15 @@ class TestBookingInfo(unittest.TestCase):
         )
         self.assertEqual(res.status_code, 200)
         booking = res.json()
+        self.assertEqual(
+            booking["booking_folder"]["@id"],
+            self.prenotazioni_folder.absolute_url(),
+        )
+        self.assertEqual(booking["booking_address"]["@id"], self.venue.absolute_url())
+        self.assertEqual(
+            booking["booking_office"]["@id"],
+            self.unita_organizzativa.absolute_url(),
+        )
 
         res = self.api_session.get(
             self.portal.absolute_url() + "/@bookings?fullobjects=1"

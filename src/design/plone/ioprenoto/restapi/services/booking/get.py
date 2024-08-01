@@ -1,10 +1,10 @@
 # TODO: il codice qui è temporaneo, va spostato in redturtle.prenotazioni
 
-from redturtle.prenotazioni.restapi.services.booking.get import BookingInfo as Base
 from AccessControl import Unauthorized
 from plone import api
-from zope.component import getMultiAdapter
 from redturtle.prenotazioni.interfaces import ISerializeToPrenotazioneSearchableItem
+from redturtle.prenotazioni.restapi.services.booking.get import BookingInfo as Base
+from zope.component import getMultiAdapter
 
 
 class BookingInfo(Base):
@@ -50,6 +50,13 @@ class BookingInfo(Base):
         )(fullobjects=True)
 
         # BBB:
+        response["UID"] = response["booking_id"]
+        response["@type"] = booking.portal_type
+        response["gate"] = response["booking_gate"]
+        response["id"] = response["@id"].split("/")[-1]
+        response["booking_folder_uid"] = (
+            response["booking_folder"]["uid"] if "booking_folder" in response else None
+        )
         if "notify_on_confirm" not in response:
             prenotazioni_folder = booking.getPrenotazioniFolder()
             response["notify_on_confirm"] = prenotazioni_folder.notify_on_confirm
