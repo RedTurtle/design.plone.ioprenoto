@@ -188,6 +188,8 @@ class TestBookingInfo(unittest.TestCase):
         )
         self.assertEqual(res.status_code, 200)
         booking = res.json()
+        self.assertIn("@id", booking)
+        self.assertEqual(booking["id"], "mario-rossi")
         self.assertEqual(
             booking["booking_folder"]["@id"],
             self.prenotazioni_folder.absolute_url(),
@@ -204,6 +206,7 @@ class TestBookingInfo(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(len(res.json()["items"]), 1)
         booking_info = res.json()["items"][0]
+        self.assertIn("@id", booking_info)
         self.assertEqual(
             booking_info["booking_folder"]["@id"],
             self.prenotazioni_folder.absolute_url(),

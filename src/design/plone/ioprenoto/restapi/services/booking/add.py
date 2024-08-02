@@ -21,10 +21,10 @@ class AddBooking(BaseAddBooking):
         )(fullobjects=True)
 
         # BBB:
-        response["UID"] = response["booking_id"]
         response["@type"] = booking.portal_type
+        response["id"] = booking.getId()  # response["@id"].split("/")[-1]
+        response["UID"] = response["booking_id"]
         response["gate"] = response["booking_gate"]
-        response["id"] = response["@id"].split("/")[-1]
         response["booking_folder_uid"] = (
             response["booking_folder"]["uid"] if "booking_folder" in response else None
         )
