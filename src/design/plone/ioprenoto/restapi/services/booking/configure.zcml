@@ -1,0 +1,24 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    >
+
+  <plone:service
+      method="GET"
+      factory=".get.BookingInfo"
+      for="*"
+      permission="zope2.View"
+      layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
+      name="@booking"
+      />
+
+  <plone:service
+      method="POST"
+      factory=".add.AddBooking"
+      for="redturtle.prenotazioni.content.prenotazioni_folder.IPrenotazioniFolder"
+      permission="zope2.View"
+      layer="design.plone.ioprenoto.interfaces.IDesignPloneIoprenotoLayer"
+      name="@booking"
+      />
+
+</configure>

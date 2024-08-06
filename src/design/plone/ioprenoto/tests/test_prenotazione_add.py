@@ -45,6 +45,7 @@ class TestPrenotazioniRestAPIAdd(unittest.TestCase):
         self.api_session.headers.update({"Accept": "application/json"})
 
     def test_description_required_validation(self):
+        """TODO: spiegare perchè description è obbligatorio"""
         self.api_session.auth = None
         booking_date = "{}T09:00:00+00:00".format(
             (date.today() + timedelta(1)).strftime("%Y-%m-%d")
