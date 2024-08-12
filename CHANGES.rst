@@ -6,7 +6,7 @@ Changelog
 
 - Added more information in the `/@booking/<bookingid>` service (e.g. booking_folder, booking_address, booking_office),
   already present in the `/@bookings?fullobjects=1` service. https://github.com/RedTurtle/design.plone.ioprenoto/pull/41
-  These changes will be moved in the future from here to redturtle.reservations 2.3.x
+  These changes will be moved in the future from here to redturtle.prenotazioni 2.3.x
   [mamico]
 
 
