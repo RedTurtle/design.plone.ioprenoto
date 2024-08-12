@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import collective.contentrules.mailfromfield
+import collective.volto.otp
 import redturtle.prenotazioni
 from design.plone.policy.testing import (
     DesignPlonePolicyLayer,
@@ -20,7 +21,6 @@ except ImportError:
 
 class DesignPloneIoprenotoLayer(DesignPlonePolicyLayer):
     def setUpZope(self, app, configurationContext):
-        import collective.volto.otp
 
         super().setUpZope(app, configurationContext)
 
