@@ -20,12 +20,15 @@ except ImportError:
 
 class DesignPloneIoprenotoLayer(DesignPlonePolicyLayer):
     def setUpZope(self, app, configurationContext):
+        import collective.volto.otp
+
         super().setUpZope(app, configurationContext)
 
         self.loadZCML(package=design.plone.policy)
         self.loadZCML(package=redturtle.prenotazioni)
         self.loadZCML(package=collective.contentrules.mailfromfield)
         self.loadZCML(package=design.plone.ioprenoto)
+        self.loadZCML(package=collective.volto.otp)
 
         if iocittadino_installed:
             self.loadZCML(package=design.plone.iocittadino)
