@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.6 (unreleased)
+1.2.6 (2024-08-21)
 ------------------
 
 - Added more information in the `/@booking/<bookingid>` service (e.g. booking_folder, booking_address, booking_office),
