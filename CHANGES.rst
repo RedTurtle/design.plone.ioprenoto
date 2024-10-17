@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.8 (unreleased)
+1.2.8 (2024-10-17)
 ------------------
 
 - Fix get prenotazione, for missing gate
