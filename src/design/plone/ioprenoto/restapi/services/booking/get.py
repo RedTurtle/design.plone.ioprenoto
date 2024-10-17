@@ -52,8 +52,10 @@ class BookingInfo(Base):
         # BBB:
         response["@type"] = booking.portal_type
         response["id"] = booking.getId()  # response["@id"].split("/")[-1]
-        response["UID"] = response["booking_id"]
-        response["gate"] = response["booking_gate"]
+        if "booking_id" in response:
+            response["UID"] = response["booking_id"]
+        if "booking_gate" in response:
+            response["gate"] = response["booking_gate"]
         response["booking_folder_uid"] = (
             response["booking_folder"]["uid"] if "booking_folder" in response else None
         )

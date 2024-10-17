@@ -4,7 +4,8 @@ Changelog
 1.2.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix get prenotazione, for missing gate
+  [mamico]
 
 
 1.2.7 (2024-10-17)
