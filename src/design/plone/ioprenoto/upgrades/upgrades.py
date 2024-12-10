@@ -54,3 +54,9 @@ def to_1001(context):
             folder.required_booking_fields = [
                 x for x in folder.required_booking_fields if x != "description"
             ]
+
+
+def to_1002(context):
+    context.runImportStepFromProfile(
+        "profile-redturtle.prenotazioni:default", "rolemap", run_dependencies=True
+    )

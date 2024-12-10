@@ -11,6 +11,13 @@
       destination="1001"
       handler=".upgrades.to_1001"
       />
-
+  <genericsetup:upgradeStep
+      title="Remove customized rolemap.xml and reload redturtle.prenotazioni one"
+      description=""
+      profile="design.plone.ioprenoto:default"
+      source="1001"
+      destination="1002"
+      handler=".upgrades.to_1002"
+      />
 
 </configure>
