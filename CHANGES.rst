@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.9 (unreleased)
+1.2.9 (2025-01-22)
 ------------------
 
 - Remove customized rolemap and use default redturtle.prenotazioni rolemap. Booking manager should manage bookings without Editor role.
