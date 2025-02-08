@@ -1,4 +1,7 @@
 name: Black
+permissions:
+  contents: read
+  pull-requests: write
 on: [push]
 jobs:
   build:
