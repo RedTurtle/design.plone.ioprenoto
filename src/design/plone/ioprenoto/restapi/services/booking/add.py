@@ -1,18 +1,25 @@
-
+from design.plone.ioprenoto import logger
 from plone import api
 from redturtle.prenotazioni.interfaces import ISerializeToPrenotazioneSearchableItem
 from redturtle.prenotazioni.restapi.services.booking.add import (
     AddBooking as BaseAddBooking,
 )
 from zope.component import getMultiAdapter
+from zope.component import queryMultiAdapter
+
+
 try:
     from design.plone.iocittadino.interfaces import IDesignPloneIocittadinoLayer
+    from design.plone.iocittadino.interfaces import IUserStore
+
     WITH_IOCITTADINO = True
 except ImportError:
     WITH_IOCITTADINO = False
 
 
 class AddBooking(BaseAddBooking):
+    onceonly_fields = ["email", "phone"]
+
     def reply(self):
         result = super().reply()
 
@@ -25,8 +32,20 @@ class AddBooking(BaseAddBooking):
                 userstore = queryMultiAdapter(
                     (self.context, user, self.request), IUserStore
                 )
-                import pdb; pdb.set_trace()
-                userstore.set(data={"data": {}}, onceoonly_fields=["email", "phone"])
+                data = {}
+                for key in self.onceonly_fields:
+                    if result.get(key):
+                        data[key] = result[key]
+                if data:
+                    try:
+                        logger.info("update onceonly for %s - %s", user.getId(), data)
+                        userstore.set(
+                            data={"data": data}, onceonly_fields=self.onceonly_fields
+                        )
+                    except TypeError:
+                        logger.error(
+                            "onceonly feature requires design.plone.iocittadino >= 1.2.1"
+                        )
 
         # TODO: il codice qui è temporaneo, va spostato in redturtle.prenotazioni
         #       di conseguenza l'implementazione si semplifica

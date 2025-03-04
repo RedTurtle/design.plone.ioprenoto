@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from redturtle.prenotazioni.restapi.services.booking_schema.get import (
     BookingSchema as BaseService,
 )
+from zope.component import queryMultiAdapter
+
+
 try:
     from design.plone.iocittadino.interfaces import IDesignPloneIocittadinoLayer
+    from design.plone.iocittadino.interfaces import IUserStore
+
     WITH_IOCITTADINO = True
 except ImportError:
     WITH_IOCITTADINO = False
@@ -38,7 +44,7 @@ class BookingSchema(BaseService):
     }
 
     def reply(self):
-        data = super.reply()
+        data = super().reply()
         if WITH_IOCITTADINO and IDesignPloneIocittadinoLayer.providedBy(self.request):
             # se è configurato iocittadino fare onceonly con i dati di iocittadino
             if not api.user.is_anonymous():
@@ -50,7 +56,8 @@ class BookingSchema(BaseService):
                 for field in data["fields"]:
                     if field["name"] in userstore.user_properties:
                         if defaults.get(field["name"]):
-                            fields["value"] = defaults[field["name"]]
-                        field["readonly"] = field["name"] in userstore.strict_user_properties
+                            field["value"] = defaults[field["name"]]
+                        field["readonly"] = (
+                            field["name"] in userstore.strict_user_properties
+                        )
         return data
-
