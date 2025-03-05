@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.10 (unreleased)
+1.2.10 (2025-03-05)
 -------------------
 
 - onceonly con iocittadino
