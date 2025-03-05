@@ -201,7 +201,8 @@ class TestBookingInfo(unittest.TestCase):
         )
 
         res = self.api_session.get(
-            self.portal.absolute_url() + "/@bookings?fullobjects=1"
+            self.portal.absolute_url()
+            + "/@bookings?fullobjects=1&from=2000-01-01T00:00:00"
         )
         self.assertEqual(res.status_code, 200)
         self.assertEqual(len(res.json()["items"]), 1)
