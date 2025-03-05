@@ -5,6 +5,7 @@ Changelog
 -------------------
 
 - fix typo
+- onceonly con iocittadino
   [mamico]
 
 

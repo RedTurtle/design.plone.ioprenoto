@@ -3,7 +3,11 @@
 from redturtle.prenotazioni import config
 from zope.i18nmessageid import MessageFactory
 
+import logging
+
+
 _ = MessageFactory("design.plone.ioprenoto")
+logger = logging.getLogger("design.plone.ioprenoto")
 
 PRENOTAZIONI_MANAGE_PERMISSION = "redturtle.prenotazioni: Manage Prenotazioni"
 
