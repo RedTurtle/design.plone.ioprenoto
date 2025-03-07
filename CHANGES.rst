@@ -10,6 +10,7 @@ Changelog
 1.2.10 (2025-03-05)
 -------------------
 
+- fix typo
 - onceonly con iocittadino
   [mamico]
 
