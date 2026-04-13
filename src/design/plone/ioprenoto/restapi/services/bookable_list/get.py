@@ -6,10 +6,7 @@ from plone.restapi.serializer.converters import json_compatible
 from plone.restapi.services import Service
 from urllib.parse import unquote
 from urllib.parse import urlencode
-from zc.relation.interfaces import ICatalog
 from zope.component import getMultiAdapter
-from zope.component import getUtility
-from zope.intid.interfaces import IIntIds
 
 import re
 
@@ -22,9 +19,6 @@ class BookableList(Service):
         """
         Return all UO with at least one back-refence from PrenotazioniFolder
         """
-        intids = getUtility(IIntIds)
-        catalog = getUtility(ICatalog)
-
         response = {
             "@id": f"{self.context.absolute_url()}/@bookable-list",
             "items": [],
@@ -40,42 +34,36 @@ class BookableList(Service):
             ):
                 uo = brain_uo.getObject()
                 sede = self.get_sede(uo=uo)
-                relations = catalog.findRelations(
-                    {
-                        "to_id": intids.getId(uo),
-                        "from_attribute": "uffici_correlati",
-                    }
-                )
+                relations = api.relation.get(target=uo, relationship="uffici_correlati")
                 for rel in relations:
                     prenotazioni_folder = rel.from_object
-                    if prenotazioni_folder and api.user.has_permission(
-                        "View", obj=prenotazioni_folder
+                    if not prenotazioni_folder:
+                        continue
+                    for booking_type in (
+                        getattr(prenotazioni_folder, "booking_types", []) or []
                     ):
-                        for booking_type in (
-                            getattr(prenotazioni_folder, "booking_types", []) or []
-                        ):
-                            query = urlencode(
-                                {
-                                    # "uid": prenotazioni_folder.UID(),
-                                    "uid": brain_service.UID,
-                                    "booking_type": booking_type["name"],
-                                }
-                            )
-                            response["items"].append(
-                                {
-                                    "url": f"{portal_url}/prenotazione-appuntamenti-uffici?{query}",  # noqa: E501
-                                    "booking_type": booking_type["name"],
-                                    "booking_duration": booking_type.get("duration"),
-                                    "service_title": brain_service.Title,
-                                    "booking_opening_hours": prenotazioni_folder.orario_di_apertura,  # noqa: E501
-                                    "address": sede,
-                                    "uo_title": brain_uo.Title,
-                                    "description_agenda": json_compatible(
-                                        prenotazioni_folder.descriptionAgenda,
-                                        prenotazioni_folder,
-                                    ),  # noqa: E501
-                                }
-                            )
+                        query = urlencode(
+                            {
+                                # "uid": prenotazioni_folder.UID(),
+                                "uid": brain_service.UID,
+                                "booking_type": booking_type["name"],
+                            }
+                        )
+                        response["items"].append(
+                            {
+                                "url": f"{portal_url}/prenotazione-appuntamenti-uffici?{query}",  # noqa: E501
+                                "booking_type": booking_type["name"],
+                                "booking_duration": booking_type.get("duration"),
+                                "service_title": brain_service.Title,
+                                "booking_opening_hours": prenotazioni_folder.orario_di_apertura,  # noqa: E501
+                                "address": sede,
+                                "uo_title": brain_uo.Title,
+                                "description_agenda": json_compatible(
+                                    prenotazioni_folder.descriptionAgenda,
+                                    prenotazioni_folder,
+                                ),  # noqa: E501
+                            }
+                        )
         return response
 
     def get_sede(self, uo):
@@ -106,6 +94,7 @@ class BookableList(Service):
 class BookableUOList(BookableList):
 
     UO_CONTENT_TYPE = "UnitaOrganizzativa"
+    FOLDER_CONTENT_TYPE = "PrenotazioniFolder"
 
     def booking_type_check(self, prenotazioni_folder, booking_type):
         if not booking_type:
@@ -132,7 +121,7 @@ class BookableUOList(BookableList):
 
     def reply(self):
         """
-        Return all UO with at least one back-refence from PrenotazioniFolder
+        Return all UO_CONTENT_TYPE with at least one back-refence from a FOLDER_CONTENT_TYPE
         """
         response = {
             "@id": f"{self.context.absolute_url()}/@bookable-uo-list",
@@ -145,57 +134,42 @@ class BookableUOList(BookableList):
             query["UID"] = self.get_uo_from_service_uid(uid=uid)
 
         uo_list = api.content.find(**query)
-        intids = getUtility(IIntIds)
-        catalog = getUtility(ICatalog)
         for brain in uo_list:
             folders = []
             uo = brain.getObject()
-            sede = self.get_sede(uo=uo)
-            relations = catalog.findRelations(
-                {
-                    "to_id": intids.getId(uo),
-                    "from_attribute": "uffici_correlati",
-                }
-            )
+            sede = self.get_sede(uo=uo)  # la prima delle possibili N sedi
+            relations = api.relation.get(target=uo, relationship="uffici_correlati")
             for rel in relations:
-                # XXX: qui si da per scontato che l'oggetto sia un PrenotazioniFolder,
-                #      ma non è detto
-                prenotazioni_folder = rel.from_object
-                if prenotazioni_folder and api.user.has_permission(
-                    "View", obj=prenotazioni_folder
-                ):
-                    if not self.booking_type_check(prenotazioni_folder, booking_type):
-                        continue
-                    folders.append(
-                        {
-                            "@id": prenotazioni_folder.absolute_url(),
-                            "uid": prenotazioni_folder.UID(),
-                            "title": prenotazioni_folder.Title(),
-                            "orario_di_apertura": prenotazioni_folder.orario_di_apertura,
-                            # XXX: viene associata alla prenotazione_folder la seda della UO,
-                            #      il problema però emerge se una prenotazione_folder ha più
-                            #      sedi associate. In questo caso non sarebbe più possibile
-                            #      ricostruire la sede corretta a partire dalla prenotazione_folder
-                            "address": sede,
-                            "description_agenda": json_compatible(
-                                prenotazioni_folder.descriptionAgenda,
-                                prenotazioni_folder,
-                            ),  # noqa: E501
-                        }
-                    )
-            if folders:
-                response["items"].append(
+                folder = rel.from_object
+                if not folder or not folder.portal_type == self.FOLDER_CONTENT_TYPE:
+                    continue
+                if not self.booking_type_check(folder, booking_type):
+                    continue
+                folders.append(
                     {
-                        "@id": uo.absolute_url(),
-                        "title": uo.Title(),
-                        "id": uo.getId(),
-                        "uid": uo.UID(),
-                        "contact_info": self.get_uo_contact_info(uo),
-                        "prenotazioni_folder": sorted(
-                            folders, key=lambda x: x["title"]
+                        "@id": folder.absolute_url(),
+                        "uid": folder.UID(),
+                        "title": folder.Title(),
+                        "orario_di_apertura": folder.orario_di_apertura,
+                        "address": sede,
+                        "description_agenda": json_compatible(
+                            folder.descriptionAgenda,
+                            folder,
                         ),
                     }
                 )
+            if len(folders) == 0:
+                continue
+            response["items"].append(
+                {
+                    "@id": uo.absolute_url(),
+                    "title": uo.Title(),
+                    "id": uo.getId(),
+                    "uid": uo.UID(),
+                    "contact_info": self.get_uo_contact_info(uo),
+                    "prenotazioni_folder": sorted(folders, key=lambda x: x["title"]),
+                }
+            )
         return response
 
     def get_uo_contact_info(self, uo):
