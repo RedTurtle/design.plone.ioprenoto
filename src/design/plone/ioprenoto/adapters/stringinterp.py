@@ -3,6 +3,7 @@ from plone import api
 from plone.registry.interfaces import IRegistry
 from plone.stringinterp.adapters import BaseSubstitution
 from plone.volto.interfaces import IVoltoSettings
+from redturtle.prenotazioni.content.prenotazioni_folder import IPrenotazioniFolder
 from redturtle.prenotazioni.adapters import stringinterp as base
 from zope.component import adapter, getUtility
 from zope.interface import Interface
@@ -53,7 +54,7 @@ class BookingOperatorUrlSubstitution(base.BookingOperatorUrlSubstitution):
             portal_url = portal_url[:-1]
         booking_folder = self.context
         for ctx in self.context.aq_chain:
-            if ctx.portal_type == "PrenotazioniFolder":
+            if IPrenotazioniFolder.providedBy(ctx):
                 booking_folder = ctx
                 break
         # XXX: questo non va bene in ogni caso perchè considera le url fatte con il path,
