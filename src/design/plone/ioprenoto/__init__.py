@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """Init and utils."""
+
 from redturtle.prenotazioni import config
 from zope.i18nmessageid import MessageFactory
 
 import logging
 
+__version__ = "1.0.0a0"
 
 _ = MessageFactory("design.plone.ioprenoto")
 logger = logging.getLogger("design.plone.ioprenoto")

@@ -5,7 +5,6 @@ from redturtle.prenotazioni.restapi.services.booking_schema.get import (
 )
 from zope.component import queryMultiAdapter
 
-
 try:
     from design.plone.iocittadino.interfaces import IDesignPloneIocittadinoLayer
     from design.plone.iocittadino.interfaces import IUserStore

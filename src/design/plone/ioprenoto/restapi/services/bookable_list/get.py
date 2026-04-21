@@ -10,7 +10,6 @@ from zope.component import getMultiAdapter
 
 import re
 
-
 logger = getLogger(__name__)
 
 

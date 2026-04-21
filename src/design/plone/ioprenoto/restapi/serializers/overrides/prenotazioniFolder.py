@@ -13,7 +13,6 @@ from redturtle.prenotazioni.restapi.serializers.adapters.prenotazioni_folder imp
 from zope.component import adapter
 from zope.interface import implementer
 
-
 # TODO: move to registry
 PRENOTAZIONE_APPUNTAMENTO_ADDRESS = "prenotazione-appuntamenti-uffici"
 
