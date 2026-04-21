@@ -10,3 +10,4 @@ omit =
     */test*
     */upgrades/*
     */upgrades.py
+    */locales/update.py
