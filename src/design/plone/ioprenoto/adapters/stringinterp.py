@@ -3,9 +3,10 @@ from plone import api
 from plone.registry.interfaces import IRegistry
 from plone.stringinterp.adapters import BaseSubstitution
 from plone.volto.interfaces import IVoltoSettings
-from redturtle.prenotazioni.content.prenotazioni_folder import IPrenotazioniFolder
 from redturtle.prenotazioni.adapters import stringinterp as base
-from zope.component import adapter, getUtility
+from redturtle.prenotazioni.content.prenotazioni_folder import IPrenotazioniFolder
+from zope.component import adapter
+from zope.component import getUtility
 from zope.interface import Interface
 
 

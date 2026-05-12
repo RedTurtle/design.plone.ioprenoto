@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-import collective.contentrules.mailfromfield
-import collective.volto.otp
-import redturtle.prenotazioni
-from design.plone.policy.testing import (
-    DesignPlonePolicyLayer,
-    DesignPlonePolicyRestApiLayer,
-)
-from plone.app.testing import FunctionalTesting, IntegrationTesting, applyProfile
+from design.plone.policy.testing import DesignPlonePolicyLayer
+from design.plone.policy.testing import DesignPlonePolicyRestApiLayer
+from plone.app.testing import applyProfile
+from plone.app.testing import FunctionalTesting
+from plone.app.testing import IntegrationTesting
 from plone.testing import z2
 
+import collective.contentrules.mailfromfield
+import collective.volto.otp
 import design.plone.ioprenoto
+import redturtle.prenotazioni
 
 try:
     import design.plone.iocittadino

@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import os
-import subprocess
-
 import pkg_resources
+import subprocess
 
 domain = "design.plone.ioprenoto"
 os.chdir(pkg_resources.resource_filename(domain, ""))

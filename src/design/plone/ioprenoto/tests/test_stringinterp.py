@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
-import unittest
 from datetime import datetime
-
-import transaction
+from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
 from plone import api
-from plone.app.testing import TEST_USER_ID, setRoles
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
 from plone.registry.interfaces import IRegistry
-from plone.stringinterp.interfaces import IContextWrapper, IStringSubstitution
+from plone.stringinterp.interfaces import IContextWrapper
+from plone.stringinterp.interfaces import IStringSubstitution
 from plone.volto.interfaces import IVoltoSettings
 from redturtle.prenotazioni.adapters.booker import IBooker
 from redturtle.prenotazioni.tests.helpers import WEEK_TABLE_SCHEMA
 from z3c.relationfield.relation import RelationValue
-from zope.component import getAdapter, getUtility, queryUtility
+from zope.component import getAdapter
+from zope.component import getUtility
+from zope.component import queryUtility
 from zope.intid.interfaces import IIntIds
 
-from design.plone.ioprenoto.testing import DESIGN_PLONE_IOPRENOTO_FUNCTIONAL_TESTING
+import transaction
+import unittest
 
 
 class TestStringinterp(unittest.TestCase):

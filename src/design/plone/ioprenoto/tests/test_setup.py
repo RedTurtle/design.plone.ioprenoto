@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
 
-import unittest
-
-from plone import api
-from plone.app.testing import TEST_USER_ID, setRoles
-
 from design.plone.ioprenoto.testing import (  # noqa: E501
     DESIGN_PLONE_IOPRENOTO_INTEGRATION_TESTING,
 )
+from plone import api
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+
+import unittest
 
 try:
     from Products.CMFPlone.utils import get_installer
@@ -35,9 +35,8 @@ class TestSetup(unittest.TestCase):
 
     def test_browserlayer(self):
         """Test that IDesignPloneIoprenotoLayer is registered."""
-        from plone.browserlayer import utils
-
         from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
+        from plone.browserlayer import utils
 
         self.assertIn(IDesignPloneIoprenotoLayer, utils.registered_layers())
 
@@ -62,8 +61,7 @@ class TestUninstall(unittest.TestCase):
 
     def test_browserlayer_removed(self):
         """Test that IDesignPloneIoprenotoLayer is removed."""
-        from plone.browserlayer import utils
-
         from design.plone.ioprenoto.interfaces import IDesignPloneIoprenotoLayer
+        from plone.browserlayer import utils
 
         self.assertNotIn(IDesignPloneIoprenotoLayer, utils.registered_layers())

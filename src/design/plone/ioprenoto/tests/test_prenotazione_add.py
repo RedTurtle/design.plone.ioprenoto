@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
-import unittest
-from datetime import date, timedelta
-
-import transaction
+from datetime import date
+from datetime import timedelta
 from plone import api
-from plone.app.testing import TEST_USER_ID, setRoles
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
 from plone.restapi.testing import RelativeSession
 from redturtle.prenotazioni.testing import REDTURTLE_PRENOTAZIONI_API_FUNCTIONAL_TESTING
+
+import transaction
+import unittest
 
 
 class TestPrenotazioniRestAPIAdd(unittest.TestCase):

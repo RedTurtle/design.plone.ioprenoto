@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import logging
-
 from plone import api
+
+import logging
 
 logger = logging.getLogger(__name__)
 

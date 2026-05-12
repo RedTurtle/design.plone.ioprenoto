@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
+from design.plone.ioprenoto import PRENOTAZIONI_MANAGE_PERMISSION
 from plone import api
-from redturtle.prenotazioni.restapi.services.bookings.search import (  # noqa: E501
+from redturtle.prenotazioni.restapi.services.bookings.search import (
     BookingsSearch as BookingsSearchBase,
-)
+)  # noqa: E501
 from redturtle.prenotazioni.restapi.services.bookings.search import (
     BookingsSearchFolder as BookingsSearchFolderBase,
 )
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
-
-from design.plone.ioprenoto import PRENOTAZIONI_MANAGE_PERMISSION
 
 
 # TODO: in alternativa si poteva sovrascrivere il serializer
