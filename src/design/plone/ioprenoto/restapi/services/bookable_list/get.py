@@ -14,6 +14,29 @@ logger = getLogger(__name__)
 
 
 class BookableList(Service):
+    def get_folder_booking_types(self, folder):
+        booking_types = []
+
+        # Prefer the current API that returns PrenotazioneType objects.
+        get_booking_types = getattr(folder, "get_booking_types", None)
+        if callable(get_booking_types):
+            for item in get_booking_types() or []:
+                if not item or not api.user.has_permission("View", obj=item):
+                    continue
+                booking_types.append(
+                    {
+                        "name": item.title,
+                        "duration": getattr(item, "duration", None),
+                        "hidden": getattr(item, "hidden", False),
+                    }
+                )
+
+        # Backward compatibility with old list-of-dicts storage.
+        if booking_types:
+            return booking_types
+
+        return getattr(folder, "booking_types", []) or []
+
     def reply(self):
         """
         Return all UO with at least one back-refence from PrenotazioniFolder
@@ -38,8 +61,8 @@ class BookableList(Service):
                     prenotazioni_folder = rel.from_object
                     if not prenotazioni_folder:
                         continue
-                    for booking_type in (
-                        getattr(prenotazioni_folder, "booking_types", []) or []
+                    for booking_type in self.get_folder_booking_types(
+                        prenotazioni_folder
                     ):
                         query = urlencode(
                             {
@@ -114,7 +137,7 @@ class BookableUOList(BookableList):
             logger.exception("Error in booking_type_check %s", booking_type)
         booking_types = [
             b_type["name"]
-            for b_type in getattr(prenotazioni_folder, "booking_types", [])
+            for b_type in self.get_folder_booking_types(prenotazioni_folder)
         ]
         return bool(set(tocheck).intersection(booking_types))
 
