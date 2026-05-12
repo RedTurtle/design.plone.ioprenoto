@@ -6,6 +6,8 @@ from zope.i18nmessageid import MessageFactory
 
 import logging
 
+__version__ = "1.2.11.dev0"
+
 _ = MessageFactory("design.plone.ioprenoto")
 logger = logging.getLogger("design.plone.ioprenoto")
 
