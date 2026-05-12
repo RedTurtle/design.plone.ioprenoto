@@ -4,7 +4,8 @@ Changelog
 1.2.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Refactor @bookable-uo-list rest service to simplify inheritance
+  [fevancin]
 
 
 1.2.10 (2025-03-05)
